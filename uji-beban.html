@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id" data-palet="b">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalām — Uji Beban 36 Klien Paralel (M0-B)</title>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <main class="wadah-layar" id="konten-utama">
+    <!-- Kepala Halaman -->
+    <header class="kartu">
+      <div class="baris-lencana-atas">
+        <span class="penanda-status penanda-status--terdeteksi">Prototipe M0-B</span>
+        <span class="teks-keterangan">TB-M0-06 &amp; TB-M0-07 (UJ-KUO-01)</span>
+      </div>
+      <h1 class="judul-layar">Uji Beban 36 Klien Paralel</h1>
+      <p class="teks-instruksi">
+        Halaman ini mengirimkan 36 permintaan bersamaan (<code>ping</code>, <code>catat</code>, dan <code>unggah_audio</code> kecil sintetis) dengan jeda acak 0 sampai 3 detik untuk memastikan proyek Google Apps Script <code>kalam-api</code> bertahan melayani satu kelas penuh.
+      </p>
+      <div class="pesan-hangat">
+        <p class="teks-keterangan">
+          Tolok ukur kelulusan <strong>UJ-KUO-01</strong>: seluruh 36 permintaan tercatat sekali tanpa kendala server yang tidak pulih, dan persentil ke-95 waktu respons ≤ 10,0 detik.
+        </p>
+      </div>
+    </header>
+
+    <!-- Bagian 1: Konfigurasi Target Server & Paket Uji -->
+    <section class="kartu" aria-labelledby="judul-konfig-beban">
+      <h2 class="subjudul-layar" id="judul-konfig-beban">1. Pengaturan Uji Beban</h2>
+
+      <div class="kelompok-input">
+        <label class="label-input" for="input-url-api-beban">URL Web App kalam-api (diambil dari config.js atau tempel di sini):</label>
+        <input type="url" id="input-url-api-beban" class="input-teks" placeholder="https://script.google.com/macros/s/.../exec">
+      </div>
+
+      <div class="kelompok-input" style="margin-top: var(--jarak-3);">
+        <label class="label-input" for="pilih-paket-beban">Komposisi 36 Permintaan Paralel:</label>
+        <select id="pilih-paket-beban" class="input-teks">
+          <option value="campuran" selected>Campuran 36 Klien (12 ping + 12 catat + 12 unggah_audio sintetis)</option>
+          <option value="semua_catat">36 Klien mengirim aksi catat bersamaan</option>
+          <option value="semua_unggah">36 Klien mengirim aksi unggah_audio kecil bersamaan</option>
+          <option value="semua_ping">36 Klien mengirim aksi ping bersamaan</option>
+        </select>
+      </div>
+
+      <div class="baris-tombol" style="margin-top: var(--jarak-4);">
+        <button type="button" class="tombol tombol--utama" id="tombol-mulai-beban-nyata">
+          Mulai Uji Beban 36 Klien ke Server kalam-api
+        </button>
+        <button type="button" class="tombol tombol--sekunder" id="tombol-mulai-beban-simulasi">
+          Jalankan Simulasi Lokal 36 Klien (Tanpa Server)
+        </button>
+      </div>
+
+      <p class="teks-keterangan" id="label-progres-beban" style="margin-top: var(--jarak-3); font-weight: 600;">
+        Progres: 0 / 36 klien selesai
+      </p>
+    </section>
+
+    <!-- Bagian 2: Ringkasan Statistik Waktu Respons (TB-M0-07) -->
+    <section class="kartu" aria-labelledby="judul-ringkasan-beban">
+      <h2 class="subjudul-layar" id="judul-ringkasan-beban">2. Ringkasan Hasil &amp; Waktu Respons</h2>
+
+      <div class="daftar-status" style="margin-bottom: var(--jarak-3);">
+        <span class="penanda-status penanda-status--menunggu" id="status-gerbang-kuo01">
+          Menunggu pengujian dijalankan
+        </span>
+      </div>
+
+      <div class="kisi-pintasan">
+        <div class="kartu-metrik">
+          <span class="teks-keterangan">Jumlah Berhasil</span>
+          <strong class="angka-metrik" id="metrik-jumlah-berhasil">0 / 36</strong>
+        </div>
+        <div class="kartu-metrik">
+          <span class="teks-keterangan">Jumlah Kendala</span>
+          <strong class="angka-metrik" id="metrik-jumlah-kendala">0</strong>
+        </div>
+        <div class="kartu-metrik">
+          <span class="teks-keterangan">Median Respons (P50)</span>
+          <strong class="angka-metrik" id="metrik-median-waktu">-</strong>
+        </div>
+        <div class="kartu-metrik">
+          <span class="teks-keterangan">Persentil ke-95 (P95)</span>
+          <strong class="angka-metrik" id="metrik-p95-waktu">-</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bagian 3: Tabel Rincian 36 Klien -->
+    <section class="kartu" aria-labelledby="judul-tabel-klien">
+      <h2 class="subjudul-layar" id="judul-tabel-klien">3. Status 36 Klien (S001 s.d. S036)</h2>
+      <div class="bungkus-tabel">
+        <table class="tabel-dasbor">
+          <thead>
+            <tr>
+              <th>Klien</th>
+              <th>Aksi</th>
+              <th>Jeda Acak</th>
+              <th>Respons</th>
+              <th>Status Akhir</th>
+            </tr>
+          </thead>
+          <tbody id="tabel-baris-klien">
+            <tr>
+              <td colspan="5" class="teks-keterangan">Belum ada permintaan yang dikirim.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Bagian 4: Panel Teks Hasil Uji Beban (Siap Disalin) -->
+    <section class="kartu" aria-labelledby="judul-salin-beban">
+      <h2 class="subjudul-layar" id="judul-salin-beban">4. Salin Laporan Uji Beban</h2>
+      <p class="teks-instruksi">
+        Salin teks di bawah ini setelah pengujian selesai untuk dicatat pada dokumen keputusan M0.
+      </p>
+      <div class="kelompok-input">
+        <label class="label-input" for="area-salin-beban">Teks Ringkasan Uji Beban:</label>
+        <textarea
+          id="area-salin-beban"
+          class="input-teks"
+          rows="10"
+          readonly
+          style="font-family: monospace; font-size: 0.8125rem; line-height: 1.45; height: auto; padding: var(--jarak-3);"
+        ></textarea>
+      </div>
+      <div class="baris-tombol" style="margin-top: var(--jarak-3);">
+        <button type="button" class="tombol tombol--utama" id="tombol-salin-beban">
+          Salin Hasil Uji Beban
+        </button>
+        <a href="uji.html" class="tombol tombol--sekunder" style="text-decoration: none; text-align: center;">
+          Kembali ke Halaman Uji Suara (uji.html)
+        </a>
+      </div>
+      <div class="daftar-status" style="margin-top: var(--jarak-2);">
+        <span class="penanda-status penanda-status--menunggu" id="status-salin-beban">Siap disalin</span>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="js/uji/uji-beban.js"></script>
+</body>
+</html>

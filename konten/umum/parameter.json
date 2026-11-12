@@ -1,0 +1,85 @@
+{
+  "versi": "2026-11-12",
+  "keterangan": "Parameter awal aplikasi Kalām hasil fase M0 (FR-071, FR-072, FR-073, FR-074, FR-075). Nilai bertanda ⚠VERIF dipertahankan sesuai spesifikasi sampai diperiksa di lapangan oleh pemilik proyek.",
+  "deteksi_kata_kunci": {
+    "bahasa": "ar-SA",
+    "maks_alternatif": 5,
+    "ambang_deteksi": 0.5,
+    "jarak_edit_maks": 1,
+    "panjang_kata_min_jarak_edit": 4,
+    "batas_hasil_kosong_ke_mandiri": 2,
+    "catatan_verif": "⚠VERIF-P02 (ambang_deteksi = 0.5), ⚠VERIF-P04 (ar-SA di Safari iOS), ⚠VERIF-P07 (jarak_edit_maks = 1 untuk kata >= 4 huruf)"
+  },
+  "perekaman": {
+    "kanal": 1,
+    "bitrate_bps": 24000,
+    "bitrate_kbps": 24,
+    "bitrate_cadangan_kbps": 16,
+    "urutan_mime": [
+      "audio/webm;codecs=opus",
+      "audio/webm",
+      "audio/mp4;codecs=mp4a.40.2",
+      "audio/mp4",
+      "audio/aac"
+    ],
+    "batas_durasi_detik": {
+      "tes_cek_perangkat": 3,
+      "latihan_sesi1_sesi2": 15,
+      "slot_putaran3": 15,
+      "tahap0_suara_hari_pertama": 20,
+      "after_suara_hari_ini": 30
+    },
+    "batas_tidak_mulai_bicara_detik": 10,
+    "durasi_minimal_sah_detik": 1.0,
+    "tolok_ukur_ukuran_maks_kb": {
+      "slot_putaran3": 100,
+      "tahap0": 120,
+      "after": 180
+    },
+    "catatan_verif": "⚠VERIF-P03 (bitrate 24 kbps), ⚠VERIF-P05 (format MediaRecorder webm Opus / mp4 AAC)"
+  },
+  "ukuran_suara_otomatis": {
+    "bingkai_md": 50,
+    "persentil_latar_L": 10,
+    "persentil_puncak_S": 90,
+    "faktor_adaptif": 0.25,
+    "ambang_bawaan": 0.02,
+    "jeda_gabung_detik": 0.30,
+    "segmen_min_detik": 0.15,
+    "mode_ambang": "adaptif_dengan_batas_bawah",
+    "batas_selisih_uji_detik": 1.5,
+    "catatan_verif": "SRS-3 FR-074 & IN-5 bagian 3 (KD-37), diuji pada UJ-M0-05"
+  },
+  "antrean_dan_kuota": {
+    "batas_badan_post_kb": 400,
+    "batas_badan_post_byte": 409600,
+    "jeda_acak_kirim_min_detik": 0,
+    "jeda_acak_kirim_maks_detik": 3,
+    "jeda_coba_ulang_detik": [2, 5, 15],
+    "maks_percobaan_kirim": 5,
+    "maks_batch_peristiwa": 50,
+    "maks_rekaman_lokal_per_unit": 50,
+    "cache_status_detik": 60,
+    "masa_berlaku_token_hari": 90,
+    "jeda_masuk_menit": 5,
+    "maks_percobaan_masuk": 10,
+    "jeda_kata_kunci_detik": 60,
+    "maks_percobaan_kata_kunci": 5,
+    "catatan_verif": "⚠VERIF-P01 (kuota Google), ⚠VERIF-P06 (batas POST 400 KB), ⚠VERIF-P10 (uji beban 36 siswa), ⚠VERIF-P12 (token 90 hari)"
+  },
+  "aku_bisa_dan_analisis": {
+    "rasio_kunci_mesin": 0.5,
+    "skor_ketepatan_guru_min": 3,
+    "penyebut_wajib": 29,
+    "blok_bonus": "U5-BF",
+    "ambang_catatan_n_kecil": 10,
+    "ambang_median_kelompok_baca_n": 5,
+    "catatan_verif": "⚠VERIF-P09 / IN-6 VERIF-11, ⚠VERIF-P14 (n < 10 dan n >= 5)"
+  },
+  "perangkat_mode_mandiri_otomatis": [
+    "Safari iOS tanpa SpeechRecognition / webkitSpeechRecognition",
+    "Peramban dengan dukungan_pengenalan_suara = 0",
+    "Perangkat yang menghasilkan 2 kali transkrip kosong berturut-turut dalam satu level (K-11)",
+    "Perangkat yang mengalami konflik mikrofon MediaRecorder + SpeechRecognition (rekaman sunyi 2 kali berturut-turut saat izin mikrofon aktif, K-12)"
+  ]
+}

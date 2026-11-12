@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="id" data-palet="b">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalām — Halaman Uji Suara &amp; Rekam (M0)</title>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <main class="wadah-layar" id="konten-utama">
+    <!-- Kepala Halaman -->
+    <header class="kartu">
+      <div class="baris-lencana-atas">
+        <span class="penanda-status penanda-status--terdeteksi">Prototipe M0</span>
+        <span class="teks-keterangan">TB-M0-01 s.d. TB-M0-05</span>
+      </div>
+      <h1 class="judul-layar">Uji Suara, Perekam, dan Amplitudo</h1>
+      <p class="teks-instruksi">
+        Halaman ini dipakai untuk menguji izin mikrofon, perekam suara hemat kuota, pengenalan suara bahasa Arab, serta penghitung durasi bicara otomatis di berbagai HP.
+      </p>
+      <div class="pesan-hangat">
+        <p class="teks-keterangan" id="info-mime-awal">Memeriksa dukungan MediaRecorder...</p>
+      </div>
+      <div class="daftar-status" style="margin-top: var(--jarak-2);">
+        <span class="penanda-status penanda-status--menunggu" id="status-dukungan-speech">
+          Memeriksa dukungan pengenalan suara...
+        </span>
+      </div>
+    </header>
+
+    <!-- Bagian 1: Izin Mikrofon & Kalibrasi Suara Latar 3 Detik -->
+    <section class="kartu" aria-labelledby="judul-izin">
+      <h2 class="subjudul-layar" id="judul-izin">1. Izin Mikrofon &amp; Kalibrasi Latar</h2>
+      <p class="teks-instruksi">
+        Ketuk tombol di bawah ini untuk mengizinkan akses mikrofon, lalu lakukan tes rekam 3 detik untuk mengukur ambang suara latar ruangan (FR-074).
+      </p>
+      <div class="daftar-status">
+        <span class="penanda-status penanda-status--menunggu" id="status-izin-mikrofon">
+          Mikrofon belum diaktifkan
+        </span>
+      </div>
+      <div class="baris-tombol" style="margin-top: var(--jarak-3);">
+        <button type="button" class="tombol tombol--utama" id="tombol-izin-mikrofon">
+          Aktifkan Izin Mikrofon
+        </button>
+        <button type="button" class="tombol tombol--sekunder" id="tombol-kalibrasi-3d">
+          Tes Rekam 3 Detik (Ukur Suara Latar)
+        </button>
+      </div>
+      <p class="teks-keterangan" id="info-kalibrasi-latar" style="margin-top: var(--jarak-2);">
+        Belum ada kalibrasi 3 detik (memakai persentil rekaman saat ini &amp; ambang bawaan 0,02).
+      </p>
+    </section>
+
+    <!-- Bagian 2: Pengaturan Perekam (TB-M0-02) -->
+    <section class="kartu" aria-labelledby="judul-pengaturan-rekam">
+      <h2 class="subjudul-layar" id="judul-pengaturan-rekam">2. Pengaturan Perekam (FR-072)</h2>
+      <p class="teks-instruksi">
+        Pilih batas durasi otomatis (15 detik untuk slot kartu Putaran 3, 20 detik untuk Tahap 0, atau 30 detik untuk Tahap After) dan target bitrate.
+      </p>
+
+      <fieldset style="border: none; padding: 0; margin: 0 0 var(--jarak-3) 0;">
+        <legend class="label-input" style="margin-bottom: var(--jarak-2);">Batas Durasi Rekam Otomatis:</legend>
+        <div class="baris-tombol">
+          <label class="tombol tombol--sekunder" style="justify-content: flex-start; gap: var(--jarak-2); cursor: pointer;">
+            <input type="radio" name="batas-detik" value="15" checked style="width: 20px; height: 20px;">
+            <span>15 detik (Latihan / Slot Putaran 3 — maks 100 KB)</span>
+          </label>
+          <label class="tombol tombol--sekunder" style="justify-content: flex-start; gap: var(--jarak-2); cursor: pointer;">
+            <input type="radio" name="batas-detik" value="20" style="width: 20px; height: 20px;">
+            <span>20 detik (Tahap 0 Suara Hari Pertama — maks 120 KB)</span>
+          </label>
+          <label class="tombol tombol--sekunder" style="justify-content: flex-start; gap: var(--jarak-2); cursor: pointer;">
+            <input type="radio" name="batas-detik" value="30" style="width: 20px; height: 20px;">
+            <span>30 detik (Tahap After Suara Hari Ini — maks 180 KB)</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <div class="kelompok-input">
+        <label class="label-input" for="pilih-bitrate">Target Bitrate Audio Mono:</label>
+        <select id="pilih-bitrate" class="input-teks">
+          <option value="24" selected>24 kbps mono (Bawaan SRS-1 / ⚠VERIF-P03)</option>
+          <option value="16">16 kbps mono (Cadangan hemat ukuran)</option>
+          <option value="32">32 kbps mono (Perbandingan kualitas)</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Bagian 3: Pemilihan Ungkapan Level 1 U1-BLOK-A & Tombol Rekam + Deteksi Bersamaan (TB-M0-03 & TB-M0-04) -->
+    <section class="kartu-arab" aria-labelledby="judul-ungkapan">
+      <div class="kartu-arab__kepala">
+        <h2 class="subjudul-layar" id="judul-ungkapan">3. Ungkapan Uji Level 1 (U1-BLOK-A)</h2>
+        <span class="kartu-arab__label" id="label-id-ungkapan">U1-L1-001</span>
+      </div>
+
+      <div class="kelompok-input" style="margin-bottom: var(--jarak-3);">
+        <label class="label-input" for="pilih-ungkapan">Pilih Ungkapan dari U1-BLOK-A (12 Butir):</label>
+        <select id="pilih-ungkapan" class="input-teks"></select>
+      </div>
+
+      <p class="teks-keterangan" id="label-fungsi-ungkapan">Memberi salam</p>
+
+      <div class="kartu-arab__kotak-kalimat">
+        <p class="teks-arab teks-arab--besar teks-arab--tengah" dir="rtl" lang="ar" id="teks-arab-ungkapan">
+          اَلسَّلَامُ عَلَيْكُمْ
+        </p>
+      </div>
+
+      <div style="margin-top: var(--jarak-3);">
+        <p class="teks-keterangan" style="margin-bottom: var(--jarak-2);">Kata wajib deteksi (tanpa harakat — Lampiran U1-BLOK-A):</p>
+        <div class="daftar-status" id="daftar-kata-wajib"></div>
+      </div>
+
+      <!-- Kotak Rekam & Pengenalan Suara Bersamaan dalam Satu Tombol (TB-M0-04) -->
+      <div class="kotak-rekam kotak-rekam--siap" id="kotak-rekam-utama" style="margin-top: var(--jarak-4);">
+        <p class="teks-instruksi" id="label-status-rekam" style="margin: 0;">
+          Siap merekam dan mengenali suara secara bersamaan
+        </p>
+        <div class="penghitung-santai" id="penghitung-detik-rekam">0,0 detik</div>
+        <button type="button" class="tombol tombol--utama tombol-rekam--siap" id="tombol-rekam-utama">
+          ● Mulai Rekam &amp; Deteksi Suara
+        </button>
+        <audio id="pemutar-rekaman-uji" controls hidden style="width: 100%; margin-top: var(--jarak-2);"></audio>
+      </div>
+
+      <div class="baris-tombol" style="margin-top: var(--jarak-3);">
+        <button type="button" class="tombol tombol--sekunder" id="tombol-verifikasi-algoritma">
+          Uji Mandiri Algoritma (Simulasi Sinyal 20 Detik)
+        </button>
+      </div>
+    </section>
+
+    <!-- Bagian 4: Parameter Amplitudo & Deteksi yang Dapat Diubah (TB-M0-05 / FR-074) -->
+    <section class="kartu" aria-labelledby="judul-parameter">
+      <h2 class="subjudul-layar" id="judul-parameter">4. Parameter Ukuran Suara &amp; Deteksi (FR-071 &amp; FR-074)</h2>
+      <p class="teks-keterangan">
+        Parameter di bawah ini terlihat dan dapat disesuaikan bila selisih durasi bersuara terhadap hitungan manual melebihi 1,5 detik (UJ-M0-05).
+      </p>
+
+      <div class="kelompok-input" style="margin-top: var(--jarak-3);">
+        <label class="label-input" for="param-ambang-deteksi">Ambang Deteksi Kata Kunci (FR-071, bawaan 0,5):</label>
+        <input type="number" id="param-ambang-deteksi" class="input-teks" value="0.5" min="0.1" max="1.0" step="0.05">
+      </div>
+
+      <div class="kelompok-input" style="margin-top: var(--jarak-2);">
+        <label class="label-input" for="param-bingkai-md">Lebar Bingkai RMS (md, bawaan 50):</label>
+        <input type="number" id="param-bingkai-md" class="input-teks" value="50" min="10" max="200" step="10">
+      </div>
+
+      <div class="kelompok-input" style="margin-top: var(--jarak-2);">
+        <label class="label-input" for="param-ambang-bawaan">Ambang RMS Bawaan (bawaan 0,02):</label>
+        <input type="number" id="param-ambang-bawaan" class="input-teks" value="0.02" min="0.002" max="0.2" step="0.002">
+      </div>
+
+      <div class="kelompok-input" style="margin-top: var(--jarak-2);">
+        <label class="label-input" for="param-faktor-adaptif">Faktor Adaptif L + f×(S−L) (bawaan 0,25):</label>
+        <input type="number" id="param-faktor-adaptif" class="input-teks" value="0.25" min="0.05" max="0.80" step="0.05">
+      </div>
+
+      <div class="kelompok-input" style="margin-top: var(--jarak-2);">
+        <label class="label-input" for="param-jeda-gabung">Gabung Jeda Antar-Segmen ≤ (detik, bawaan 0,30):</label>
+        <input type="number" id="param-jeda-gabung" class="input-teks" value="0.30" min="0.05" max="1.50" step="0.05">
+      </div>
+
+      <div class="kelompok-input" style="margin-top: var(--jarak-2);">
+        <label class="label-input" for="param-segmen-min">Buang Segmen Suara &lt; (detik, bawaan 0,15):</label>
+        <input type="number" id="param-segmen-min" class="input-teks" value="0.15" min="0.05" max="1.00" step="0.05">
+      </div>
+
+      <div class="kelompok-input" style="margin-top: var(--jarak-2);">
+        <label class="label-input" for="param-mode-ambang">Cara Penentuan Ambang RMS:</label>
+        <select id="param-mode-ambang" class="input-teks">
+          <option value="adaptif_dengan_batas_bawah" selected>Adaptif L + 0,25×(S−L) dengan pelindung sunyi</option>
+          <option value="murni_rumus">Murni Rumus L + f×(S−L)</option>
+          <option value="tetap">Tetap (memakai Ambang RMS Bawaan saja)</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Bagian 5: Rincian Hasil Percobaan Terakhir -->
+    <section class="kartu" aria-labelledby="judul-hasil-terakhir">
+      <h2 class="subjudul-layar" id="judul-hasil-terakhir">5. Hasil Percobaan Terakhir</h2>
+
+      <!-- 5A. Ukuran & MIME -->
+      <div class="pesan-hangat" style="margin-bottom: var(--jarak-3);">
+        <p class="teks-instruksi" style="font-weight: 600; margin-bottom: var(--jarak-1);">A. Perekam &amp; Ukuran Berkas (TB-M0-02)</p>
+        <p class="teks-keterangan">Tipe MIME: <strong id="hasil-mime">-</strong></p>
+        <p class="teks-keterangan">Ukuran &amp; Durasi: <strong id="hasil-ukuran">Belum ada rekaman</strong></p>
+        <div class="daftar-status" style="margin-top: var(--jarak-2);">
+          <span class="penanda-status penanda-status--menunggu" id="hasil-tolok-ukur">Menunggu rekaman</span>
+        </div>
+      </div>
+
+      <!-- 5B. Amplitudo & Durasi Bersuara -->
+      <div class="pesan-hangat" style="margin-bottom: var(--jarak-3);">
+        <p class="teks-instruksi" style="font-weight: 600; margin-bottom: var(--jarak-1);">B. Durasi Bersuara &amp; Waktu Mulai Bicara (TB-M0-05)</p>
+        <p class="teks-keterangan">Waktu mulai bicara: <strong id="hasil-waktu-mulai">-</strong></p>
+        <p class="teks-keterangan">Durasi bersuara (0–20 detik): <strong id="hasil-durasi-20">-</strong></p>
+        <p class="teks-keterangan">Durasi bersuara tambahan (20–30 detik): <strong id="hasil-durasi-tambahan">-</strong></p>
+        <p class="teks-keterangan" id="hasil-statistik-rms">Statistik RMS: -</p>
+        <div class="daftar-status" style="margin-top: var(--jarak-2);">
+          <span class="penanda-status penanda-status--menunggu" id="hasil-flag-suara">Menunggu analisis suara</span>
+        </div>
+      </div>
+
+      <!-- 5C. Pengenalan Suara ar-SA & Skor Kata Kunci -->
+      <div class="pesan-hangat">
+        <p class="teks-instruksi" style="font-weight: 600; margin-bottom: var(--jarak-1);">C. Pengenalan Suara ar-SA &amp; Skor Kata Wajib (TB-M0-03)</p>
+        <div class="daftar-status" style="margin-bottom: var(--jarak-2);">
+          <span class="penanda-status penanda-status--menunggu" id="badge-status-deteksi">Menunggu percobaan</span>
+        </div>
+        <p class="teks-keterangan" id="hasil-skor-kata">Skor kata wajib: -</p>
+        <p class="teks-keterangan" style="margin-top: var(--jarak-2); font-weight: 600;">Rincian Pencocokan Kata Wajib:</p>
+        <ul class="teks-keterangan" id="rincian-pencocokan-kata" style="padding-left: 1.25rem; margin: var(--jarak-1) 0;">
+          <li>Belum ada data pencocokan.</li>
+        </ul>
+        <p class="teks-keterangan" style="margin-top: var(--jarak-2); font-weight: 600;">Alternatif Transkrip di Memori (maks. 5):</p>
+        <ul class="teks-keterangan" id="daftar-alternatif-speech" style="padding-left: 1.25rem; margin: var(--jarak-1) 0;">
+          <li>Belum ada transkrip.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Bagian 6: Uji Unggah Satu Rekaman ke Server kalam-api (UJ-M0-04) -->
+    <section class="kartu" aria-labelledby="judul-unggah-m0">
+      <h2 class="subjudul-layar" id="judul-unggah-m0">6. Uji Unggah Rekaman ke Server (UJ-M0-04)</h2>
+      <p class="teks-keterangan">
+        Gunakan bagian ini setelah proyek Apps Script <code>kalam-api</code> dipasang untuk menguji unggah 1 berkas rekaman asli ke Google Drive <code>Kalam-Audio/UJI/</code>.
+      </p>
+      <div class="kelompok-input" style="margin-top: var(--jarak-2);">
+        <label class="label-input" for="input-url-api-m0">URL Web App kalam-api (opsional bila belum diisi di config.js):</label>
+        <input type="url" id="input-url-api-m0" class="input-teks" placeholder="https://script.google.com/macros/s/.../exec">
+      </div>
+      <div class="baris-tombol" style="margin-top: var(--jarak-3);">
+        <button type="button" class="tombol tombol--utama tombol--nonaktif" id="tombol-unggah-rekaman" disabled>
+          Unggah Rekaman Terakhir ke Server M0
+        </button>
+      </div>
+      <div class="daftar-status" style="margin-top: var(--jarak-2);">
+        <span class="penanda-status penanda-status--menunggu" id="status-unggah-m0">Menunggu perintah unggah</span>
+      </div>
+    </section>
+
+    <!-- Bagian 7: Panel Hasil Teks yang Dapat Disalin (TB-M0-05 #6) -->
+    <section class="kartu" aria-labelledby="judul-panel-salin">
+      <h2 class="subjudul-layar" id="judul-panel-salin">7. Panel Hasil Uji (Siap Disalin ke Laptop)</h2>
+      <p class="teks-instruksi">
+        Ketuk tombol <strong>Salin Hasil Uji</strong> di bawah ini, lalu kirimkan teksnya (misalnya lewat catatan atau pesan) dari HP ke laptop untuk ditempelkan ke laporan M0.
+      </p>
+      <div class="kelompok-input">
+        <label class="label-input" for="area-hasil-salin">Ringkasan Teknis Hasil Uji:</label>
+        <textarea
+          id="area-hasil-salin"
+          class="input-teks"
+          rows="12"
+          readonly
+          style="font-family: monospace; font-size: 0.8125rem; line-height: 1.45; height: auto; padding: var(--jarak-3);"
+        ></textarea>
+      </div>
+      <div class="baris-tombol" style="margin-top: var(--jarak-3);">
+        <button type="button" class="tombol tombol--utama" id="tombol-salin-hasil">
+          Salin Hasil Uji
+        </button>
+        <button type="button" class="tombol tombol--sekunder" id="tombol-bersihkan-riwayat">
+          Bersihkan Riwayat Percobaan
+        </button>
+      </div>
+      <div class="daftar-status" style="margin-top: var(--jarak-2);">
+        <span class="penanda-status penanda-status--menunggu" id="status-salin-hasil">Siap disalin</span>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="js/uji/uji-m0.js"></script>
+</body>
+</html>
