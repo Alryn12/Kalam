@@ -1,0 +1,559 @@
+{
+  "versi": "2026-11-12",
+  "keterangan": "Katalog seluruh teks antarmuka aplikasi Kalām (sumber: BP-6-teks-antarmuka.md & docs/KEPUTUSAN.md). Kunci dapat diakses dengan format {layar}.{elemen}.",
+  "S-01": {
+    "judul": "Selamat datang",
+    "subjudul": "Aplikasi belajar bicara bahasa Arab untuk siswa MA",
+    "label_kolom_1": "Kode siswa",
+    "label_kolom_2": "Nama panggilan",
+    "tombol": "Masuk",
+    "tautan": "Bantuan masuk",
+    "pesan_bantuan": "Lupa kode? Tanyakan ke gurumu.",
+    "pesan_kode_tidak_dikenal": "Kode ini belum ditemukan. Cek lagi atau tanyakan ke gurumu.",
+    "pesan_nama_tidak_cocok": "Kode ini sudah dipakai dengan nama panggilan lain. Tanyakan ke gurumu.",
+    "pesan_jeda": "Tunggu sebentar ({detik} detik) sebelum mencoba masuk kembali."
+  },
+  "S-02": {
+    "judul": "Beranda",
+    "sapaan": "Halo, {nama_panggilan}",
+    "kartu_lanjut": "Lanjutkan belajar",
+    "judul_daftar": "Unit belajarmu",
+    "status_unit_terkunci": "Terbuka setelah setoran ke gurumu",
+    "status_unit_terbuka": "Siap dipelajari",
+    "status_unit_selesai": "Selesai",
+    "bagian_after": "Melihat perjalananmu",
+    "kartu_pekan": "Pekan ini",
+    "pintasan_aku_bisa": "Aku Bisa",
+    "pintasan_perjalananku": "Perjalananku",
+    "pintasan_kartu_kemajuan": "Kartu Kemajuan",
+    "pintasan_status_pengiriman": "Status pengiriman",
+    "tombol_keluar": "Keluar"
+  },
+  "S-03": {
+    "judul": "{nama_unit}",
+    "judul_bawaan": "Isi Unit",
+    "status_blok": "Sesi 1 · Level 1 · Level 2 · Level 3",
+    "tombol_mulai": "Mulai",
+    "tombol_lanjut": "Lanjut",
+    "tombol_ulangi": "Ulangi",
+    "blok_terkunci": "Selesaikan blok sebelumnya dulu",
+    "label_pengayaan": "Pengayaan",
+    "baris_akhir_unit": "Sesi 3 dan misi bersama gurumu",
+    "baris_akhir_terkunci": "Terbuka setelah semua blok selesai",
+    "unit_terkunci": "Unit ini terbuka setelah setoran ke gurumu"
+  },
+  "S-10": {
+    "judul": "Sebelum mulai",
+    "judul_t0": "Sebelum mulai",
+    "judul_after": "Saatnya melihat perjalananmu",
+    "janji_1": "Bagian awal ini bukan ujian dan tidak masuk nilai rapor.",
+    "janji_2": "Rekaman yang dikirim hanya didengar kamu dan gurumu. Latihanmu tetap di HP-mu.",
+    "janji_3": "Kamu boleh melewati bagian mana pun. Kamu juga boleh meminta gurumu menghapus rekamanmu.",
+    "tautan": "Tentang pengenalan suara",
+    "isi_tautan": "Untuk memberi tanda Terdeteksi, peramban di HP-mu bisa memakai layanan pengenalan suara yang mengirim suaramu ke penyedia layanan itu. Aplikasi ini tidak menyimpan tulisan hasilnya.",
+    "kotak_centang": "Aku sudah membaca dan setuju",
+    "tombol": "Lanjut",
+    "pesan_bila_belum_dicentang": "Centang dulu bila kamu setuju. Bila ada yang ingin ditanyakan, bicaralah dengan gurumu."
+  },
+  "S-11": {
+    "judul": "Cek HP-mu",
+    "tombol_izin": "Izinkan mikrofon",
+    "instruksi": "Ucapkan namamu dalam bahasa apa pun selama 3 detik.",
+    "tombol_rekam": "Rekam 3 detik",
+    "tombol_putar": "Dengarkan",
+    "pertanyaan_dengar": "Apakah suaramu terdengar?",
+    "pilihan_ya": "Ya",
+    "pilihan_belum": "Belum terdengar",
+    "sukses": "Suaramu terekam dengan baik.",
+    "izin_ditolak": "Mikrofon belum diizinkan. Buka pengaturan peramban lalu izinkan mikrofon, atau minta bantuan gurumu.",
+    "tombol_bantuan": "Minta bantuan gurumu",
+    "internet_bermasalah": "Internet belum terhubung. Cek sinyalmu lalu coba lagi.",
+    "tombol": "Lanjut"
+  },
+  "S-12": {
+    "judul": "Ketenangan tempat",
+    "pertanyaan": "Apakah tempatmu cukup tenang sekarang?",
+    "pilihan_1": "Ya",
+    "pilihan_2": "Agak ramai",
+    "pilihan_3": "Ramai",
+    "saran_bila_ramai": "Tidak apa-apa. Kamu boleh lanjut, atau pindah ke tempat yang lebih sepi.",
+    "tombol_lewati": "Lewati"
+  },
+  "S-13": {
+    "judul": "Dengar dan ketuk",
+    "instruksi": "Dengarkan, lalu ketuk yang kamu dengar.",
+    "penanda": "Butir {n} dari 12",
+    "tombol_putar": "Dengarkan",
+    "pilihan_khusus": "Aku tidak tahu",
+    "umpan_balik": "Bagus, lanjut!",
+    "putar_habis": "Kamu sudah memutar 3 kali. Pilih jawabanmu ya.",
+    "tombol_lewati": "Lewati"
+  },
+  "S-14": {
+    "judul": "Kenyamananku",
+    "instruksi": "Pilih yang paling cocok denganmu. Tidak ada jawaban benar atau salah.",
+    "butir_2": "Aku takut salah saat berbicara bahasa Arab.",
+    "butir_3": "Aku khawatir ditertawakan teman jika salah ucap.",
+    "butir_4": "Aku panik jika guru tiba-tiba memintaku berbicara bahasa Arab.",
+    "butir_5": "Aku sering tidak tahu harus bilang apa saat diminta berbicara bahasa Arab.",
+    "butir_7": "Aku ingin bisa berbicara bahasa Arab dan mau mencoba.",
+    "label_skala": "1 Sangat tidak setuju · 2 Tidak setuju · 3 Ragu-ragu · 4 Setuju · 5 Sangat setuju",
+    "tombol": "Lewati"
+  },
+  "S-15": {
+    "judul": "Seberapa berani kamu?",
+    "pertanyaan_1": "Seberapa berani kamu bicara bahasa Arab di depan temanmu?",
+    "pertanyaan_2": "Seberapa berani kamu bicara bahasa Arab di depan gurumu?",
+    "petunjuk_penggeser": "Geser untuk memilih",
+    "ujung_skala": "1 Belum berani · 10 Sangat berani",
+    "tombol_lanjut": "Lanjut",
+    "tombol_lewati": "Lewati"
+  },
+  "S-16": {
+    "judul": "Di luar pelajaran",
+    "pertanyaan": "Dalam seminggu terakhir, berapa kali kamu memakai bahasa Arab di luar pelajaran?",
+    "keterangan": "Hitung setiap kali kamu mengucapkan bahasa Arab kepada seseorang di luar jam pelajaran bahasa Arab.",
+    "pilihan_1": "0 kali",
+    "pilihan_2": "1–2 kali",
+    "pilihan_3": "3–5 kali",
+    "pilihan_4": "Lebih dari 5 kali",
+    "tombol": "Lewati"
+  },
+  "S-17": {
+    "judul": "Suara hari pertamamu",
+    "judul_t0": "Suara hari pertamamu",
+    "judul_after": "Suaramu hari ini",
+    "instruksi_t0": "Perkenalkan dirimu dalam bahasa Arab semampumu, atau sebutkan kata Arab yang kamu tahu artinya. Maksimal 20 detik.",
+    "instruksi_after": "Perkenalkan dirimu dalam bahasa Arab semampumu, atau sebutkan kata Arab yang kamu tahu artinya. Maksimal 30 detik.",
+    "tombol_rekam": "Rekam",
+    "tombol_berhenti": "Berhenti",
+    "pemberitahuan_batas": "Rekaman berhenti otomatis di batas waktu.",
+    "setelah_rekam": "Rekaman tersimpan ✓",
+    "tombol_ulang": "Ulangi satu kali",
+    "tombol_lewati": "Lewati, aku belum bisa",
+    "peringatan_sunyi": "Sepertinya suaramu tidak terekam. Cek mikrofonmu, lalu coba lagi.",
+    "tombol_lanjut": "Lanjut"
+  },
+  "S-18": {
+    "judul": "Ketegangan",
+    "pertanyaan": "Seberapa tegang kamu tadi?",
+    "label_skala": "1 Santai · 2 Agak santai · 3 Biasa · 4 Tegang · 5 Sangat tegang",
+    "tombol": "Lewati"
+  },
+  "S-19": {
+    "judul": "Kamu sudah berani memulai",
+    "pesan": "Kamu sudah merekam suara pertamamu. Nanti kamu akan mendengarnya lagi bersama suara barumu.",
+    "pesan_lewati": "Terima kasih sudah mencoba. Kamu bisa mulai dari sini. Unit 1 sekarang terbuka.",
+    "pengantar_frasa": "Empat kalimat penyelamat. Ketuk untuk mendengar. Kapan pun bingung, kamu boleh memakainya.",
+    "frasa_1_putra": "أَعِدْ مِنْ فَضْلِكَ",
+    "frasa_1_putri": "أَعِيدِي مِنْ فَضْلِكِ",
+    "frasa_2_putra": "بِبُطْءٍ مِنْ فَضْلِكَ",
+    "frasa_2_putri": "بِبُطْءٍ مِنْ فَضْلِكِ",
+    "frasa_3": "لَا أَفْهَمُ",
+    "frasa_4": "مَا مَعْنَى …؟",
+    "keterangan_frasa": "Minta diulang · Minta pelan-pelan · Aku belum paham · Menanyakan arti",
+    "tombol": "Mulai Unit 1"
+  },
+  "S-20": {
+    "judul": "Tonton",
+    "judul_tab": "Tonton",
+    "nama_tab": "Tonton · Kata Kunci · Tiru · Rekam",
+    "kontrol": "Putar ulang · 1x · 0,75x",
+    "ikon_mata": "Tampilkan arti",
+    "petunjuk": "Dengarkan dialognya sambil mengikuti tulisannya."
+  },
+  "S-21": {
+    "judul": "Kata Kunci",
+    "judul_tab": "Kata Kunci",
+    "petunjuk": "Ketuk kartu untuk mendengar ungkapannya.",
+    "tombol_kartu": "Dengar pelan",
+    "label_kartu": "{label_fungsi}"
+  },
+  "S-22": {
+    "judul": "Tiru",
+    "judul_tab": "Tiru",
+    "petunjuk": "Ucapkan bersamaan dengan suara. Belum direkam, belum dinilai.",
+    "tombol_kecepatan": "Pelan 0,75x · Biasa 1x"
+  },
+  "S-23": {
+    "judul": "Rekam",
+    "judul_tab": "Rekam",
+    "tab_belum_aktif": "Buka tab Tiru dulu satu kali, lalu kamu bisa merekam.",
+    "petunjuk": "Pilih 2 atau 3 giliran, rekam suaramu, lalu bandingkan dengan contoh.",
+    "tombol_rekam": "Rekam",
+    "tombol_dengar_suaraku": "Dengar suaraku",
+    "tombol_dengar_contoh": "Dengar contoh",
+    "penilaian_diri_1": "Iramanya mirip?",
+    "pilihan_1": "Ya · Sedikit · Belum",
+    "penilaian_diri_2": "Ada kata yang terasa berbeda?",
+    "pilihan_2": "Ya · Tidak",
+    "penjelasan": "Rekaman latihan ini hanya ada di HP-mu.",
+    "tombol_lewati": "Lewati rekam (HP bermasalah)"
+  },
+  "S-24": {
+    "judul": "Bagaimana tadi?",
+    "pertanyaan_1": "Seberapa yakin kamu?",
+    "label_skala": "1 Belum yakin · 2 Sedikit yakin · 3 Cukup yakin · 4 Yakin · 5 Sangat yakin",
+    "pertanyaan_2": "Kalimat mana yang paling sulit?",
+    "pilihan_khusus": "Tidak ada",
+    "tombol_kirim": "Kirim",
+    "tombol_lewati": "Lewati"
+  },
+  "S-30": {
+    "judul": "Pemanasan",
+    "petunjuk": "Ketuk dan dengarkan ungkapan dari Sesi 1. Belum ada tugas.",
+    "tombol": "Mulai Level 1"
+  },
+  "S-31": {
+    "judul": "Level 1 · Ikut",
+    "nama_tangga": "Level 1 Ikut · Level 2 Dengar-Balas · Level 3 Kunci · Level 4 Bersama guru",
+    "instruksi": "Dengarkan contohnya, lalu ucapkan.",
+    "tombol_rekam": "Rekam",
+    "penanda": "Percobaan ke-{n}",
+    "hasil_sukses": "Terdeteksi ✓",
+    "hasil_ulang": "Coba lagi",
+    "setelah_3_kali": "Tidak apa-apa, kita lanjut. Dengarkan contohnya dulu.",
+    "judul_contoh": "Contoh ucapan",
+    "tombol_lanjut": "Lanjut",
+    "mode_mandiri": "Sudah mirip dengan contoh?",
+    "pilihan_mandiri": "Ya · Belum"
+  },
+  "S-32": {
+    "judul": "Level 2 · Dengar-Balas",
+    "instruksi_jawab": "Berikan jawaban yang sesuai.",
+    "instruksi_tanya": "Berikan pertanyaan yang sesuai.",
+    "instruksi_situasi": "Kamu belum jelas mendengarnya. Mintalah diulang.",
+    "tombol": "Dengarkan · Rekam · Lanjut",
+    "hasil": "Terdeteksi ✓ · Coba lagi",
+    "judul_contoh": "Contoh jawaban",
+    "judul_alternatif": "Jawaban lain yang juga bisa"
+  },
+  "S-33": {
+    "judul": "Level 3 · Kunci",
+    "kartu": "{judul_fungsi}",
+    "langkah_1": "Rekam bagian pertama: {instruksi_bagian_1}",
+    "langkah_2": "Sekarang rekam bagian kedua: {instruksi_bagian_2}",
+    "tombol_rekam": "Rekam",
+    "tombol_bantuan_sesi_2": "Bantuan",
+    "tombol_petunjuk_sesi_3": "Lihat petunjuk",
+    "hasil": "Terdeteksi ✓ · Coba lagi",
+    "hasil_sesi_3": "Terdeteksi ✓ · Tersimpan ✓",
+    "contoh": "Contoh bagian {n}",
+    "kembali": "Kembali ke bagian pertama",
+    "penghitung_p3": "Waktumu: {detik} detik",
+    "pilih_ikon_teman": "Pilih temanmu"
+  },
+  "S-34": {
+    "judul": "Dengar pasangannya",
+    "tombol": "Kartu berikutnya",
+    "tombol_kartu_terakhir": "Selesai",
+    "penutup_putaran": "Putaran {n} selesai. Lanjut ke putaran berikutnya."
+  },
+  "S-35": {
+    "judul": "Level selesai dicoba",
+    "pesan": "Kamu sudah mencoba semua latihan di level ini.",
+    "tombol_aku_siap": "Aku siap, naik level",
+    "tombol_ulangi": "Ulangi level",
+    "tombol_turun": "Turun satu level",
+    "tombol_nonaktif": "Coba semua latihan dulu satu kali"
+  },
+  "S-36": {
+    "judul": "Bagaimana tadi?",
+    "pertanyaan_1": "Seberapa yakin kamu?",
+    "pertanyaan_2": "Kalimat mana yang paling sulit?",
+    "tombol": "Kirim · Lewati",
+    "tombol_kirim": "Kirim",
+    "tombol_lewati": "Lewati"
+  },
+  "S-37": {
+    "judul": "Blok selesai",
+    "pesan": "Satu blok sudah kamu jalani. Terima kasih sudah berani mencoba.",
+    "pernyataan": "Aku bisa {pernyataan_blok}",
+    "dua_tanda": "Latihan ✓ · Bersama guru ✓",
+    "keterangan": "Blok berikutnya sudah terbuka.",
+    "keterangan_sesi_3": "Sesi 3 sudah terbuka.",
+    "tombol": "Lanjut"
+  },
+  "S-40": {
+    "judul": "Sesi 3 · Ulang dan berani",
+    "penjelasan": "Kamu akan mengulang kartu yang sama tiga kali. Tiap putaran bantuannya makin sedikit.",
+    "daftar": "Kartu yang akan kamu ucapkan",
+    "tombol": "Mulai Putaran 1"
+  },
+  "S-41": {
+    "judul": "Perjalananmu di sesi ini",
+    "baris_waktu": "Waktu per kartu: Putaran 1 {a} detik, Putaran 3 {b} detik",
+    "baris_bantuan": "Memakai bantuan: Putaran 1 {a} kali, Putaran 3 {b} kali",
+    "baris_rekor": "Rekor pribadimu: {detik} detik",
+    "pembanding": "Ini hanya dibandingkan dengan dirimu sendiri.",
+    "tombol": "Lanjut"
+  },
+  "S-42": {
+    "judul": "Sebelum bertemu gurumu",
+    "pertanyaan_1": "Seberapa siap kamu bertemu gurumu?",
+    "label_skala_1": "1 Belum siap · 5 Sangat siap",
+    "pertanyaan_2": "Seberapa tegang kamu sekarang?",
+    "label_skala_2": "1 Santai · 5 Sangat tegang",
+    "tombol": "Lanjut · Lewati",
+    "tombol_lanjut": "Lanjut",
+    "tombol_lewati": "Lewati"
+  },
+  "S-43": {
+    "judul": "Misi bersama gurumu",
+    "penjelasan": "Gurumu akan mengajakmu bicara. Ini langkah-langkahnya.",
+    "tombol_teks_arab": "Lihat teks Arab",
+    "tombol_gambar_bantu": "Lihat gambar bantu",
+    "penanda_dua_setoran": "Setoran {n} dari 2",
+    "tombol": "Aku siap bertemu gurumu"
+  },
+  "S-44": {
+    "judul": "Serahkan HP-mu ke gurumu",
+    "keterangan": "{kode_siswa} · {nama_unit}",
+    "tombol_guru": "Guru: mulai setoran"
+  },
+  "S-45": {
+    "judul": "Sesudah setoran",
+    "pertanyaan": "Seberapa tegang kamu tadi saat bicara dengan gurumu?",
+    "label_skala": "1 Santai · 2 Agak santai · 3 Biasa · 4 Tegang · 5 Sangat tegang",
+    "tombol": "Lewati"
+  },
+  "S-46": {
+    "judul": "Unit selesai",
+    "pesan": "Hebat, kamu sudah menyelesaikan {nama_unit}.",
+    "keterangan": "Unit berikutnya sudah terbuka.",
+    "keterangan_akhir": "Tahap melihat perjalananmu sudah terbuka.",
+    "tautan": "Lihat Kartu Kemajuan",
+    "tombol": "Lanjut"
+  },
+  "S-50": {
+    "judul": "Misi Keluarga",
+    "instruksi": "Pekan ini, ucapkan ungkapan ini kepada seseorang di rumah.",
+    "ungkapan": "{ungkapan_arab}",
+    "tombol_dengar": "Dengar",
+    "pilihan_1": "Sudah",
+    "pilihan_2": "Belum",
+    "pilihan_3": "Belum bisa",
+    "penutup": "Terima kasih sudah melapor."
+  },
+  "S-51": {
+    "judul": "Catatan Pakai",
+    "pertanyaan_1": "Pekan ini, berapa kali kamu memakai bahasa Arab di luar aplikasi?",
+    "pilihan_frek": "0 kali · 1–2 kali · 3–5 kali · Lebih dari 5 kali",
+    "pertanyaan_2": "Dengan siapa?",
+    "pilihan_siapa": "Keluarga · Teman · Guru · Sendiri"
+  },
+  "S-52": {
+    "judul": "Terima kasih",
+    "pesan": "Kamu sudah melapor. Ini pengakuan atas usahamu.",
+    "poin": "Poinmu: {poin}",
+    "catatan": "Poin ini terpisah dari nilai.",
+    "tombol": "Lanjut"
+  },
+  "S-60": {
+    "judul": "Aku Bisa",
+    "penyebut": "{x} dari 29",
+    "dua_tanda": "Latihan ✓ · Bersama guru ✓",
+    "keterangan_setengah": "Tinggal satu langkah lagi",
+    "tautan": "Latih lagi",
+    "pesan_latihan_terakhir": "Latihan terakhirmu belum terdeteksi. Coba lagi kapan saja.",
+    "judul_bonus": "Bonus pengayaan"
+  },
+  "S-61": {
+    "judul": "Perjalananku",
+    "grafik_1": "Waktu mulai bicara",
+    "grafik_2": "Ketegangan sebelum dan sesudah bertemu guru",
+    "grafik_3": "Memakai bantuan di Putaran 1 dan 3",
+    "keterangan": "Grafik ini hanya milikmu."
+  },
+  "S-62": {
+    "judul": "Kartu Kemajuan",
+    "isi_kartu": "{nama_panggilan} · {unit_selesai} unit selesai · Aku Bisa {x} dari 29",
+    "isi_kartu_after": "Dulu {a} detik, sekarang {b} detik",
+    "kutipan": "{kutipan_refleksi}",
+    "tombol_simpan": "Simpan gambar",
+    "tombol_bagikan": "Bagikan",
+    "catatan": "Kamu yang memilih apakah kartu ini disimpan atau dibagikan."
+  },
+  "S-70": {
+    "judul": "Dulu dan sekarang",
+    "pemutar_1": "Hari pertamamu",
+    "pemutar_2": "Hari ini",
+    "angka": "Dulu {a} detik. Sekarang {b} detik.",
+    "tambahan": "Ucapan tambahan hari ini: {c} detik",
+    "pertanyaan": "Apa yang kamu dengar berubah?",
+    "pilihan": "Lebih lancar · Lebih jelas · Lebih banyak kata · Lebih berani · Belum terasa",
+    "versi_rekaman_awal_dilewati": "Dulu kamu belum siap merekam. Sekarang kamu sudah berbicara {b} detik.",
+    "tombol": "Lanjut"
+  },
+  "S-71": {
+    "judul": "Keberanianmu",
+    "grafik_1": "Keyakinanmu tiap sesi",
+    "grafik_2": "Ketegangan sebelum dan sesudah bertemu guru",
+    "grafik_3": "Keberanianmu di depan teman dan di depan guru, dulu dan sekarang",
+    "keterangan": "Semua ini hanya tentang perjalananmu sendiri.",
+    "tombol": "Lanjut"
+  },
+  "S-72": {
+    "judul": "Refleksi akhir",
+    "pertanyaan_dv02": "Apa yang kamu dengar berubah?",
+    "pilihan_dv02": "Lebih lancar · Lebih jelas · Lebih banyak kata · Lebih berani · Belum terasa",
+    "pertanyaan_1": "Apa yang paling berubah dari dirimu dalam bicara bahasa Arab?",
+    "pertanyaan_2": "Apa yang ingin kamu coba lagi?",
+    "kotak_centang": "Boleh dikutip tanpa namaku untuk laporan",
+    "tombol": "Kirim · Lewati",
+    "tombol_kirim": "Kirim",
+    "tombol_lewati": "Lewati"
+  },
+  "S-73": {
+    "judul": "Terima kasih",
+    "pesan": "Kamu sudah menyelesaikan seluruh perjalanan. Terus berani berbicara.",
+    "tombol": "Ke Beranda"
+  },
+  "S-90": {
+    "judul": "Status pengiriman",
+    "status": "Terkirim ✓ · Menunggu · Mengirim",
+    "tombol": "Kirim ulang sekarang",
+    "pesan_menunggu": "Rekamanmu aman di HP-mu dan akan terkirim saat internet tersedia.",
+    "pesan_berulang": "Belum terkirim juga? Hubungi gurumu.",
+    "tombol_kembali": "Kembali ke Beranda"
+  },
+  "S-91": {
+    "judul": "Pesan sistem",
+    "judul_internet": "Internet terputus",
+    "penjelasan": "Tidak apa-apa. Hasil yang sudah kamu kerjakan tersimpan dan akan terkirim saat internet kembali.",
+    "judul_belum_terbuka": "Bagian ini belum terbuka",
+    "penjelasan_belum_terbuka": "Selesaikan bagian sebelumnya atau tanyakan ke gurumu.",
+    "judul_audio": "Audio belum termuat",
+    "tombol": "Coba lagi · Kembali",
+    "tombol_coba_lagi": "Coba lagi",
+    "tombol_kembali": "Kembali"
+  },
+  "G-01": {
+    "judul": "Setoran · {nama_unit}",
+    "judul_bawaan": "Setoran · Skrip Guru",
+    "tombol_mulai_langkah": "Mulai langkah",
+    "tombol_langkah_selesai": "Langkah selesai",
+    "acuan": "Acuan jawaban (ketuk tahan)",
+    "label_bentuk": "Putra · Putri",
+    "tombol": "Selesai, isi rubrik"
+  },
+  "G-02": {
+    "judul": "Rubrik dan catatan",
+    "aspek": "Memulai · Kelancaran · Ketepatan · Pelafalan",
+    "skala": "1 · 2 · 3 · 4",
+    "tautan": "Lihat deskriptor",
+    "label_cepat": "{daftar_label_cepat}",
+    "catatan": "Catatan (opsional)",
+    "tombol": "Lanjut ke kata kunci"
+  },
+  "G-03": {
+    "judul": "Kata kunci unit",
+    "kolom": "Kata kunci",
+    "tombol": "Kirim",
+    "mengirim": "Mengirim…",
+    "tidak_cocok": "Kata kunci belum cocok. Coba lagi.",
+    "jeda": "Tunggu 1 menit sebelum mencoba lagi.",
+    "belum_terkirim": "Belum terkirim, coba lagi. Skormu tersimpan di HP ini.",
+    "sukses": "Setoran tercatat. Unit berikutnya terbuka."
+  },
+  "G-10": {
+    "judul": "Masuk Guru",
+    "tombol": "Masuk dengan akun Google guru",
+    "akun_ditolak": "Akun ini tidak memiliki akses dasbor."
+  },
+  "G-11": {
+    "judul": "Beranda Kelas",
+    "kartu": "Selesai Tahap 0 · Rekaman belum dinilai · Siswa per unit · Siap setor · Kalimat tersulit · Label terbanyak · Kendala teknis · Unggahan terkirim"
+  },
+  "G-12": {
+    "judul": "Daftar Siswa",
+    "kolom": "Kode · Nama panggilan · Kelompok baca · Posisi · Aktivitas terakhir · Siap setor · Perhatian · Persetujuan",
+    "tombol": "Buka manual",
+    "kolom_alasan": "Alasan singkat (wajib)",
+    "penanda": "Belum aktif 7 hari · Ketegangan tinggi dua setoran berturut-turut · Banyak item dilewati"
+  },
+  "G-13": {
+    "judul": "Siap Setor",
+    "kolom": "Siswa · Unit · Siap sejak · Kesiapan · Ketegangan sebelum"
+  },
+  "G-14": {
+    "judul": "Profil Siswa",
+    "bagian": "Tahap 0 dan After · Per unit · Perjalanan · Audio Putaran 3 · Aku Bisa · Mingguan · Folder Drive",
+    "tombol": "Koreksi",
+    "alasan_koreksi": "Alasan koreksi (wajib)"
+  },
+  "G-15": {
+    "judul": "Menilai Rekaman",
+    "pilihan_mode": "Cepat · Buta (disarankan untuk pasangan before-after)",
+    "tombol": "Mulai"
+  },
+  "G-16": {
+    "judul": "Menilai Rekaman",
+    "penghitung": "{n} dari {total}",
+    "pemutar": "20 detik pertama",
+    "skor": "Kelancaran 1–4 · Ketepatan 1–4 · Pelafalan 1–4",
+    "tombol": "Rekaman bermasalah",
+    "pilihan_masalah": "Sunyi · Sangat ramai · Bukan bahasa Arab · Lainnya"
+  },
+  "G-17": {
+    "judul": "Buka Pasangan",
+    "tombol": "Buka pasangan",
+    "pemutar": "Detik 21–30 (catatan tanpa skor)"
+  },
+  "G-18": {
+    "judul": "Tes Tatap Muka",
+    "pemilih": "Awal · Akhir",
+    "kolom": "Memulai · Kelancaran · Ketepatan · Pelafalan · Tugas 1 sampai 5 · Catatan",
+    "status_tugas": "Berhasil · Belum",
+    "pengamatan": "Memakai · Tidak perlu · Tidak memakai (kalimat penyelamat)"
+  },
+  "G-19": {
+    "judul": "Analisis Dampak",
+    "label_hasil": "Menunjukkan dampak · Belum menunjukkan dampak · Tidak dapat dihitung",
+    "catatan_batasan": "Hasil dibaca sebagai tren yang konsisten dengan dampak aplikasi, bukan bukti sebab-akibat penuh. Tidak ada kelas pembanding, satu penilai, rekaman awal 20 detik dan akhir 30 detik (perbandingan memakai 20 detik pertama)."
+  },
+  "G-20": {
+    "judul": "Median Rubrik per Unit"
+  },
+  "G-21": {
+    "judul": "Siswa yang Sudah Menyelesaikan Tiap Unit"
+  },
+  "G-22": {
+    "judul": "Siswa dan Unit",
+    "legenda": "Belum · Sedang · Sudah setor"
+  },
+  "G-23": {
+    "judul": "Before dan After"
+  },
+  "G-24": {
+    "judul": "Kata Kunci per Unit",
+    "keterangan": "Kata kunci hanya tersimpan di server."
+  },
+  "G-25": {
+    "judul": "Bobot Penilaian",
+    "keterangan": "Jumlah bobot harus 100 persen."
+  },
+  "G-26": {
+    "judul": "Rangkaian Sesi 3 per Unit",
+    "peringatan": "Kartu ini memerlukan kartu induk yang belum dipilih."
+  },
+  "G-27": {
+    "judul": "Pengaturan Tambahan",
+    "opsi": "Poin partisipasi · Dua setoran Unit 6 · Daftar label cepat"
+  },
+  "G-28": {
+    "judul": "Ekspor",
+    "tombol": "Buat berkas Google Sheets",
+    "keterangan": "Untuk Excel, unduh berkasnya sebagai xlsx dari Google Sheets. Audio tetap di Drive."
+  },
+  "G-29": {
+    "judul": "Hapus Data Satu Siswa",
+    "peringatan": "Berkas audio di Drive tidak ikut terhapus. Hapus sendiri lewat folder siswa.",
+    "konfirmasi": "Ketik kode siswa untuk melanjutkan"
+  },
+  "G-30": {
+    "judul": "Persetujuan dan Riwayat",
+    "tombol": "Tandai terkonfirmasi",
+    "kolom_riwayat": "Siapa · Apa · Kapan"
+  }
+}
