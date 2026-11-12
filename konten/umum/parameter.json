@@ -1,6 +1,6 @@
 {
   "versi": "2026-11-12",
-  "keterangan": "Parameter awal aplikasi Kalām hasil fase M0 (FR-071, FR-072, FR-073, FR-074, FR-075). Nilai bertanda ⚠VERIF dipertahankan sesuai spesifikasi sampai diperiksa di lapangan oleh pemilik proyek.",
+  "keterangan": "Parameter awal aplikasi Kalām hasil uji lapangan fase M0 (HASIL-UJI-M0.md & keputusan-M0.md). Nilai bertanda ⚠VERIF dipertahankan sesuai spesifikasi.",
   "deteksi_kata_kunci": {
     "bahasa": "ar-SA",
     "maks_alternatif": 5,
@@ -8,7 +8,9 @@
     "jarak_edit_maks": 1,
     "panjang_kata_min_jarak_edit": 4,
     "batas_hasil_kosong_ke_mandiri": 2,
-    "catatan_verif": "⚠VERIF-P02 (ambang_deteksi = 0.5), ⚠VERIF-P04 (ar-SA di Safari iOS), ⚠VERIF-P07 (jarak_edit_maks = 1 untuk kata >= 4 huruf)"
+    "mode_mandiri_otomatis_semua_hp": true,
+    "matikan_pengenalan_suara_di_hp": true,
+    "catatan_verif": "⚠VERIF-P02 (ambang_deteksi = 0.5; di Laptop 100%, di seluruh HP 0% sehingga semua HP otomatis memakai Mode Penilaian Mandiri sesuai SRS-4 §3 K-10 & K-12), ⚠VERIF-P04 (ar-SA di iOS bendera=1 namun deteksi 0% -> Mode Mandiri), ⚠VERIF-P07 (jarak_edit_maks = 1 untuk kata >= 4 huruf)"
   },
   "perekaman": {
     "kanal": 1,
@@ -36,7 +38,7 @@
       "tahap0": 120,
       "after": 180
     },
-    "catatan_verif": "⚠VERIF-P03 (bitrate 24 kbps), ⚠VERIF-P05 (format MediaRecorder webm Opus / mp4 AAC)"
+    "catatan_verif": "⚠VERIF-P03 (terjawab: bitrate 24 kbps menghasilkan 43-50 KB untuk 15d, 60-67 KB untuk 20d, 85-92 KB untuk 30d dan suara terdengar jelas), ⚠VERIF-P05 (format MediaRecorder webm Opus / mp4 AAC; kolom teks MIME di HASIL-UJI-M0.md belum tertulis eksplisit)"
   },
   "ukuran_suara_otomatis": {
     "bingkai_md": 50,
@@ -48,7 +50,7 @@
     "segmen_min_detik": 0.15,
     "mode_ambang": "adaptif_dengan_batas_bawah",
     "batas_selisih_uji_detik": 1.5,
-    "catatan_verif": "SRS-3 FR-074 & IN-5 bagian 3 (KD-37), diuji pada UJ-M0-05"
+    "catatan_verif": "SRS-3 FR-074 & IN-5 bagian 3 (KD-37), diuji pada UJ-M0-05 dengan selisih 0 detik (mulai 0.9 dtk, durasi 15 dtk pada 3 HP di tempat tenang & agak ramai)"
   },
   "antrean_dan_kuota": {
     "batas_badan_post_kb": 400,
@@ -59,13 +61,14 @@
     "maks_percobaan_kirim": 5,
     "maks_batch_peristiwa": 50,
     "maks_rekaman_lokal_per_unit": 50,
+    "maks_siswa_bergilir_unggah": 18,
     "cache_status_detik": 60,
     "masa_berlaku_token_hari": 90,
     "jeda_masuk_menit": 5,
     "maks_percobaan_masuk": 10,
     "jeda_kata_kunci_detik": 60,
     "maks_percobaan_kata_kunci": 5,
-    "catatan_verif": "⚠VERIF-P01 (kuota Google), ⚠VERIF-P06 (batas POST 400 KB), ⚠VERIF-P10 (uji beban 36 siswa), ⚠VERIF-P12 (token 90 hari)"
+    "catatan_verif": "⚠VERIF-P01 (kuota Google), ⚠VERIF-P06 (batas POST 400 KB), ⚠VERIF-P10 (uji beban 36 klien semua_unggah: 21/36 berhasil, 15 E_SIBUK, median 73.13d, P95 78.06d -> diterapkan jadwal bergilir <= 18 siswa sesuai SRS-1 §9 & TB-M5-02), ⚠VERIF-P12 (token 90 hari)"
   },
   "aku_bisa_dan_analisis": {
     "rasio_kunci_mesin": 0.5,
@@ -77,9 +80,12 @@
     "catatan_verif": "⚠VERIF-P09 / IN-6 VERIF-11, ⚠VERIF-P14 (n < 10 dan n >= 5)"
   },
   "perangkat_mode_mandiri_otomatis": [
-    "Safari iOS tanpa SpeechRecognition / webkitSpeechRecognition",
+    "Seluruh perangkat HP siswa (Android dan iOS) sesuai hasil UJ-M0-01 & keputusan M0 (K-10, K-12)",
+    "HP-1: Infinix Note 30 (Android 14, Brave, RAM 8 GB)",
+    "HP-2: Redmi Note 10 Pro (Android 13, Chrome, RAM 6 GB)",
+    "HP-3: iPhone 13 (iOS, Chrome & Safari, RAM 8 GB)",
     "Peramban dengan dukungan_pengenalan_suara = 0",
     "Perangkat yang menghasilkan 2 kali transkrip kosong berturut-turut dalam satu level (K-11)",
-    "Perangkat yang mengalami konflik mikrofon MediaRecorder + SpeechRecognition (rekaman sunyi 2 kali berturut-turut saat izin mikrofon aktif, K-12)"
+    "Perangkat yang mengalami konflik mikrofon MediaRecorder + SpeechRecognition (K-12)"
   ]
 }
