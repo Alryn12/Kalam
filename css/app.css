@@ -237,6 +237,7 @@ h1, h2, h3, p {
 
 .kartu-arab__kepala {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: var(--jarak-2);
@@ -873,6 +874,234 @@ h1, h2, h3, p {
   gap: 2px;
 }
 
+/* --------------------------------------------------------------------------
+   14. KOMPONEN TAMBAHAN LAYAR SISWA (D2)
+   Kolom isian S-01, Pintasan S-02, Tangga Level S-31, Penghitung S-33, Aku Bisa S-60
+   -------------------------------------------------------------------------- */
+.pita-navigasi-prototipe {
+  background-color: var(--warna-permukaan);
+  border-bottom: 1px solid var(--warna-garis);
+  padding: var(--jarak-2) var(--jarak-4);
+}
+
+.pita-navigasi-prototipe__dalam {
+  max-width: var(--lebar-wadah-maks);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--jarak-2);
+}
+
+.tautan-kembali-prototipe {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  color: var(--warna-utama-gelap);
+  font-size: var(--ukuran-teks-kecil);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Kolom Isian Teks (S-01 Masuk) */
+.kelompok-input {
+  display: flex;
+  flex-direction: column;
+  gap: var(--jarak-2);
+}
+
+.label-input {
+  font-size: var(--ukuran-teks-dasar);
+  font-weight: 600;
+  color: var(--warna-teks);
+}
+
+.input-teks {
+  width: 100%;
+  min-height: var(--tinggi-sentuh-min);
+  padding: var(--jarak-3) var(--jarak-4);
+  font-family: var(--font-ui);
+  font-size: var(--ukuran-teks-dasar);
+  color: var(--warna-teks);
+  background-color: var(--warna-permukaan);
+  border: 2px solid var(--warna-garis-kuat);
+  border-radius: var(--radius-sedang);
+}
+
+.input-teks:focus-visible {
+  outline: none;
+  border-color: var(--warna-utama);
+  box-shadow: var(--bayangan-fokus);
+}
+
+/* Tautan Bantuan / Aksi Teks (>= 48 px) */
+.tautan-aksi {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tinggi-sentuh-min);
+  padding: var(--jarak-2) var(--jarak-3);
+  color: var(--warna-utama-gelap);
+  font-size: var(--ukuran-teks-dasar);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Kartu Lanjutkan & Kisi Pintasan Beranda (S-02) */
+.kartu-lanjut {
+  background-color: var(--warna-utama-muda);
+  border: 2px solid var(--warna-utama);
+  border-radius: var(--radius-besar);
+  padding: var(--jarak-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--jarak-3);
+}
+
+.kisi-pintasan {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--jarak-2);
+}
+
+.tombol-pintasan {
+  min-height: var(--tinggi-sentuh-min);
+  padding: var(--jarak-3);
+  background-color: var(--warna-permukaan);
+  color: var(--warna-utama-gelap);
+  border: 2px solid var(--warna-garis-kuat);
+  border-radius: var(--radius-sedang);
+  font-family: var(--font-ui);
+  font-size: var(--ukuran-teks-kecil);
+  font-weight: 700;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Tangga Level (S-31 Level 1) */
+.tangga-level {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--jarak-2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.butir-tangga {
+  padding: var(--jarak-2) var(--jarak-3);
+  border-radius: var(--radius-kecil);
+  font-size: var(--ukuran-teks-kecil);
+  font-weight: 600;
+  border: 1px solid var(--warna-garis);
+  background-color: var(--warna-permukaan-lembut);
+  color: var(--warna-teks-sekunder);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.butir-tangga--aktif {
+  background-color: var(--warna-utama);
+  color: var(--warna-teks-terang);
+  border-color: var(--warna-utama-tekan);
+  font-weight: 700;
+}
+
+/* Penghitung Waktu Maju Santai (S-33 Putaran 3) */
+.penghitung-santai {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--jarak-2);
+  background-color: var(--warna-permukaan-lembut);
+  color: var(--warna-teks);
+  border: 1px solid var(--warna-garis-kuat);
+  border-radius: var(--radius-penuh);
+  padding: var(--jarak-2) var(--jarak-3);
+  font-size: var(--ukuran-teks-kecil);
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Kotak Penyebut & Daftar Aku Bisa (S-60) */
+.kotak-penyebut-aku-bisa {
+  background-color: var(--warna-utama-muda);
+  border: 2px solid var(--warna-utama);
+  border-radius: var(--radius-besar);
+  padding: var(--jarak-4);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--jarak-1);
+}
+
+.angka-penyebut-besar {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--warna-utama-gelap);
+  line-height: 1.2;
+}
+
+.daftar-aku-bisa {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--jarak-3);
+}
+
+.butir-aku-bisa {
+  background-color: var(--warna-permukaan);
+  border: 1px solid var(--warna-garis);
+  border-radius: var(--radius-sedang);
+  padding: var(--jarak-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--jarak-2);
+}
+
+.butir-aku-bisa--tercentang {
+  border: 2px solid var(--warna-utama);
+  background-color: var(--warna-permukaan);
+}
+
+.baris-pernyataan-aku-bisa {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--jarak-3);
+}
+
+.tanda-aku-bisa {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-penuh);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.tanda-aku-bisa--centang {
+  background-color: var(--warna-utama-muda);
+  color: var(--warna-utama-gelap);
+  border: 2px solid var(--warna-utama);
+}
+
+.tanda-aku-bisa--kosong {
+  background-color: var(--warna-permukaan-lembut);
+  color: var(--warna-teks-sekunder);
+  border: 2px dashed var(--warna-garis-kuat);
+}
+
 /* Penyesuaian layar sangat sempit (320 px) & lanskap */
 @media (max-width: 359px) {
   .wadah-layar {
@@ -882,11 +1111,16 @@ h1, h2, h3, p {
 
   .kartu,
   .kartu-arab,
-  .kartu-unit {
+  .kartu-unit,
+  .kartu-lanjut {
     padding: var(--jarak-3);
   }
 
   .baris-skala-5 {
     gap: 6px;
+  }
+
+  .tangga-level {
+    grid-template-columns: 1fr;
   }
 }
