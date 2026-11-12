@@ -1102,9 +1102,229 @@ h1, h2, h3, p {
   border: 2px dashed var(--warna-garis-kuat);
 }
 
+/* --------------------------------------------------------------------------
+   15. KOMPONEN LAYAR GURU: SETORAN (G-01..G-03) & DASBOR (G-11..G-30) (D3)
+   G-01..G-03 satu kolom (<= 480 px); G-11..G-30 responsif laptop (1280 px) & HP (360 px)
+   -------------------------------------------------------------------------- */
+
+/* Wadah Dasbor Guru (Laptop maks 1140 px, otomatis 1 kolom di HP 360 px) */
+.wadah-dasbor {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: var(--jarak-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--jarak-5);
+}
+
+.menu-dasbor {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--jarak-2);
+  background-color: var(--warna-permukaan);
+  border: 1px solid var(--warna-garis);
+  border-radius: var(--radius-besar);
+  padding: var(--jarak-3);
+  box-shadow: var(--bayangan-kartu);
+}
+
+.tautan-menu-dasbor {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: var(--jarak-2) var(--jarak-3);
+  border-radius: var(--radius-sedang);
+  font-size: var(--ukuran-teks-kecil);
+  font-weight: 600;
+  color: var(--warna-teks);
+  background-color: var(--warna-permukaan-lembut);
+  border: 1px solid var(--warna-garis);
+  text-decoration: none;
+}
+
+.tautan-menu-dasbor--aktif {
+  background-color: var(--warna-utama);
+  color: var(--warna-teks-terang);
+  border-color: var(--warna-utama-tekan);
+}
+
+/* Kisi Kartu Ringkasan Dasbor (G-11 & G-19) */
+.kisi-dasbor {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--jarak-4);
+}
+
+@media (min-width: 680px) {
+  .kisi-dasbor {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .kisi-dasbor--4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.kartu-metrik {
+  background-color: var(--warna-permukaan);
+  border: 1px solid var(--warna-garis);
+  border-radius: var(--radius-besar);
+  padding: var(--jarak-4);
+  box-shadow: var(--bayangan-kartu);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--jarak-2);
+}
+
+.angka-metrik {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--warna-utama-gelap);
+  line-height: 1.2;
+}
+
+/* Kotak Acuan Jawaban Ketuk-Tahan (G-01) */
+.kotak-acuan {
+  background-color: var(--warna-permukaan-lembut);
+  border: 2px dashed var(--warna-utama);
+  border-radius: var(--radius-sedang);
+  padding: var(--jarak-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--jarak-2);
+}
+
+.kisi-putra-putri {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--jarak-2);
+}
+
+@media (min-width: 340px) {
+  .kisi-putra-putri {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.kolom-bentuk {
+  background-color: var(--warna-permukaan);
+  border: 1px solid var(--warna-garis);
+  border-radius: var(--radius-kecil);
+  padding: var(--jarak-2) var(--jarak-3);
+}
+
+/* Baris Skor Rubrik 1-4 (G-02 & G-16) */
+.baris-rubrik-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--jarak-2);
+}
+
+/* Pil Label Cepat (G-02 & G-16) */
+.daftar-label-cepat {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--jarak-2);
+}
+
+.pil-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: var(--jarak-2) var(--jarak-3);
+  background-color: var(--warna-permukaan);
+  color: var(--warna-teks);
+  border: 1.5px solid var(--warna-garis-kuat);
+  border-radius: var(--radius-penuh);
+  font-family: var(--font-ui);
+  font-size: var(--ukuran-teks-kecil);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pil-label--aktif,
+.pil-label[aria-pressed="true"] {
+  background-color: var(--warna-utama-muda);
+  color: var(--warna-utama-gelap);
+  border: 2px solid var(--warna-utama);
+}
+
+/* Tabel Responsif Dasbor Guru (G-12, G-19, G-22) */
+.bungkus-tabel {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--warna-garis);
+  border-radius: var(--radius-sedang);
+  background-color: var(--warna-permukaan);
+}
+
+.tabel-dasbor {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--ukuran-teks-kecil);
+  text-align: left;
+}
+
+.tabel-dasbor th,
+.tabel-dasbor td {
+  padding: var(--jarak-3);
+  border-bottom: 1px solid var(--warna-garis);
+  vertical-align: middle;
+}
+
+.tabel-dasbor th {
+  background-color: var(--warna-permukaan-lembut);
+  color: var(--warna-teks);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.tabel-dasbor tr:last-child td {
+  border-bottom: none;
+}
+
+/* Sel Berwarna Lembut Tanpa Merah untuk G-22 (Siswa x Unit) */
+.sel-unit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: var(--radius-kecil);
+  font-size: var(--ukuran-teks-kecil);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Belum: Abu lembut (Kontras ~7,6:1) */
+.sel-unit--belum {
+  background-color: #ECE8E0;
+  color: #3D494F;
+  border: 1px dashed #9BA7AE;
+}
+
+/* Sedang: Kuning gandum lembut (Kontras ~8,9:1) */
+.sel-unit--sedang {
+  background-color: #FAF0D7;
+  color: #5C3D06;
+  border: 1px solid #C7953B;
+}
+
+/* Sudah setor: Hijau daun teh lembut (Kontras ~9,6:1) */
+.sel-unit--sudah {
+  background-color: #E2F2E8;
+  color: #16422B;
+  border: 1px solid #2D6A4F;
+}
+
 /* Penyesuaian layar sangat sempit (320 px) & lanskap */
 @media (max-width: 359px) {
-  .wadah-layar {
+  .wadah-layar,
+  .wadah-dasbor {
     padding: var(--jarak-3);
     gap: var(--jarak-4);
   }
@@ -1112,11 +1332,13 @@ h1, h2, h3, p {
   .kartu,
   .kartu-arab,
   .kartu-unit,
-  .kartu-lanjut {
+  .kartu-lanjut,
+  .kartu-metrik {
     padding: var(--jarak-3);
   }
 
-  .baris-skala-5 {
+  .baris-skala-5,
+  .baris-rubrik-4 {
     gap: 6px;
   }
 
