@@ -8,5 +8,5 @@
  */
 
 export const KALAM_CONFIG = {
-  API_URL: ""
+  API_URL: "https://script.google.com/macros/s/AKfycbwA3S50nw_51AxZG071AB09Tjyi6hQ-2QyYvge4cz4HzqzCi0D7eONWGNMSKL8oufNnjA/exec"
 };
