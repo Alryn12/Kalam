@@ -1346,3 +1346,95 @@ h1, h2, h3, p {
     grid-template-columns: 1fr;
   }
 }
+
+/* --------------------------------------------------------------------------
+   16. KOMPONEN TAHAP 0 (M1-C & M1-D): CENTANG PERSETUJUAN & PILIHAN ARAB
+   -------------------------------------------------------------------------- */
+.kotak-centang-baris {
+  display: flex;
+  align-items: center;
+  gap: var(--jarak-3);
+  min-height: var(--tinggi-sentuh-min);
+  padding: var(--jarak-3);
+  background-color: var(--warna-permukaan-lembut);
+  border: 2px solid var(--warna-garis-kuat);
+  border-radius: var(--radius-sedang);
+  cursor: pointer;
+  user-select: none;
+}
+
+.kotak-centang-baris--tercentang {
+  background-color: var(--warna-utama-muda);
+  border-color: var(--warna-utama);
+}
+
+.kotak-centang-input {
+  width: 24px;
+  height: 24px;
+  accent-color: var(--warna-utama);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.kisi-pilihan-arab {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--jarak-3);
+}
+
+.tombol-pilihan-arab {
+  min-height: 64px;
+  padding: var(--jarak-3);
+  background-color: var(--warna-permukaan);
+  color: var(--warna-teks);
+  border: 2px solid var(--warna-garis-kuat);
+  border-radius: var(--radius-sedang);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.tombol-pilihan-arab:hover,
+.tombol-pilihan-arab:active {
+  background-color: var(--warna-permukaan-lembut);
+  border-color: var(--warna-utama);
+}
+
+.tombol-pilihan-arab:focus-visible {
+  outline: none;
+  box-shadow: var(--bayangan-fokus);
+}
+
+.tombol-pilihan-arab--terpilih {
+  background-color: var(--warna-utama-muda);
+  border-color: var(--warna-utama);
+  color: var(--warna-utama-gelap);
+}
+
+.tombol--terpilih {
+  background-color: var(--warna-utama-muda);
+  color: var(--warna-utama-gelap);
+  border-color: var(--warna-utama);
+}
+
+.lencana-penanda-audio {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--jarak-2);
+  padding: var(--jarak-1) var(--jarak-3);
+  background-color: var(--warna-permukaan-lembut);
+  border: 1px dashed var(--warna-garis-kuat);
+  border-radius: var(--radius-penuh);
+  font-size: var(--ukuran-teks-kecil);
+  color: var(--warna-teks-sekunder);
+}
+
+.tautan-aksi-tombol {
+  background: transparent;
+  border: none;
+  font-family: var(--font-ui);
+  cursor: pointer;
+  width: 100%;
+}

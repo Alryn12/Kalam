@@ -1,0 +1,92 @@
+{
+  "versi": "2026-11-12",
+  "keterangan": "12 butir Tes Baca Dengar dan Ketuk (IN-1 §3.2 & SRS-2 §4.4). Kunci jawaban tidak disimpan di berkas ini.",
+  "instruksi_layar": "Dengarkan, lalu ketuk jawabanmu. Kalau belum tahu, ketuk 'Aku tidak tahu'. Tidak apa-apa.",
+  "maks_putar": 3,
+  "butir": [
+    {
+      "id": "B-01",
+      "bagian": "huruf",
+      "instruksi": "Dengarkan bunyinya. Ketuk huruf yang kamu dengar.",
+      "audio": "AUD-B01",
+      "pilihan": ["ب", "ت", "ث", "ن"]
+    },
+    {
+      "id": "B-02",
+      "bagian": "huruf",
+      "instruksi": "Dengarkan bunyinya. Ketuk huruf yang kamu dengar.",
+      "audio": "AUD-B02",
+      "pilihan": ["ع", "غ"]
+    },
+    {
+      "id": "B-03",
+      "bagian": "huruf",
+      "instruksi": "Dengarkan bunyinya. Ketuk huruf yang kamu dengar.",
+      "audio": "AUD-B03",
+      "pilihan": ["ح", "خ", "ج"]
+    },
+    {
+      "id": "B-04",
+      "bagian": "huruf",
+      "instruksi": "Dengarkan bunyinya. Ketuk huruf yang kamu dengar.",
+      "audio": "AUD-B04",
+      "pilihan": ["س", "ش", "ص"]
+    },
+    {
+      "id": "B-05",
+      "bagian": "harakat",
+      "instruksi": "Dengarkan bunyinya. Ketuk suku kata yang sama.",
+      "audio": "AUD-B05",
+      "pilihan": ["بَ", "بِ", "بُ"]
+    },
+    {
+      "id": "B-06",
+      "bagian": "harakat",
+      "instruksi": "Dengarkan bunyinya. Ketuk suku kata yang sama.",
+      "audio": "AUD-B06",
+      "pilihan": ["تَ", "تِ", "تُ"]
+    },
+    {
+      "id": "B-07",
+      "bagian": "harakat",
+      "instruksi": "Dengarkan bunyinya. Ketuk suku kata yang sama.",
+      "audio": "AUD-B07",
+      "pilihan": ["مَ", "مِ", "مُ"]
+    },
+    {
+      "id": "B-08",
+      "bagian": "harakat",
+      "instruksi": "Dengarkan bunyinya. Ketuk suku kata yang sama.",
+      "audio": "AUD-B08",
+      "pilihan": ["كَا", "كِي", "كُو"]
+    },
+    {
+      "id": "B-09",
+      "bagian": "kata",
+      "instruksi": "Dengarkan kata ini. Ketuk kata yang sama.",
+      "audio": "AUD-B09",
+      "pilihan": ["كِتَابٌ", "كَاتِبٌ", "مَكْتَبٌ", "كُتُبٌ"]
+    },
+    {
+      "id": "B-10",
+      "bagian": "kata",
+      "instruksi": "Dengarkan kata ini. Ketuk kata yang sama.",
+      "audio": "AUD-B10",
+      "pilihan": ["كَاتِبٌ", "كِتَابٌ", "كُتُبٌ"]
+    },
+    {
+      "id": "B-11",
+      "bagian": "kata",
+      "instruksi": "Dengarkan kata ini. Ketuk kata yang sama.",
+      "audio": "AUD-B11",
+      "pilihan": ["اِسْمٌ", "سَلَامٌ", "سَهْلٌ"]
+    },
+    {
+      "id": "B-12",
+      "bagian": "kata",
+      "instruksi": "Dengarkan kata ini. Ketuk kata yang sama.",
+      "audio": "AUD-B12",
+      "pilihan": ["حَالٌ", "خَالٌ", "خَيْرٌ"]
+    }
+  ]
+}
