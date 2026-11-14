@@ -22,6 +22,8 @@ import {
 } from './router.js';
 import { ambilKemajuanTahap0 } from './layar/tahap0-bantu.js';
 import { renderS01 } from './layar/s01-masuk.js';
+import { renderS02 } from './layar/s02-beranda.js';
+import { renderS03 } from './layar/s03-isi-unit.js';
 import { renderS10 } from './layar/s10-persetujuan.js';
 import { renderS11 } from './layar/s11-cek-perangkat.js';
 import { renderS12 } from './layar/s12-ketenangan.js';
@@ -29,7 +31,11 @@ import { renderS13 } from './layar/s13-tes-baca.js';
 import { renderS14 } from './layar/s14-kenyamananku.js';
 import { renderS15 } from './layar/s15-keberanian.js';
 import { renderS16 } from './layar/s16-luar-pelajaran.js';
+import { renderS17 } from './layar/s17-suara-pertama.js';
 import { renderS18 } from './layar/s18-ketegangan.js';
+import { renderS19 } from './layar/s19-penutup-tahap0.js';
+import { renderS90 } from './layar/s90-status-pengiriman.js';
+import { renderS91 } from './layar/s91-pesan-sistem.js';
 
 /**
  * Keterangan singkat nama layar dari BP-1 untuk mendampingi judul dari teks-ui.json
@@ -212,6 +218,8 @@ async function inisialisasiAplikasi() {
     };
 
     daftarkanLayar('S-01', renderS01);
+    daftarkanLayar('S-02', denganSesi(renderS02));
+    daftarkanLayar('S-03', denganSesi(renderS03));
     daftarkanLayar('S-10', denganSesi(renderS10));
     daftarkanLayar('S-11', denganSesi(renderS11));
     daftarkanLayar('S-12', denganSesi(renderS12));
@@ -219,7 +227,11 @@ async function inisialisasiAplikasi() {
     daftarkanLayar('S-14', denganSesi(renderS14));
     daftarkanLayar('S-15', denganSesi(renderS15));
     daftarkanLayar('S-16', denganSesi(renderS16));
+    daftarkanLayar('S-17', denganSesi(renderS17));
     daftarkanLayar('S-18', denganSesi(renderS18));
+    daftarkanLayar('S-19', denganSesi(renderS19));
+    daftarkanLayar('S-90', denganSesi(renderS90));
+    daftarkanLayar('S-91', renderS91);
 
     // Tentukan layar awal berdasarkan token dan kemajuan Tahap 0 (K-34)
     const state = ambilState();

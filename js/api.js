@@ -13,11 +13,23 @@ import {
 } from './state.js';
 import {
   ambilSemuaAntrean,
-  perbaruiStatusAntrean,
-  hapusAntrean
+  perbaruiStatusAntrean
 } from './antrean.js';
 
 const JEDA_COBA_ULANG_DETIK = [2, 5, 15]; // SRS-3 bagian 1: jeda 2, 5, 15 detik
+let hitungGalatServerBerturut = 0;
+const pendengarAntrean = new Set();
+
+export function langgananPerubahanAntrean(fn) {
+  if (typeof fn === 'function') pendengarAntrean.add(fn);
+  return () => pendengarAntrean.delete(fn);
+}
+
+function beritahuPerubahanAntrean() {
+  pendengarAntrean.forEach((fn) => {
+    try { fn(); } catch (_) {}
+  });
+}
 
 function tungguMd(md) {
   return new Promise((selesai) => setTimeout(selesai, md));
@@ -85,6 +97,7 @@ export async function panggilApi(aksi, data = {}, opsi = {}) {
       }
 
       if (hasil && hasil.ok) {
+        hitungGalatServerBerturut = 0;
         if (hasil.data && hasil.data.status && typeof hasil.data.status === 'object') {
           await perbaruiStatusServer(hasil.data.status);
         }
@@ -107,9 +120,19 @@ export async function panggilApi(aksi, data = {}, opsi = {}) {
         return hasil;
       }
 
+      if (kodeGalat === 'E_TERKUNCI' && typeof window !== 'undefined' && !opsi.janganArahkan) {
+        window.location.hash = '#/s-91?jenis=belum_terbuka&tujuan=S-03';
+        return hasil;
+      }
+
       // Hanya ulangi otomatis pada E_SIBUK dan E_SERVER
       if (kodeGalat !== 'E_SIBUK' && kodeGalat !== 'E_SERVER') {
         return hasil;
+      }
+
+      hitungGalatServerBerturut += 1;
+      if (hitungGalatServerBerturut >= 5 && typeof window !== 'undefined' && !opsi.janganArahkan && !opsi.latar) {
+        window.location.hash = '#/s-91?jenis=internet';
       }
 
       if (indeksCoba < JEDA_COBA_ULANG_DETIK.length) {
@@ -127,6 +150,7 @@ export async function panggilApi(aksi, data = {}, opsi = {}) {
 
       return hasil;
     } catch (_) {
+      hitungGalatServerBerturut += 1;
       // Kendala jaringan / fetch terputus
       if (indeksCoba < JEDA_COBA_ULANG_DETIK.length && !opsi.tanpaUlang) {
         await tungguMd(JEDA_COBA_ULANG_DETIK[indeksCoba] * 1000);
@@ -161,7 +185,7 @@ let sedangKurasAntrean = false;
  * Mengirim ulang item berstatus Menunggu di IndexedDB secara berurutan
  * dengan jeda acak 0-3 detik (SRS-3 FR-073).
  */
-export async function prosesAntreanLatar() {
+export async function prosesAntreanLatar(opsi = {}) {
   if (sedangKurasAntrean) return;
   if (typeof navigator !== 'undefined' && !navigator.onLine) return;
 
@@ -174,30 +198,53 @@ export async function prosesAntreanLatar() {
     const menunggu = daftar.filter((item) => item.status !== 'Terkirim');
 
     for (const item of menunggu) {
-      const jedaAcakMd = Math.floor(Math.random() * 3000);
-      await tungguMd(jedaAcakMd);
+      if (typeof navigator !== 'undefined' && !navigator.onLine) break;
 
+      const jedaAcakMd = opsi.langsung ? 0 : Math.floor(Math.random() * 3000);
+      if (jedaAcakMd > 0) await tungguMd(jedaAcakMd);
+
+      const percobaanBaru = (item.percobaan_kirim || 0) + 1;
       await perbaruiStatusAntrean(item.id_idempoten, {
         status: 'Mengirim',
-        percobaan_kirim: (item.percobaan_kirim || 0) + 1
+        percobaan_kirim: percobaanBaru
       });
+      beritahuPerubahanAntrean();
 
       const hasil = await panggilApi(item.aksi, item.data, {
         id_idempoten: item.id_idempoten,
-        tanpaTungguOnline: true
+        tanpaTungguOnline: true,
+        tanpaUlang: Boolean(opsi.tanpaUlangDalam),
+        janganArahkan: true,
+        latar: true
       });
 
       if (hasil && hasil.ok) {
-        await perbaruiStatusAntrean(item.id_idempoten, { status: 'Terkirim' });
-        await hapusAntrean(item.id_idempoten);
+        // FR-073: Terkirim ✓ hanya setelah server menjawab; lalu salinan lokal (base64 audio) dihapus
+        const dataRingkas = item.data && typeof item.data === 'object'
+          ? {
+            jenis: item.data.jenis || undefined,
+            unit: item.data.unit || undefined,
+            id_kartu: item.data.id_kartu || undefined,
+            bagian: item.data.bagian || undefined,
+            tahap: item.data.tahap || undefined,
+            aspek: item.data.aspek || undefined
+          }
+          : {};
+        await perbaruiStatusAntrean(item.id_idempoten, {
+          status: 'Terkirim',
+          data: dataRingkas,
+          pesan_terakhir: ''
+        });
       } else {
         await perbaruiStatusAntrean(item.id_idempoten, {
           status: 'Menunggu',
           pesan_terakhir: hasil && hasil.pesan ? hasil.pesan : ''
         });
       }
+      beritahuPerubahanAntrean();
     }
   } finally {
     sedangKurasAntrean = false;
+    beritahuPerubahanAntrean();
   }
 }

@@ -46,9 +46,16 @@ export async function hapusSesi(kunci) {
 }
 
 export async function tambahAntrean(item) {
+  const daftar = await ambilSemuaAntrean();
+  if (daftar.length >= 100) {
+    const terkirimLama = daftar.find((d) => d.status === 'Terkirim') || daftar[0];
+    if (terkirimLama) await hapusAntrean(terkirimLama.id_idempoten);
+  }
   const entri = {
     id_idempoten: item.id_idempoten,
     aksi: item.aksi,
+    kategori: item.kategori || (item.aksi === 'unggah_audio' ? (item.data && item.data.jenis) || 'AUDIO' : 'ANGKA'),
+    unit: (item.data && item.data.unit) || item.unit || null,
     data: item.data || {},
     label: item.label || item.aksi,
     status: item.status || 'Menunggu',
