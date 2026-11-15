@@ -160,20 +160,51 @@
     "nama_tab": "Tonton · Kata Kunci · Tiru · Rekam",
     "kontrol": "Putar ulang · 1x · 0,75x",
     "ikon_mata": "Tampilkan arti",
-    "petunjuk": "Dengarkan dialognya sambil mengikuti tulisannya."
+    "ikon_mata_tutup": "Sembunyikan arti",
+    "petunjuk": "Dengarkan dialognya sambil mengikuti tulisannya.",
+    "tombol_putar_semua": "Putar semua dialog",
+    "tombol_berhenti": "Berhenti",
+    "tombol_putar_ulang": "Putar ulang",
+    "kecepatan_normal": "1x",
+    "kecepatan_pelan": "0,75x",
+    "label_putra": "Bentuk putra",
+    "label_putri": "Bentuk putri",
+    "judul_penyelamat": "4 Kalimat Penyelamat",
+    "subjudul_penyelamat": "Kenalan dulu sebelum mulai. Ketuk untuk mendengar, lalu pakai kapan pun kamu butuh.",
+    "tombol_lanjut_tonton": "Aku siap, mulai menonton",
+    "tombol_buka_penyelamat": "Lihat 4 Kalimat Penyelamat",
+    "catatan_adegan_arti": "Keterangan adegan (terjemahan per kalimat menyusul):",
+    "penanda_gambar_kosong": "Ilustrasi adegan sedang disiapkan.",
+    "penanda_audio_model": "Memutar nada bantu sementara (rekaman model sedang disiapkan).",
+    "tombol_kembali_unit": "Kembali ke daftar blok",
+    "label_adegan": "Adegan {n} dari {total}"
   },
   "S-21": {
     "judul": "Kata Kunci",
     "judul_tab": "Kata Kunci",
     "petunjuk": "Ketuk kartu untuk mendengar ungkapannya.",
     "tombol_kartu": "Dengar pelan",
-    "label_kartu": "{label_fungsi}"
+    "label_kartu": "{label_fungsi}",
+    "judul_kartu_fungsi": "Ungkapan inti",
+    "judul_pasangan": "Pasangan tanya dan jawab",
+    "label_tanya": "Tanya / pembuka",
+    "label_jawab": "Jawab",
+    "label_tanpa_jawab": "Langsung dijawab dengan tindakan atau mengulang bagian yang belum jelas.",
+    "tombol_dengar": "Dengar",
+    "tombol_ketuk_buka": "Ketuk untuk membuka kalimat Arab dan audio"
   },
   "S-22": {
     "judul": "Tiru",
     "judul_tab": "Tiru",
     "petunjuk": "Ucapkan bersamaan dengan suara. Belum direkam, belum dinilai.",
-    "tombol_kecepatan": "Pelan 0,75x · Biasa 1x"
+    "tombol_kecepatan": "Pelan 0,75x · Biasa 1x",
+    "label_giliran": "Giliran {n} dari {total}",
+    "tombol_pelan": "Pelan 0,75x",
+    "tombol_biasa": "Biasa 1x",
+    "tombol_putar_ulang": "Putar ulang",
+    "tombol_berikutnya": "Giliran berikutnya",
+    "pesan_rekam_aktif": "Tab Rekam sudah aktif. Kamu bisa langsung mencoba atau mengulang giliran lagi.",
+    "tombol_ke_rekam": "Lanjut ke tab Rekam"
   },
   "S-23": {
     "judul": "Rekam",
@@ -181,6 +212,7 @@
     "tab_belum_aktif": "Buka tab Tiru dulu satu kali, lalu kamu bisa merekam.",
     "petunjuk": "Pilih 2 atau 3 giliran, rekam suaramu, lalu bandingkan dengan contoh.",
     "tombol_rekam": "Rekam",
+    "tombol_berhenti": "Berhenti",
     "tombol_dengar_suaraku": "Dengar suaraku",
     "tombol_dengar_contoh": "Dengar contoh",
     "penilaian_diri_1": "Iramanya mirip?",
@@ -188,7 +220,17 @@
     "penilaian_diri_2": "Ada kata yang terasa berbeda?",
     "pilihan_2": "Ya · Tidak",
     "penjelasan": "Rekaman latihan ini hanya ada di HP-mu.",
-    "tombol_lewati": "Lewati rekam (HP bermasalah)"
+    "tombol_lewati": "Lewati rekam (HP bermasalah)",
+    "judul_pilih_giliran": "Pilih 2 atau 3 giliran untuk direkam ({jumlah} dipilih)",
+    "petunjuk_batas_pilih": "Pilih minimal 2 dan maksimal 3 giliran ya.",
+    "status_siap": "Siap merekam (maksimal 15 detik).",
+    "status_merekam": "Sedang merekam… silakan berbicara.",
+    "status_tersimpan": "Rekaman tersimpan ✓",
+    "pesan_tidak_bersuara": "Tidak apa-apa, coba lagi kapan siap.",
+    "pesan_mikrofon_kendala": "Mikrofon belum bisa dipakai sekarang. Kamu bisa melewati bagian rekam ini.",
+    "pesan_lengkapi_tab": "Yuk buka dulu tab yang belum bertanda centang ({daftar}) sebelum lanjut ke refleksi.",
+    "tombol_lanjut_refleksi": "Lanjut ke refleksi",
+    "catatan_penilaian": "Penilaian diri ini hanya untukmu, bukan nilai."
   },
   "S-24": {
     "judul": "Bagaimana tadi?",
@@ -197,7 +239,14 @@
     "pertanyaan_2": "Kalimat mana yang paling sulit?",
     "pilihan_khusus": "Tidak ada",
     "tombol_kirim": "Kirim",
-    "tombol_lewati": "Lewati"
+    "tombol_lewati": "Lewati",
+    "subjudul_selesai": "Sesi 1 selesai",
+    "pesan_sesi2_terbuka": "Bagus sekali! Sesi 2 pada blok ini sekarang sudah terbuka.",
+    "pesan_butuh_tab": "Buka dulu keempat tab (Tonton, Kata Kunci, Tiru, dan Rekam) minimal satu kali ya.",
+    "pesan_pilih_dulu": "Pilih tingkat keyakinanmu dulu atau ketuk Lewati.",
+    "label_mengirim": "Menyimpan…",
+    "tombol_mulai_sesi2": "Buka Sesi 2",
+    "tombol_ke_unit": "Kembali ke Isi Unit"
   },
   "S-30": {
     "judul": "Pemanasan",

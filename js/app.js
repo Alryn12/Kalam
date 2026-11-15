@@ -40,6 +40,11 @@ import { renderS16 } from './layar/s16-luar-pelajaran.js';
 import { renderS17 } from './layar/s17-suara-pertama.js';
 import { renderS18 } from './layar/s18-ketegangan.js';
 import { renderS19 } from './layar/s19-penutup-tahap0.js';
+import { renderS20 } from './layar/s20-tonton.js';
+import { renderS21 } from './layar/s21-kata-kunci.js';
+import { renderS22 } from './layar/s22-tiru.js';
+import { renderS23 } from './layar/s23-rekam.js';
+import { renderS24 } from './layar/s24-refleksi.js';
 import { renderS90 } from './layar/s90-status-pengiriman.js';
 import { renderS91 } from './layar/s91-pesan-sistem.js';
 
@@ -135,7 +140,7 @@ async function renderLayarKosong({ idLayar, param = {} }) {
   const sublabelBp1 = NAMA_RINGKAS_BP1[kodeTampil] || '';
 
   let ringkasanKontenHtml = '';
-  if (kodeTampil === 'S-20' || kodeTampil === 'S-30') {
+  if (kodeTampil === 'S-30') {
     const unitTarget = (param && param.unit) || state.unit_aktif || 'U1';
     const blokTarget = (param && param.blok) || (param && param.unit ? '' : state.blok_aktif);
     let blokData = blokTarget ? ambilBlokDariCache(blokTarget, unitTarget) : null;
@@ -290,6 +295,11 @@ async function inisialisasiAplikasi() {
     daftarkanLayar('S-17', denganSesi(renderS17));
     daftarkanLayar('S-18', denganSesi(renderS18));
     daftarkanLayar('S-19', denganSesi(renderS19));
+    daftarkanLayar('S-20', denganSesi(renderS20));
+    daftarkanLayar('S-21', denganSesi(renderS21));
+    daftarkanLayar('S-22', denganSesi(renderS22));
+    daftarkanLayar('S-23', denganSesi(renderS23));
+    daftarkanLayar('S-24', denganSesi(renderS24));
     daftarkanLayar('S-90', denganSesi(renderS90));
     daftarkanLayar('S-91', renderS91);
 
