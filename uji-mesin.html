@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id" data-palet="b">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalām — Uji Mesin Suara, Rekam &amp; Mode Mandiri</title>
+  <link rel="stylesheet" href="css/app.css">
+  <style>
+    .uji-ringkasan {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .uji-bagian-judul {
+      margin: 0 0 6px 0;
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+    .uji-daftar {
+      list-style: none;
+      margin: 12px 0 0 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .uji-baris {
+      border: 1px solid var(--garis, #e5ddd1);
+      border-radius: 12px;
+      padding: 12px;
+      background: var(--latar, #faf7f2);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .uji-baris-kepala {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .uji-kode {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--teks-sekunder, #5c5147);
+    }
+    .uji-nama {
+      margin: 0;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--teks, #2c2520);
+    }
+    .uji-detail {
+      font-size: 0.88rem;
+      color: var(--teks-sekunder, #5c5147);
+      margin: 0;
+      word-break: break-word;
+    }
+    .uji-status-tumpuk {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 12px 0;
+    }
+    .uji-pratinjau-rekam {
+      margin: 12px 0;
+    }
+    .uji-pratinjau-rekam .baris-pilihan-kecil {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <main class="wadah-layar" id="wadah-uji-mesin">
+    <header class="kartu">
+      <h1>Uji Mesin Suara, Rekam &amp; Mode Mandiri</h1>
+      <p class="teks-sekunder" style="margin: 6px 0 0 0;">
+        Pengujian teknis lokal FR-071, FR-072, FR-074, dan FR-083 memakai parameter awal Unit 1.
+      </p>
+      <div class="uji-ringkasan">
+        <div id="ringkasan-status" class="penanda-status penanda-status--menunggu" role="status" aria-live="polite">
+          Menjalankan rangkaian uji otomatis...
+        </div>
+        <button id="tombol-ulang-uji" type="button" class="tombol tombol--utama">
+          Jalankan Ulang Semua Uji
+        </button>
+      </div>
+    </header>
+
+    <section class="kartu" aria-labelledby="judul-komponen-resmi">
+      <h2 id="judul-komponen-resmi" class="uji-bagian-judul">Komponen Resmi Status, Rekam &amp; Mode Mandiri</h2>
+      <p class="teks-sekunder" style="margin: 0 0 10px 0;">
+        Pratinjau kelas antarmuka resmi tanpa warna merah, dengan teks Arab berharakat minimal 24 px dan tombol minimal 48 px.
+      </p>
+
+      <div class="kartu-arab" style="margin-bottom: 12px;">
+        <p class="teks-arab" dir="rtl" lang="ar">السَّلَامُ عَلَيْكُمْ</p>
+      </div>
+
+      <div class="uji-status-tumpuk">
+        <span class="penanda-status penanda-status--terdeteksi">Terdeteksi ✓ — kata kunci utama cocok</span>
+        <span class="penanda-status penanda-status--coba-lagi">Coba lagi — belum terdengar jelas</span>
+        <span class="penanda-status penanda-status--menunggu">Menunggu penilaian mandiri</span>
+      </div>
+
+      <div id="kotak-rekam-pratinjau" class="kotak-rekam kotak-rekam--siap uji-pratinjau-rekam">
+        <p id="status-rekam-pratinjau" style="margin: 0; font-weight: 600;">
+          Status kotak rekam: Siap merekam (maksimal 15 detik, mono 24 kbps)
+        </p>
+        <div class="baris-pilihan-kecil">
+          <button id="tombol-rekam-simulasi" type="button" class="tombol tombol-rekam tombol-rekam--siap">
+            Simulasi Status Rekam
+          </button>
+          <button id="tombol-rekam-langsung" type="button" class="tombol tombol--sekunder">
+            Uji Mikrofon Nyata
+          </button>
+        </div>
+        <p id="info-rekam-langsung" class="uji-detail" style="margin-top: 8px;">
+          Ketuk &ldquo;Simulasi Status Rekam&rdquo; untuk melihat perubahan kelas Siap &rarr; Merekam &rarr; Tersimpan.
+        </p>
+      </div>
+
+      <div id="wadah-mandiri-interaktif"></div>
+      <p id="log-mandiri-interaktif" class="uji-detail" style="margin-top: 8px;" aria-live="polite"></p>
+    </section>
+
+    <section id="wadah-hasil-uji" aria-label="Hasil Pengujian Otomatis"></section>
+  </main>
+
+  <script type="module" src="js/uji/uji-mesin.js"></script>
+</body>
+</html>

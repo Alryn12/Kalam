@@ -1,6 +1,6 @@
 /**
  * Layar S-23: Tab Rekam Sesi 1 (situs/js/layar/s23-rekam.js)
- * Tugas M1-G: TB-M1-08 · Acuan: SRS-3 FR-017, BP-1, BP-4 R-10/R-26/R-27, K-14/K-17, BP-6
+ * Tugas M1-G & M1-H: TB-M1-08, TB-M1-09 · Acuan: SRS-3 FR-017, FR-072, FR-074, BP-1, BP-4 R-10/R-26/R-27, K-14/K-17, BP-6
  */
 
 import { ambilRekamanLatihan, simpanRekamanLatihan } from '../antrean.js';
@@ -8,12 +8,15 @@ import { ambilTeks, muatKontenJson } from '../state.js';
 import { arahKe } from '../router.js';
 import { hentikanAudioModel, putarDaftarAudioModel } from '../audio-model.js';
 import {
-  ambilKalibrasiLatar,
   analisisAmplitudoBlob,
+  evaluasiHasilRekamLatihan,
+  pilihMimeRekam
+} from '../rekam.js';
+import {
+  ambilKalibrasiLatar,
   catatKendalaTeknis,
   escapeHtml,
-  kirimAtauAntre,
-  pilihMimeRekam
+  kirimAtauAntre
 } from './tahap0-bantu.js';
 import {
   catatKejadianSesi1,
@@ -32,20 +35,14 @@ import {
 /**
  * Mengevaluasi hasil rekaman Sesi 1 menurut aturan K-15 (sunyi/pendek) dan K-17 (diam 10 detik).
  */
-export function evaluasiHasilRekamSesi1({ alasanHenti, metrik, pernahBersuara, durasi, minDetikSah = 1.0 }) {
-  if (alasanHenti === 'diam10') {
-    return { kategori: 'diam10', hitungPercobaan: true, simpan: false, durasiBicara: 0 };
-  }
-  const sunyiAtauTerlaluPendek = metrik
-    ? (metrik.flag === 'sunyi' || metrik.flag === 'kurang_1_detik' || Number(metrik.durasi_bersuara_total || 0) < minDetikSah)
-    : (!pernahBersuara && Number(durasi || 0) < minDetikSah);
-  if (sunyiAtauTerlaluPendek) {
-    return { kategori: 'sunyi_pendek', hitungPercobaan: false, simpan: false, durasiBicara: 0 };
-  }
-  const durasiBicara = (metrik && typeof metrik.durasi_bersuara_total === 'number')
-    ? metrik.durasi_bersuara_total
-    : Number(durasi || 0);
-  return { kategori: 'simpan', hitungPercobaan: true, simpan: true, durasiBicara };
+export function evaluasiHasilRekamSesi1(opsi) {
+  const hasil = evaluasiHasilRekamLatihan(opsi);
+  return {
+    kategori: hasil.kategori,
+    hitungPercobaan: hasil.hitungPercobaan,
+    simpan: hasil.simpan,
+    durasiBicara: hasil.durasiBicara
+  };
 }
 
 export async function renderS23({ param = {} } = {}) {
