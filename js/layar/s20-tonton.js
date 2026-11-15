@@ -183,11 +183,12 @@ export async function renderS20({ param = {} } = {}) {
 
   async function putarSatuBaris(idx, catatPutaran = false) {
     const item = dialog[idx];
-    if (!item) return;
+    if (!item || !konteks.masihAktif()) return;
     sedangPutarSemua = false;
     indeksAktif = idx;
     lukis();
     const hasil = await putarDaftarAudioModel(pilihBentukAudio(item.audio, kemajuan.bentukLawan), folderAudioUnit(unitId), { kecepatan });
+    if (!konteks.masihAktif()) return;
     if (catatPutaran && hasil.status !== 'berhenti') {
       putaranCount += 1;
       catatKejadianSesi1(unitId, blokId, 'putaran_tonton', putaranCount, { butir: item.id });
@@ -196,6 +197,7 @@ export async function renderS20({ param = {} } = {}) {
   }
 
   async function putarSemuaDialog() {
+    if (!konteks.masihAktif()) return;
     if (sedangPutarSemua) {
       hentikanAudioModel();
       sedangPutarSemua = false;
@@ -204,18 +206,25 @@ export async function renderS20({ param = {} } = {}) {
     }
     sedangPutarSemua = true;
     for (let i = 0; i < dialog.length; i += 1) {
-      if (!sedangPutarSemua) break;
+      if (!sedangPutarSemua || !konteks.masihAktif()) {
+        sedangPutarSemua = false;
+        return;
+      }
       indeksAktif = i;
       lukis();
       const daftarId = pilihBentukAudio(dialog[i].audio, kemajuan.bentukLawan);
       const hasil = await putarDaftarAudioModel(daftarId, folderAudioUnit(unitId), { kecepatan });
+      if (!konteks.masihAktif()) {
+        sedangPutarSemua = false;
+        return;
+      }
       tampilkanStatusAudio(hasil);
       if (hasil.status === 'berhenti' || !sedangPutarSemua) {
         sedangPutarSemua = false;
         return;
       }
     }
-    if (sedangPutarSemua) {
+    if (sedangPutarSemua && konteks.masihAktif()) {
       sedangPutarSemua = false;
       putaranCount += 1;
       catatKejadianSesi1(unitId, blokId, 'putaran_tonton', putaranCount, { butir: blokId });

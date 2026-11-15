@@ -18,6 +18,21 @@ import {
   siapkanKonteksSesi1
 } from './sesi1-bantu.js';
 
+/**
+ * Mengambil daftar ID audio pasangan tanya-jawab untuk bagian 'tanya', 'jawab', atau 'semua'.
+ */
+export function ambilAudioBagianPasangan(daftarKartu, daftarTiru, idPasangan, bentuk, bagian = 'semua') {
+  const kk = (daftarKartu || []).find((k) => k.id_pasangan === idPasangan);
+  const semua = (kk && kk.dibunyikan)
+    ? pilihBentukAudio(kk.dibunyikan, bentuk)
+    : (daftarTiru || [])
+      .filter((t) => t.id_pasangan === idPasangan)
+      .flatMap((t) => pilihBentukAudio(t.audio, bentuk));
+  if (bagian === 'tanya') return semua.slice(0, 1);
+  if (bagian === 'jawab') return semua.slice(1);
+  return semua;
+}
+
 export async function renderS21({ param = {} } = {}) {
   const konteks = await siapkanKonteksSesi1('S-21', param, 'kata_kunci');
   if (!konteks) return;
@@ -29,15 +44,12 @@ export async function renderS21({ param = {} } = {}) {
   const terbukaSet = new Set();
   let ketukanCount = 0;
 
-  function cariAudioPasangan(idPasangan, bentuk) {
-    const kk = daftarKartu.find((k) => k.id_pasangan === idPasangan);
-    if (kk && kk.dibunyikan) return pilihBentukAudio(kk.dibunyikan, bentuk);
-    return daftarTiru
-      .filter((t) => t.id_pasangan === idPasangan)
-      .flatMap((t) => pilihBentukAudio(t.audio, bentuk));
+  function cariAudioBagianPasangan(idPasangan, bentuk, bagian = 'semua') {
+    return ambilAudioBagianPasangan(daftarKartu, daftarTiru, idPasangan, bentuk, bagian);
   }
 
   function tampilkanStatusAudio(hasil) {
+    if (!konteks.masihAktif()) return;
     const el = wadah.querySelector('#status-audio-s21');
     if (!el || !hasil) return;
     el.textContent = hasil.status === 'penanda'
@@ -49,6 +61,8 @@ export async function renderS21({ param = {} } = {}) {
     const bentuk = kemajuan.bentukLawan;
     const lblDengar = ambilTeks('S-21', 'tombol_dengar') || 'Dengar';
     const lblPelan = ambilTeks('S-21', 'tombol_kartu') || 'Dengar pelan';
+    const lblDengarTanya = ambilTeks('S-21', 'tombol_dengar_tanya') || 'Dengar tanya';
+    const lblDengarJawab = ambilTeks('S-21', 'tombol_dengar_jawab') || 'Dengar jawab';
     const lblBuka = ambilTeks('S-21', 'tombol_ketuk_buka') || 'Ketuk untuk membuka kalimat Arab dan audio';
     const judulFungsi = ambilTeks('S-21', 'judul_kartu_fungsi') || 'Ungkapan inti';
     const judulPasangan = ambilTeks('S-21', 'judul_pasangan') || 'Pasangan tanya dan jawab';
@@ -71,7 +85,13 @@ export async function renderS21({ param = {} } = {}) {
             aria-expanded="${terbuka}"
             style="justify-content: space-between; text-align: left;"
           >
-            <span>${escapeHtml(kk.fungsi_id || kk.id_pasangan)}</span>
+            <span style="display: inline-flex; align-items: center; gap: var(--jarak-2);">
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              </svg>
+              <span>${escapeHtml(kk.fungsi_id || kk.id_pasangan)}</span>
+            </span>
             <span class="teks-keterangan">${terbuka ? '✓' : '+'}</span>
           </button>
           ${!terbuka ? `<p class="teks-keterangan" style="margin: 0;">${escapeHtml(lblBuka)}</p>` : `
@@ -96,6 +116,7 @@ export async function renderS21({ param = {} } = {}) {
       const alt = Array.isArray(p.jawab_alternatif)
         ? ratakanBentukTeks(p.jawab_alternatif, bentuk).join(' · ')
         : '';
+      const punyaAudioJawab = cariAudioBagianPasangan(p.id, bentuk, 'jawab').length > 0;
 
       return `
         <article class="kartu-arab">
@@ -114,8 +135,14 @@ export async function renderS21({ param = {} } = {}) {
             ${alt && alt !== jawab ? `<p class="teks-arab" lang="ar" dir="rtl" style="margin: var(--jarak-1) 0 0 0;">${escapeHtml(alt)}</p>` : ''}
           </div>
           <div class="baris-kontrol">
-            <button type="button" class="tombol tombol--sekunder" data-putar-pasangan="${escapeHtml(p.id)}" data-laju="1">${escapeHtml(lblDengar)}</button>
-            <button type="button" class="tombol tombol--sekunder" data-putar-pasangan="${escapeHtml(p.id)}" data-laju="0.75">${escapeHtml(lblPelan)}</button>
+            <button type="button" class="tombol tombol--sekunder" data-putar-pasangan="${escapeHtml(p.id)}" data-bagian="tanya" data-laju="1">${escapeHtml(lblDengarTanya)}</button>
+            ${punyaAudioJawab
+              ? `<button type="button" class="tombol tombol--sekunder" data-putar-pasangan="${escapeHtml(p.id)}" data-bagian="jawab" data-laju="1">${escapeHtml(lblDengarJawab)}</button>`
+              : ''}
+          </div>
+          <div class="baris-kontrol">
+            <button type="button" class="tombol tombol--sekunder" data-putar-pasangan="${escapeHtml(p.id)}" data-bagian="semua" data-laju="1">${escapeHtml(lblDengar)}</button>
+            <button type="button" class="tombol tombol--sekunder" data-putar-pasangan="${escapeHtml(p.id)}" data-bagian="semua" data-laju="0.75">${escapeHtml(lblPelan)}</button>
           </div>
         </article>
       `;
@@ -163,6 +190,7 @@ export async function renderS21({ param = {} } = {}) {
         if (akanDibuka) {
           const daftarId = pilihBentukAudio(kk.dibunyikan, kemajuan.bentukLawan);
           const hasil = await putarDaftarAudioModel(daftarId, folderAudioUnit(unitId), { kecepatan: 1 });
+          if (!konteks.masihAktif()) return;
           tampilkanStatusAudio(hasil);
         }
       });
@@ -176,6 +204,7 @@ export async function renderS21({ param = {} } = {}) {
         if (!kk) return;
         const daftarId = pilihBentukAudio(kk.dibunyikan, kemajuan.bentukLawan);
         const hasil = await putarDaftarAudioModel(daftarId, folderAudioUnit(unitId), { kecepatan: laju });
+        if (!konteks.masihAktif()) return;
         tampilkanStatusAudio(hasil);
       });
     });
@@ -183,9 +212,11 @@ export async function renderS21({ param = {} } = {}) {
     wadah.querySelectorAll('[data-putar-pasangan]').forEach((btn) => {
       btn.addEventListener('click', async () => {
         const idPas = btn.getAttribute('data-putar-pasangan');
+        const bagian = btn.getAttribute('data-bagian') || 'semua';
         const laju = Number(btn.getAttribute('data-laju') || 1);
-        const daftarId = cariAudioPasangan(idPas, kemajuan.bentukLawan);
+        const daftarId = cariAudioBagianPasangan(idPas, kemajuan.bentukLawan, bagian);
         const hasil = await putarDaftarAudioModel(daftarId, folderAudioUnit(unitId), { kecepatan: laju });
+        if (!konteks.masihAktif()) return;
         tampilkanStatusAudio(hasil);
       });
     });

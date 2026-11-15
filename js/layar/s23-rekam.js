@@ -29,6 +29,25 @@ import {
   simpanKemajuanSesi1
 } from './sesi1-bantu.js';
 
+/**
+ * Mengevaluasi hasil rekaman Sesi 1 menurut aturan K-15 (sunyi/pendek) dan K-17 (diam 10 detik).
+ */
+export function evaluasiHasilRekamSesi1({ alasanHenti, metrik, pernahBersuara, durasi, minDetikSah = 1.0 }) {
+  if (alasanHenti === 'diam10') {
+    return { kategori: 'diam10', hitungPercobaan: true, simpan: false, durasiBicara: 0 };
+  }
+  const sunyiAtauTerlaluPendek = metrik
+    ? (metrik.flag === 'sunyi' || metrik.flag === 'kurang_1_detik' || Number(metrik.durasi_bersuara_total || 0) < minDetikSah)
+    : (!pernahBersuara && Number(durasi || 0) < minDetikSah);
+  if (sunyiAtauTerlaluPendek) {
+    return { kategori: 'sunyi_pendek', hitungPercobaan: false, simpan: false, durasiBicara: 0 };
+  }
+  const durasiBicara = (metrik && typeof metrik.durasi_bersuara_total === 'number')
+    ? metrik.durasi_bersuara_total
+    : Number(durasi || 0);
+  return { kategori: 'simpan', hitungPercobaan: true, simpan: true, durasiBicara };
+}
+
 export async function renderS23({ param = {} } = {}) {
   const konteks = await siapkanKonteksSesi1('S-23', param, null);
   if (!konteks) return;
@@ -78,9 +97,11 @@ export async function renderS23({ param = {} } = {}) {
   await simpanKemajuanSesi1(kodeSiswa, blokId, kemajuan);
 
   const paramUmum = await muatKontenJson('konten/umum/parameter.json');
-  const batasDetik = Number((paramUmum && paramUmum.batas_rekam_detik && paramUmum.batas_rekam_detik.latihan_sesi1_sesi2) || 15);
-  const batasDiam = Number((paramUmum && paramUmum.rekam && paramUmum.rekam.batas_tidak_mulai_bicara_detik) || 10);
-  const bitrateBps = Number((paramUmum && paramUmum.rekam && paramUmum.rekam.bitrate_bps) || 24000);
+  const perekamanParam = (paramUmum && paramUmum.perekaman) || {};
+  const batasDetik = Number((perekamanParam.batas_durasi_detik && perekamanParam.batas_durasi_detik.latihan_sesi1_sesi2) || 15);
+  const batasDiam = Number(perekamanParam.batas_tidak_mulai_bicara_detik || 10);
+  const bitrateBps = Number(perekamanParam.bitrate_bps || 24000);
+  const minDetikSah = Number(perekamanParam.durasi_minimal_sah_detik || 1.0);
   const kalibrasiLatar = await ambilKalibrasiLatar();
 
   const kunciRekam = (no) => `s23_${kodeSiswa}_${blokId}_${no}`;
@@ -106,6 +127,7 @@ export async function renderS23({ param = {} } = {}) {
   let timerBatas = null;
   let audioSuarakuAktif = null;
   let alasanHenti = 'manual';
+  let aktifDiLayar = true;
 
   function bersihkanSumberRekam() {
     clearInterval(intervalMonitor);
@@ -135,6 +157,8 @@ export async function renderS23({ param = {} } = {}) {
   }
 
   window.addEventListener('hashchange', () => {
+    aktifDiLayar = false;
+    hentikanRekam('batal');
     bersihkanSumberRekam();
     hentikanPutarSuaraku();
   }, { once: true });
@@ -160,6 +184,9 @@ export async function renderS23({ param = {} } = {}) {
     const penjelasan = ambilTeks('S-23', 'penjelasan') || 'Rekaman latihan ini hanya ada di HP-mu.';
     const lblLewati = ambilTeks('S-23', 'tombol_lewati') || 'Lewati rekam (HP bermasalah)';
     const lblLanjut = ambilTeks('S-23', 'tombol_lanjut_refleksi') || 'Lanjut ke refleksi';
+    const lblAktif = ambilTeks('S-23', 'tombol_aktif') || 'Aktif';
+    const lblPilih = ambilTeks('S-23', 'tombol_pilih') || 'Pilih';
+    const lblGiliran = (ambilTeks('S-23', 'label_giliran') || 'Giliran {n}').replace('{n}', String(butirAktif.no || 1));
 
     const statusLabel = statusRekam === 'merekam'
       ? (ambilTeks('S-23', 'status_merekam') || 'Sedang merekam… silakan berbicara.')
@@ -183,20 +210,28 @@ export async function renderS23({ param = {} } = {}) {
             <span style="font-weight: 600;">${dipilih ? '☑' : '☐'} ${t.no}${tanda}</span>
             <span class="teks-arab" lang="ar" dir="rtl" style="flex: 1; text-align: right;">${escapeHtml(arab)}</span>
           </button>
-          ${dipilih ? `<button type="button" class="tombol tombol--sekunder ${t.no === noFokus ? 'tombol--terpilih' : ''}" data-fokus-giliran="${t.no}" style="width: auto; padding-inline: var(--jarak-3);">${t.no === noFokus ? 'Aktif' : 'Pilih'}</button>` : ''}
+          ${dipilih ? `<button type="button" class="tombol tombol--sekunder ${t.no === noFokus ? 'tombol--terpilih' : ''}" data-fokus-giliran="${t.no}" style="width: auto; padding-inline: var(--jarak-3);">${escapeHtml(t.no === noFokus ? lblAktif : lblPilih)}</button>` : ''}
         </div>
       `;
     }).join('');
 
-    const opsiIrama = [
-      { kode: 1, label: 'Ya' },
-      { kode: 2, label: 'Sedikit' },
-      { kode: 3, label: 'Belum' }
-    ];
-    const opsiKataBeda = [
-      { kode: 1, label: 'Ya' },
-      { kode: 0, label: 'Tidak' }
-    ];
+    const labelIrama = (ambilTeks('S-23', 'pilihan_1') || 'Ya · Sedikit · Belum')
+      .split('·')
+      .map((s) => s.trim())
+      .filter(Boolean);
+    const opsiIrama = [1, 2, 3].map((kode, idx) => ({
+      kode,
+      label: labelIrama[idx] || ['Ya', 'Sedikit', 'Belum'][idx]
+    }));
+
+    const labelKataBeda = (ambilTeks('S-23', 'pilihan_2') || 'Ya · Tidak')
+      .split('·')
+      .map((s) => s.trim())
+      .filter(Boolean);
+    const opsiKataBeda = [1, 0].map((kode, idx) => ({
+      kode,
+      label: labelKataBeda[idx] || ['Ya', 'Tidak'][idx]
+    }));
 
     const kurangTab = daftarTabBelumDibuka(kemajuan.tab);
     const semuaLengkap = semuaTabSesi1Selesai(kemajuan.tab);
@@ -214,7 +249,7 @@ export async function renderS23({ param = {} } = {}) {
         </section>
 
         <section class="kotak-rekam kotak-rekam--${statusRekam}" aria-live="polite">
-          <span class="lencana-penanda-audio">Giliran ${escapeHtml(String(butirAktif.no || 1))}</span>
+          <span class="lencana-penanda-audio">${escapeHtml(lblGiliran)}</span>
           <p class="teks-arab teks-arab--besar teks-arab--tengah" lang="ar" dir="rtl" style="margin: 0;">
             ${escapeHtml(pilihBentukTeks(butirAktif.arab, bentuk))}
           </p>
@@ -225,7 +260,7 @@ export async function renderS23({ param = {} } = {}) {
             ${escapeHtml(statusLabel)}
           </p>
           ${pesanStatus ? `<div class="pesan-hangat" style="width: 100%; text-align: left;"><p class="pesan-hangat__isi">${escapeHtml(pesanStatus)}</p></div>` : ''}
-          <button type="button" id="tombol-rekam-s23" class="tombol ${statusRekam === 'merekam' ? 'tombol-rekam--merekam' : 'tombol--utama'}">
+          <button type="button" id="tombol-rekam-s23" class="tombol ${statusRekam === 'merekam' ? 'tombol-rekam--merekam' : 'tombol-rekam--siap'}">
             ${escapeHtml(lblRekam)}
           </button>
           <div class="baris-kontrol" style="width: 100%;">
@@ -299,6 +334,10 @@ export async function renderS23({ param = {} } = {}) {
 
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      if (!aktifDiLayar || !konteks.masihAktif()) {
+        stream.getTracks().forEach((tr) => tr.stop());
+        return;
+      }
       streamAktif = stream;
       const mime = pilihMimeRekam();
       const opsiRec = mime ? { mimeType: mime, audioBitsPerSecond: bitrateBps } : { audioBitsPerSecond: bitrateBps };
@@ -325,8 +364,8 @@ export async function renderS23({ param = {} } = {}) {
           analyser.fftSize = 1024;
           sumber.connect(analyser);
           const buf = new Float32Array(analyser.fftSize);
-          const ambangRms = (kalibrasiLatar && kalibrasiLatar.ambangDasar)
-            ? Math.max(0.008, kalibrasiLatar.ambangDasar * 1.4)
+          const ambangRms = (kalibrasiLatar && typeof kalibrasiLatar.ambang_dipakai === 'number' && kalibrasiLatar.ambang_dipakai > 0)
+            ? kalibrasiLatar.ambang_dipakai
             : 0.012;
           intervalMonitor = setInterval(() => {
             analyser.getFloatTimeDomainData(buf);
@@ -345,21 +384,45 @@ export async function renderS23({ param = {} } = {}) {
 
       recorder.onstop = async () => {
         bersihkanSumberRekam();
+        if (!aktifDiLayar || !konteks.masihAktif() || alasanHenti === 'batal' || alasanHenti === 'lewati') {
+          statusRekam = punyaRekaman[noFokus] ? 'tersimpan' : 'siap';
+          return;
+        }
+
         const durasi = Math.max(0.2, Math.round(((Date.now() - mulaiMs) / 1000) * 10) / 10);
         const tipe = recorder.mimeType || mime || 'audio/webm';
         const blob = new Blob(potongan, { type: tipe });
-        percobaanCount += 1;
 
-        let metrik = { terdeteksiSunyi: false, durasiBersuara: durasi };
+        let metrik = null;
         try {
           metrik = await analisisAmplitudoBlob(blob, kalibrasiLatar);
-        } catch (_) {}
+        } catch (_) {
+          metrik = null;
+        }
+        if (!aktifDiLayar || !konteks.masihAktif()) return;
 
-        await catatKejadianSesi1(unitId, blokId, 'percobaan_rekam', percobaanCount, { butir: `${blokId}-T${noFokus}` });
+        const evaluasi = evaluasiHasilRekamSesi1({
+          alasanHenti,
+          metrik,
+          pernahBersuara,
+          durasi,
+          minDetikSah
+        });
 
-        if (alasanHenti === 'diam10' || (!pernahBersuara && metrik.terdeteksiSunyi)) {
+        if (evaluasi.hitungPercobaan) {
+          percobaanCount += 1;
+          await catatKejadianSesi1(unitId, blokId, 'percobaan_rekam', percobaanCount, {
+            butir: `${blokId}-T${noFokus}`,
+            ...(evaluasi.kategori === 'diam10' ? { flag: 'tidak_bersuara' } : {})
+          });
+          if (!aktifDiLayar || !konteks.masihAktif()) return;
+        }
+
+        if (!evaluasi.simpan) {
           statusRekam = punyaRekaman[noFokus] ? 'tersimpan' : 'siap';
-          pesanStatus = ambilTeks('S-23', 'pesan_tidak_bersuara') || 'Tidak apa-apa, coba lagi kapan siap.';
+          pesanStatus = evaluasi.kategori === 'diam10'
+            ? (ambilTeks('S-23', 'pesan_tidak_bersuara') || 'Tidak apa-apa, coba lagi kapan siap.')
+            : (ambilTeks('S-23', 'pesan_sunyi_pendek') || 'Sepertinya suaramu tidak terekam. Cek mikrofonmu, lalu coba lagi.');
           lukis();
           return;
         }
@@ -368,6 +431,7 @@ export async function renderS23({ param = {} } = {}) {
           blob,
           mime: tipe,
           durasi,
+          durasi_bicara: evaluasi.durasiBicara,
           waktu: Date.now()
         });
         punyaRekaman[noFokus] = true;
@@ -386,12 +450,12 @@ export async function renderS23({ param = {} } = {}) {
             konteks: 'sesi1',
             percobaan: percobaanCount,
             hasil: 'tersimpan',
-            durasi_bicara: metrik.durasiBersuara || durasi
+            durasi_bicara: evaluasi.durasiBicara
           },
           `Rekam Sesi 1 (${blokId}-T${noFokus})`
         );
 
-        lukis();
+        if (aktifDiLayar && konteks.masihAktif()) lukis();
       };
 
       recorder.start();

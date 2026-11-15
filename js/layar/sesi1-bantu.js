@@ -201,7 +201,13 @@ export async function siapkanKonteksSesi1(idLayar, param = {}, kunciTab = null) 
   const wadah = siapkanWadahLayar(idLayar, `${blokData.judul_id} — ${namaTab}`);
   if (!wadah) return null;
 
-  return { state, kodeSiswa, unitId, blokId, blokData, kemajuan, wadah };
+  let aktif = true;
+  window.addEventListener('hashchange', () => {
+    aktif = false;
+    hentikanAudioModel();
+  }, { once: true });
+
+  return { state, kodeSiswa, unitId, blokId, blokData, kemajuan, wadah, masihAktif: () => aktif };
 }
 
 export function renderBilahTabSesi1(idLayarAktif, kemajuan) {

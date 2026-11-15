@@ -108,7 +108,7 @@ export async function renderS24({ param = {} } = {}) {
           ${renderKepalaSesi1(konteks, 'S-24', { tanpaPemilihBentuk: true })}
           <div class="pesan-hangat" role="status">
             <p class="pesan-hangat__isi">${escapeHtml(pesanButuh)}</p>
-            <p class="teks-keterangan" style="margin: var(--jarak-2) 0 0 0;">Belum dibuka: ${escapeHtml(kurang.join(', '))}</p>
+            <p class="teks-keterangan" style="margin: var(--jarak-2) 0 0 0;">${escapeHtml((ambilTeks('S-24', 'label_belum_dibuka') || 'Belum dibuka: {daftar}').replace('{daftar}', kurang.join(', ')))}</p>
           </div>
         </section>
       `;
@@ -154,7 +154,6 @@ export async function renderS24({ param = {} } = {}) {
     wadah.innerHTML = `
       <section class="wadah-layar" aria-label="${escapeHtml(judulS24)}">
         ${renderKepalaSesi1(konteks, 'S-24')}
-        <h2 class="subjudul-layar">${escapeHtml(judulS24)}</h2>
 
         <section class="kartu kelompok-skala">
           <p class="teks-instruksi" style="margin: 0;">${escapeHtml(tanya1)}</p>
@@ -220,15 +219,22 @@ export async function renderS24({ param = {} } = {}) {
           lukis();
           return;
         }
-        await catatKejadianSesi1(unitId, blokId, 'keyakinan_sesi', nilaiYakin, { butir: `${blokId}-S1` });
-        const kodeSulit = idTersulit || 'TIDAK_ADA';
-        const kkSulit = daftarKk.find((k) => k.id_pasangan === kodeSulit);
-        const catSulit = kkSulit ? pilihBentukTeks(kkSulit.frasa, kemajuan.bentukLawan).slice(0, 200) : 'tidak_ada';
-        await catatKejadianSesi1(unitId, blokId, 'kalimat_tersulit', kodeSulit === 'TIDAK_ADA' ? 0 : 1, {
-          butir: kodeSulit,
-          catatan: catSulit
-        });
-        await kirimSesi1Selesai(0);
+        sedangMengirim = true;
+        lukis();
+        try {
+          await catatKejadianSesi1(unitId, blokId, 'keyakinan_sesi', nilaiYakin, { butir: `${blokId}-S1` });
+          const kodeSulit = idTersulit || 'TIDAK_ADA';
+          const kkSulit = daftarKk.find((k) => k.id_pasangan === kodeSulit);
+          const catSulit = kkSulit ? pilihBentukTeks(kkSulit.frasa, kemajuan.bentukLawan).slice(0, 200) : 'tidak_ada';
+          await catatKejadianSesi1(unitId, blokId, 'kalimat_tersulit', kodeSulit === 'TIDAK_ADA' ? 0 : 1, {
+            butir: kodeSulit,
+            catatan: catSulit
+          });
+          await kirimSesi1Selesai(0);
+        } catch (_) {
+          sedangMengirim = false;
+          if (konteks.masihAktif()) lukis();
+        }
       });
     }
 
@@ -236,11 +242,18 @@ export async function renderS24({ param = {} } = {}) {
     if (btnLewati) {
       btnLewati.addEventListener('click', async () => {
         if (sedangMengirim) return;
-        await catatKejadianSesi1(unitId, blokId, 'keyakinan_sesi', '', {
-          butir: `${blokId}-S1`,
-          flag: 'lewati'
-        });
-        await kirimSesi1Selesai(1);
+        sedangMengirim = true;
+        lukis();
+        try {
+          await catatKejadianSesi1(unitId, blokId, 'keyakinan_sesi', '', {
+            butir: `${blokId}-S1`,
+            flag: 'lewati'
+          });
+          await kirimSesi1Selesai(1);
+        } catch (_) {
+          sedangMengirim = false;
+          if (konteks.masihAktif()) lukis();
+        }
       });
     }
 

@@ -191,6 +191,8 @@
     "label_jawab": "Jawab",
     "label_tanpa_jawab": "Langsung dijawab dengan tindakan atau mengulang bagian yang belum jelas.",
     "tombol_dengar": "Dengar",
+    "tombol_dengar_tanya": "Dengar tanya",
+    "tombol_dengar_jawab": "Dengar jawab",
     "tombol_ketuk_buka": "Ketuk untuk membuka kalimat Arab dan audio"
   },
   "S-22": {
@@ -227,9 +229,13 @@
     "status_merekam": "Sedang merekam… silakan berbicara.",
     "status_tersimpan": "Rekaman tersimpan ✓",
     "pesan_tidak_bersuara": "Tidak apa-apa, coba lagi kapan siap.",
+    "pesan_sunyi_pendek": "Sepertinya suaramu tidak terekam. Cek mikrofonmu, lalu coba lagi.",
     "pesan_mikrofon_kendala": "Mikrofon belum bisa dipakai sekarang. Kamu bisa melewati bagian rekam ini.",
     "pesan_lengkapi_tab": "Yuk buka dulu tab yang belum bertanda centang ({daftar}) sebelum lanjut ke refleksi.",
     "tombol_lanjut_refleksi": "Lanjut ke refleksi",
+    "label_giliran": "Giliran {n}",
+    "tombol_aktif": "Aktif",
+    "tombol_pilih": "Pilih",
     "catatan_penilaian": "Penilaian diri ini hanya untukmu, bukan nilai."
   },
   "S-24": {
@@ -243,6 +249,7 @@
     "subjudul_selesai": "Sesi 1 selesai",
     "pesan_sesi2_terbuka": "Bagus sekali! Sesi 2 pada blok ini sekarang sudah terbuka.",
     "pesan_butuh_tab": "Buka dulu keempat tab (Tonton, Kata Kunci, Tiru, dan Rekam) minimal satu kali ya.",
+    "label_belum_dibuka": "Belum dibuka: {daftar}",
     "pesan_pilih_dulu": "Pilih tingkat keyakinanmu dulu atau ketuk Lewati.",
     "label_mengirim": "Menyimpan…",
     "tombol_mulai_sesi2": "Buka Sesi 2",

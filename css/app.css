@@ -152,6 +152,11 @@ body {
   gap: var(--jarak-5);
 }
 
+.wadah-layar .wadah-layar {
+  padding: 0;
+  max-width: 100%;
+}
+
 /* --------------------------------------------------------------------------
    3. TIPOGRAFI (INDONESIA & ARAB BERHARAKAT)
    -------------------------------------------------------------------------- */
@@ -1474,24 +1479,36 @@ h1, h2, h3, p {
 }
 
 .baris-kontrol > .tombol {
-  flex: 1 1 auto;
-  min-width: 112px;
+  width: auto;
+  flex: 1 1 120px;
+  min-width: 120px;
 }
 
 .baris-pilihan-kecil {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--jarak-2);
 }
 
 .baris-pilihan-3 {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--jarak-2);
+}
+
+.baris-pilihan-kecil > .tombol,
+.baris-pilihan-3 > .tombol {
+  min-width: 0;
+  padding-inline: var(--jarak-2);
+}
+
+.baris-pilihan-3 > .tombol {
+  font-size: var(--ukuran-teks-kecil);
 }
 
 .pilihan-giliran {
   width: 100%;
+  min-width: 0;
   min-height: var(--tinggi-sentuh-min);
   padding: var(--jarak-3);
   border: 2px solid var(--warna-garis-kuat);
@@ -1499,6 +1516,7 @@ h1, h2, h3, p {
   background-color: var(--warna-permukaan);
   color: var(--warna-teks);
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: var(--jarak-2);
