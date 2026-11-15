@@ -1,0 +1,589 @@
+{
+  "id": "U1-BD",
+  "unit": "U1",
+  "judul_id": "Sopan Santun Sehari-hari",
+  "judul_ar": "التَّعَارُفُ",
+  "wajib": true,
+  "urutan": 4,
+  "paruh": null,
+  "pasangan": [
+    {
+      "id": "U1-P14",
+      "fungsi": "Berterima kasih",
+      "tanya": "شُكْرًا",
+      "jawab": "عَفْوًا",
+      "versi": null
+    },
+    {
+      "id": "U1-P15",
+      "fungsi": "Meminta izin ke kamar mandi",
+      "tanya": "عَفْوًا، أَسْتَأْذِنُ إِلَى الْحَمَّامِ",
+      "jawab": "تَفَضَّلْ",
+      "versi": {
+        "jawab": {
+          "putra": "تَفَضَّلْ",
+          "putri": "تَفَضَّلِي"
+        }
+      }
+    },
+    {
+      "id": "U1-P16",
+      "fungsi": "Minta diulang (saat lawan bicara terlalu cepat)",
+      "tanya": "أَعِدْ مِنْ فَضْلِكَ",
+      "jawab": null,
+      "versi": {
+        "tanya": {
+          "putra": "أَعِدْ مِنْ فَضْلِكَ",
+          "putri": "أَعِيدِي مِنْ فَضْلِكِ"
+        }
+      }
+    },
+    {
+      "id": "U1-P17",
+      "fungsi": "Berpamitan",
+      "tanya": "إِلَى اللِّقَاءِ",
+      "jawab": "مَعَ السَّلَامَةِ",
+      "versi": null
+    }
+  ],
+  "dialog": [
+    {
+      "id": "U1-BD-D16",
+      "penutur": "يُوسُفُ",
+      "arab": "شُكْرًا يَا أَحْمَدُ.",
+      "adegan": "Yusuf berterima kasih kepada Ahmad sambil meletakkan tangan di dada di halaman madrasah.",
+      "gambar": "gambar/U1-BD-D16.webp",
+      "audio": "AUD-U1-BD-D16"
+    },
+    {
+      "id": "U1-BD-D17",
+      "penutur": "أَحْمَدُ",
+      "arab": "عَفْوًا.",
+      "adegan": "Ahmad membalas dengan senyum dan tangan terbuka.",
+      "gambar": "gambar/U1-BD-D17.webp",
+      "audio": "AUD-U1-L1-032"
+    },
+    {
+      "id": "U1-BD-D18",
+      "penutur": "يُوسُفُ",
+      "arab": "عَفْوًا، أَسْتَأْذِنُ إِلَى الْحَمَّامِ.",
+      "adegan": "Yusuf mengangkat tangan sedikit untuk meminta izin sambil menunjuk arah kamar mandi.",
+      "gambar": "gambar/U1-BD-D18.webp",
+      "audio": "AUD-U1-L1-033"
+    },
+    {
+      "id": "U1-BD-D19",
+      "penutur": "أَحْمَدُ",
+      "arab": "تَفَضَّلْ.",
+      "adegan": "Ahmad mempersilakan Yusuf dengan tangan terbuka ke arah kamar mandi.",
+      "gambar": "gambar/U1-BD-D19.webp",
+      "audio": "AUD-U1-L1-034"
+    },
+    {
+      "id": "U1-BD-D20",
+      "penutur": "خَالِدٌ",
+      "arab": "إِلَى اللِّقَاءِ.",
+      "adegan": "Khalid menyandang tas dan melambaikan tangan, hendak pulang dari madrasah.",
+      "gambar": "gambar/U1-BD-D20.webp",
+      "audio": "AUD-U1-L1-036"
+    },
+    {
+      "id": "U1-BD-D21",
+      "penutur": "أَحْمَدُ",
+      "arab": "مَعَ السَّلَامَةِ.",
+      "adegan": "Ahmad membalas lambaian Khalid di gerbang madrasah menjelang sore.",
+      "gambar": "gambar/U1-BD-D21.webp",
+      "audio": "AUD-U1-L1-037"
+    }
+  ],
+  "kata_kunci": [
+    {
+      "frasa": "شُكْرًا",
+      "teks_dibunyikan": [
+        "شُكْرًا",
+        "عَفْوًا"
+      ],
+      "dibunyikan": [
+        "AUD-U1-L1-031",
+        "AUD-U1-L1-032"
+      ],
+      "id_pasangan": "U1-P14",
+      "fungsi_id": "Berterima kasih"
+    },
+    {
+      "frasa": "عَفْوًا، أَسْتَأْذِنُ إِلَى الْحَمَّامِ",
+      "teks_dibunyikan": [
+        "عَفْوًا، أَسْتَأْذِنُ إِلَى الْحَمَّامِ",
+        {
+          "putra": "تَفَضَّلْ",
+          "putri": "تَفَضَّلِي"
+        }
+      ],
+      "dibunyikan": {
+        "putra": [
+          "AUD-U1-L1-033",
+          "AUD-U1-L1-034"
+        ],
+        "putri": [
+          "AUD-U1-L1-033",
+          "AUD-U1-P15-P"
+        ]
+      },
+      "id_pasangan": "U1-P15",
+      "fungsi_id": "Meminta izin ke kamar mandi"
+    },
+    {
+      "frasa": {
+        "putra": "أَعِدْ مِنْ فَضْلِكَ",
+        "putri": "أَعِيدِي مِنْ فَضْلِكِ"
+      },
+      "teks_dibunyikan": [
+        {
+          "putra": "أَعِدْ مِنْ فَضْلِكَ",
+          "putri": "أَعِيدِي مِنْ فَضْلِكِ"
+        }
+      ],
+      "dibunyikan": {
+        "putra": [
+          "AUD-U1-L1-035"
+        ],
+        "putri": [
+          "AUD-U1-P16-P"
+        ]
+      },
+      "id_pasangan": "U1-P16",
+      "fungsi_id": "Minta diulang (saat lawan bicara terlalu cepat)"
+    },
+    {
+      "frasa": "إِلَى اللِّقَاءِ",
+      "teks_dibunyikan": [
+        "إِلَى اللِّقَاءِ",
+        "مَعَ السَّلَامَةِ"
+      ],
+      "dibunyikan": [
+        "AUD-U1-L1-036",
+        "AUD-U1-L1-037"
+      ],
+      "id_pasangan": "U1-P17",
+      "fungsi_id": "Berpamitan"
+    }
+  ],
+  "pemanasan": [
+    "AUD-U1-L1-031",
+    "AUD-U1-L1-032",
+    "AUD-U1-L1-033",
+    "AUD-U1-L1-034",
+    "AUD-U1-P15-P",
+    "AUD-U1-L1-035",
+    "AUD-U1-P16-P",
+    "AUD-U1-L1-036",
+    "AUD-U1-L1-037"
+  ],
+  "tiru": [
+    {
+      "no": 1,
+      "arab": "شُكْرًا",
+      "id_pasangan": "U1-P14",
+      "audio": "AUD-U1-L1-031"
+    },
+    {
+      "no": 2,
+      "arab": "عَفْوًا",
+      "id_pasangan": "U1-P14",
+      "audio": "AUD-U1-L1-032"
+    },
+    {
+      "no": 3,
+      "arab": "عَفْوًا، أَسْتَأْذِنُ إِلَى الْحَمَّامِ",
+      "id_pasangan": "U1-P15",
+      "audio": "AUD-U1-L1-033"
+    },
+    {
+      "no": 4,
+      "arab": {
+        "putra": "تَفَضَّلْ",
+        "putri": "تَفَضَّلِي"
+      },
+      "id_pasangan": "U1-P15",
+      "audio": {
+        "putra": "AUD-U1-L1-034",
+        "putri": "AUD-U1-P15-P"
+      }
+    },
+    {
+      "no": 5,
+      "arab": {
+        "putra": "أَعِدْ مِنْ فَضْلِكَ",
+        "putri": "أَعِيدِي مِنْ فَضْلِكِ"
+      },
+      "id_pasangan": "U1-P16",
+      "audio": {
+        "putra": "AUD-U1-L1-035",
+        "putri": "AUD-U1-P16-P"
+      }
+    },
+    {
+      "no": 6,
+      "arab": "إِلَى اللِّقَاءِ",
+      "id_pasangan": "U1-P17",
+      "audio": "AUD-U1-L1-036"
+    },
+    {
+      "no": 7,
+      "arab": "مَعَ السَّلَامَةِ",
+      "id_pasangan": "U1-P17",
+      "audio": "AUD-U1-L1-037"
+    }
+  ],
+  "l1": [
+    {
+      "id": "U1-L1-031",
+      "arab": "شُكْرًا",
+      "id_pasangan": "U1-P14",
+      "kata_wajib": [
+        "شكرا"
+      ],
+      "audio": "AUD-U1-L1-031",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L1-032",
+      "arab": "عَفْوًا",
+      "id_pasangan": "U1-P14",
+      "kata_wajib": [
+        "عفوا"
+      ],
+      "audio": "AUD-U1-L1-032",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L1-033",
+      "arab": "عَفْوًا، أَسْتَأْذِنُ إِلَى الْحَمَّامِ",
+      "id_pasangan": "U1-P15",
+      "kata_wajib": [
+        "استاذن",
+        "حمام"
+      ],
+      "audio": "AUD-U1-L1-033",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L1-034",
+      "arab": {
+        "putra": "تَفَضَّلْ",
+        "putri": "تَفَضَّلِي"
+      },
+      "id_pasangan": "U1-P15",
+      "kata_wajib": [
+        "تفضل"
+      ],
+      "audio": {
+        "putra": "AUD-U1-L1-034",
+        "putri": "AUD-U1-P15-P"
+      },
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L1-035",
+      "arab": "أَعِدْ مِنْ فَضْلِكَ",
+      "id_pasangan": "U1-P16",
+      "kata_wajib": [
+        "اعد",
+        "فضلك"
+      ],
+      "audio": "AUD-U1-L1-035",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L1-036",
+      "arab": "إِلَى اللِّقَاءِ",
+      "id_pasangan": "U1-P17",
+      "kata_wajib": [
+        "الى",
+        "لقاء"
+      ],
+      "audio": "AUD-U1-L1-036",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L1-037",
+      "arab": "مَعَ السَّلَامَةِ",
+      "id_pasangan": "U1-P17",
+      "kata_wajib": [
+        "مع",
+        "سلامة"
+      ],
+      "audio": "AUD-U1-L1-037",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    }
+  ],
+  "l2": [
+    {
+      "id": "U1-L2-017",
+      "jenis": "dengar-jawab",
+      "jenis_sumber": "dengar-jawab",
+      "audio_prompt": "AUD-U1-L1-031",
+      "teks_prompt_arab": "شُكْرًا",
+      "catatan_prompt_id": null,
+      "gambar": null,
+      "instruksi": "Jawab!",
+      "diterima": [
+        "عَفْوًا"
+      ],
+      "model": {
+        "arab": "عَفْوًا",
+        "audio": "AUD-U1-L1-032"
+      },
+      "bentuk_ikut": null,
+      "id_pasangan": "U1-P14",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L2-018",
+      "jenis": "situasi",
+      "jenis_sumber": "dengar-jawab",
+      "audio_prompt": null,
+      "teks_prompt_arab": null,
+      "catatan_prompt_id": null,
+      "gambar": null,
+      "instruksi": "Kamu ingin ke kamar mandi. Minta izin!",
+      "diterima": [
+        "عَفْوًا، أَسْتَأْذِنُ إِلَى الْحَمَّامِ"
+      ],
+      "model": {
+        "arab": "عَفْوًا، أَسْتَأْذِنُ إِلَى الْحَمَّامِ",
+        "audio": "AUD-U1-L1-033"
+      },
+      "bentuk_ikut": null,
+      "id_pasangan": "U1-P15",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L2-019",
+      "jenis": "dengar-jawab",
+      "jenis_sumber": "dengar-jawab",
+      "audio_prompt": "AUD-U1-L2-019",
+      "teks_prompt_arab": "أَهْلًا وَسَهْلًا. أَنَا مِنْ جُومْبَانْج. هُوَ مِنْ سُورَابَايَا.",
+      "catatan_prompt_id": "kecepatan sangat tinggi, sengaja tidak jelas",
+      "gambar": null,
+      "instruksi": "Temanmu bicara terlalu cepat. Minta diulang! Lihat ikon temanmu.",
+      "diterima": [
+        "أَعِدْ مِنْ فَضْلِكَ",
+        "أَعِيدِي مِنْ فَضْلِكِ"
+      ],
+      "model": {
+        "arab": {
+          "putra": "أَعِدْ مِنْ فَضْلِكَ",
+          "putri": "أَعِيدِي مِنْ فَضْلِكِ"
+        },
+        "audio": {
+          "putra": "AUD-U1-L1-035",
+          "putri": "AUD-U1-P16-P"
+        }
+      },
+      "bentuk_ikut": "ikon_teman",
+      "id_pasangan": "U1-P16",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L2-020",
+      "jenis": "situasi",
+      "jenis_sumber": "dengar-jawab",
+      "audio_prompt": null,
+      "teks_prompt_arab": null,
+      "catatan_prompt_id": null,
+      "gambar": null,
+      "instruksi": "Kamu hendak pulang dan berpamitan. Ucapkan pamit!",
+      "diterima": [
+        "إِلَى اللِّقَاءِ",
+        "مَعَ السَّلَامَةِ"
+      ],
+      "model": {
+        "arab": "إِلَى اللِّقَاءِ",
+        "audio": "AUD-U1-L1-036"
+      },
+      "bentuk_ikut": null,
+      "id_pasangan": "U1-P17",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    }
+  ],
+  "l3": [
+    {
+      "id": "U1-L3-09",
+      "fungsi": "Terima Kasih",
+      "instruksi": "Kamu yang memulai: ucapkan terima kasih. Lalu jawablah ucapan terima kasih itu.",
+      "slot1": {
+        "model": "شُكْرًا",
+        "kata_wajib": [
+          "شكرا"
+        ],
+        "audio": "AUD-U1-L1-031"
+      },
+      "slot2": {
+        "model": "عَفْوًا",
+        "kata_wajib": [
+          "عفوا"
+        ],
+        "audio": "AUD-U1-L1-032"
+      },
+      "respons_awal": null,
+      "nomor_urut": 8,
+      "prasyarat": null,
+      "pilih_satu": null,
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null,
+      "pola_giliran": "satu_putaran",
+      "giliran": null
+    },
+    {
+      "id": "U1-L3-10",
+      "fungsi": "Izin Kamar Mandi",
+      "instruksi": "Kamu yang memulai: mintalah izin ke kamar mandi. Lalu jawablah dengan mempersilakan.",
+      "slot1": {
+        "model": "عَفْوًا، أَسْتَأْذِنُ إِلَى الْحَمَّامِ",
+        "kata_wajib": [
+          "استاذن",
+          "حمام"
+        ],
+        "audio": "AUD-U1-L1-033"
+      },
+      "slot2": {
+        "model": {
+          "putra": "تَفَضَّلْ",
+          "putri": "تَفَضَّلِي"
+        },
+        "kata_wajib": [
+          "تفضل"
+        ],
+        "audio": {
+          "putra": "AUD-U1-L1-034",
+          "putri": "AUD-U1-P15-P"
+        }
+      },
+      "respons_awal": null,
+      "nomor_urut": 9,
+      "prasyarat": null,
+      "pilih_satu": null,
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null,
+      "pola_giliran": "satu_putaran",
+      "giliran": null
+    },
+    {
+      "id": "U1-L3-11",
+      "fungsi": "Pamit",
+      "instruksi": "Kamu yang memulai: berpamitanlah. Lalu jawablah pamit itu.",
+      "slot1": {
+        "model": "إِلَى اللِّقَاءِ",
+        "kata_wajib": [
+          "الى",
+          "لقاء"
+        ],
+        "audio": "AUD-U1-L1-036"
+      },
+      "slot2": {
+        "model": "مَعَ السَّلَامَةِ",
+        "kata_wajib": [
+          "مع",
+          "سلامة"
+        ],
+        "audio": "AUD-U1-L1-037"
+      },
+      "respons_awal": null,
+      "nomor_urut": 10,
+      "prasyarat": null,
+      "pilih_satu": null,
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null,
+      "pola_giliran": "satu_putaran",
+      "giliran": null
+    }
+  ],
+  "aku_bisa": {
+    "id": "AB-U1-BD",
+    "teks": "Aku bisa berterima kasih, meminta izin, berpamitan, dan meminta diulang.",
+    "wajib": true
+  },
+  "aset_audio": [
+    {
+      "id": "AUD-U1-L1-031",
+      "teks": "شُكْرًا",
+      "penutur": "netral"
+    },
+    {
+      "id": "AUD-U1-L1-032",
+      "teks": "عَفْوًا",
+      "penutur": "netral"
+    },
+    {
+      "id": "AUD-U1-BD-D16",
+      "teks": "شُكْرًا يَا أَحْمَدُ.",
+      "penutur": "netral"
+    },
+    {
+      "id": "AUD-U1-L1-033",
+      "teks": "عَفْوًا، أَسْتَأْذِنُ إِلَى الْحَمَّامِ",
+      "penutur": "netral"
+    },
+    {
+      "id": "AUD-U1-L1-034",
+      "teks": "تَفَضَّلْ",
+      "penutur": "putra"
+    },
+    {
+      "id": "AUD-U1-P15-P",
+      "teks": "تَفَضَّلِي",
+      "penutur": "putri"
+    },
+    {
+      "id": "AUD-U1-L1-035",
+      "teks": "أَعِدْ مِنْ فَضْلِكَ",
+      "penutur": "putra"
+    },
+    {
+      "id": "AUD-U1-P16-P",
+      "teks": "أَعِيدِي مِنْ فَضْلِكِ",
+      "penutur": "putri"
+    },
+    {
+      "id": "AUD-U1-L1-036",
+      "teks": "إِلَى اللِّقَاءِ",
+      "penutur": "netral"
+    },
+    {
+      "id": "AUD-U1-L1-037",
+      "teks": "مَعَ السَّلَامَةِ",
+      "penutur": "netral"
+    },
+    {
+      "id": "AUD-U1-L2-019",
+      "teks": "أَهْلًا وَسَهْلًا. أَنَا مِنْ جُومْبَانْج. هُوَ مِنْ سُورَابَايَا.",
+      "penutur": "netral"
+    }
+  ]
+}

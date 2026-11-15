@@ -5,6 +5,7 @@
  */
 
 import { panggilApi } from '../api.js';
+import { muatBlokKonten, muatMuhimmahUnit } from '../pemuat-konten.js';
 import { arahKe } from '../router.js';
 import { ambilState, ambilTeks, perbaruiStatusServer } from '../state.js';
 import { KATALOG_UNIT_KALAM } from './s02-beranda.js';
@@ -291,31 +292,56 @@ export async function renderS03({ param = {} } = {}) {
 
     const tombolBlok = Array.from(wadah.querySelectorAll('.tombol-pilih-blok-s03'));
     tombolBlok.forEach((btn) => {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', async () => {
+        if (btn.disabled) return;
         const idBlok = btn.getAttribute('data-blok') || `${infoUnit.id}-BA`;
         const aksi = btn.getAttribute('data-aksi') || 'mulai';
+        btn.disabled = true;
+        btn.textContent = 'Memuat…';
+
+        const blokData = await muatBlokKonten(idBlok, {
+          arahkanKeS91: true,
+          asal: 'S-03',
+          tujuan: 'S-03',
+          unit: infoUnit.id
+        });
+        if (!blokData) return;
+
         state.unit_aktif = infoUnit.id;
-        state.blok_aktif = idBlok;
+        state.blok_aktif = blokData.id;
 
         kirimAtauAntre(
           'catat',
-          { jenis: 'aktivitas', aktivitas: 'blok_dipilih', unit: infoUnit.no, blok: idBlok },
-          `Pilih blok ${idBlok}`,
+          { jenis: 'aktivitas', aktivitas: 'blok_dipilih', unit: infoUnit.no, blok: blokData.id },
+          `Pilih blok ${blokData.id}`,
           'ANGKA'
         ).catch(() => {});
 
-        const sesi1Sudah = blokSesi1Selesai.includes(idBlok);
+        const sesi1Sudah = blokSesi1Selesai.includes(blokData.id);
         if (aksi === 'lanjut' && sesi1Sudah) {
-          arahKe('S-30', { unit: infoUnit.id, blok: idBlok });
+          arahKe('S-30', { unit: infoUnit.id, blok: blokData.id });
         } else {
-          arahKe('S-20', { unit: infoUnit.id, blok: idBlok });
+          arahKe('S-20', { unit: infoUnit.id, blok: blokData.id });
         }
       });
     });
 
     const btnSesi3 = document.getElementById('tombol-sesi3-s03');
     if (btnSesi3) {
-      btnSesi3.addEventListener('click', () => {
+      btnSesi3.addEventListener('click', async () => {
+        if (btnSesi3.disabled) return;
+        btnSesi3.disabled = true;
+        btnSesi3.textContent = 'Memuat…';
+
+        const muhimmahData = await muatMuhimmahUnit(infoUnit.id, {
+          arahkanKeS91: true,
+          asal: 'S-03',
+          tujuan: 'S-03',
+          unit: infoUnit.id
+        });
+        if (!muhimmahData) return;
+
+        state.unit_aktif = infoUnit.id;
         arahKe('S-40', { unit: infoUnit.id });
       });
     }

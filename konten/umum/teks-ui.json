@@ -424,6 +424,8 @@
     "judul_belum_terbuka": "Bagian ini belum terbuka",
     "penjelasan_belum_terbuka": "Selesaikan bagian sebelumnya atau tanyakan ke gurumu.",
     "judul_audio": "Audio belum termuat",
+    "judul_konten": "Materi belum termuat",
+    "penjelasan_konten": "Berkas materi belum dapat dimuat sekarang. Periksa sinyalmu lalu ketuk Coba lagi.",
     "tombol": "Coba lagi · Kembali",
     "tombol_coba_lagi": "Coba lagi",
     "tombol_kembali": "Kembali"

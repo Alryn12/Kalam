@@ -22,7 +22,11 @@ export async function renderS91({ param = {} } = {}) {
     judul = ambilTeks('S-91', 'judul_belum_terbuka') || 'Bagian ini belum terbuka';
     penjelasan = ambilTeks('S-91', 'penjelasan_belum_terbuka') ||
       'Selesaikan bagian sebelumnya atau tanyakan ke gurumu.';
-  } else if (jenis === 'gagal_memuat' || jenis === 'audio') {
+  } else if (jenis === 'gagal_memuat' || jenis === 'konten') {
+    judul = ambilTeks('S-91', 'judul_konten') || 'Materi belum termuat';
+    penjelasan = ambilTeks('S-91', 'penjelasan_konten') ||
+      'Berkas materi belum dapat dimuat sekarang. Periksa sinyalmu lalu ketuk Coba lagi.';
+  } else if (jenis === 'audio') {
     judul = ambilTeks('S-91', 'judul_audio') || 'Audio belum termuat';
     penjelasan = 'Berkas belum dapat dimuat sekarang. Periksa sinyalmu lalu ketuk Coba lagi.';
   } else if (jenis === 'mikrofon') {
@@ -84,10 +88,14 @@ export async function renderS91({ param = {} } = {}) {
         }
       } catch (_) {}
 
+      const paramBalik = {};
+      if (param.unit) paramBalik.unit = param.unit;
+      if (param.blok) paramBalik.blok = param.blok;
+
       if (asal && asal !== 'S-91') {
-        arahKe(asal, param.unit ? { unit: param.unit } : {});
+        arahKe(asal, paramBalik);
       } else {
-        arahKe(tujuan, param.unit ? { unit: param.unit } : {});
+        arahKe(tujuan, paramBalik);
       }
     });
   }

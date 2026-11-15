@@ -1,0 +1,79 @@
+{
+  "versi": "2026-11-15",
+  "unit": [
+    {
+      "id": "U1",
+      "judul_ar": "التَّعَارُفُ",
+      "judul_id": "Perkenalan",
+      "blok": [
+        "U1-BA",
+        "U1-BB",
+        "U1-BC",
+        "U1-BD"
+      ],
+      "berkas_blok": {
+        "U1-BA": "u1/blok-a.json",
+        "U1-BB": "u1/blok-b.json",
+        "U1-BC": "u1/blok-c.json",
+        "U1-BD": "u1/blok-d.json"
+      },
+      "muhimmah": "u1/muhimmah.json",
+      "ringkasan": {
+        "pasangan": 17,
+        "blok": 4,
+        "blok_wajib": 4,
+        "dialog": 21,
+        "l1": 37,
+        "l2": 20,
+        "l3": 11,
+        "aset_audio": 58
+      },
+      "ringkasan_blok": {
+        "U1-BA": {
+          "pasangan": 6,
+          "dialog": 4,
+          "l1": 12,
+          "l2": 5,
+          "l3": 3,
+          "aset_audio": 14,
+          "wajib": true
+        },
+        "U1-BB": {
+          "pasangan": 4,
+          "dialog": 6,
+          "l1": 8,
+          "l2": 7,
+          "l3": 3,
+          "aset_audio": 15,
+          "wajib": true
+        },
+        "U1-BC": {
+          "pasangan": 3,
+          "dialog": 5,
+          "l1": 10,
+          "l2": 4,
+          "l3": 2,
+          "aset_audio": 18,
+          "wajib": true
+        },
+        "U1-BD": {
+          "pasangan": 4,
+          "dialog": 6,
+          "l1": 7,
+          "l2": 4,
+          "l3": 3,
+          "aset_audio": 11,
+          "wajib": true
+        }
+      }
+    }
+  ],
+  "ringkasan": {
+    "pasangan": 229,
+    "blok": 30,
+    "blok_wajib": 29,
+    "l1": 737,
+    "l2": 484,
+    "l3": 121
+  }
+}

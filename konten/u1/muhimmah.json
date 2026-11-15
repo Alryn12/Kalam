@@ -1,0 +1,261 @@
+{
+  "unit": "U1",
+  "judul": "Siswa Baru di Halaman Madrasah",
+  "judul_ar": "التَّعَارُفُ",
+  "peran": {
+    "guru": "Guru",
+    "siswa": "Siswa"
+  },
+  "sesi3": {
+    "blok_sumber": [
+      "U1-BB",
+      "U1-BC"
+    ],
+    "rangkaian": [
+      {
+        "urutan": 1,
+        "id_kartu": "U1-L3-04",
+        "opsi_kartu": null,
+        "kartu": "Kabar",
+        "nomor_urut": 4,
+        "prasyarat": null,
+        "pilih_satu": null
+      },
+      {
+        "urutan": 2,
+        "id_kartu": "U1-L3-05",
+        "opsi_kartu": null,
+        "kartu": "Nama",
+        "nomor_urut": 5,
+        "prasyarat": null,
+        "pilih_satu": null
+      },
+      {
+        "urutan": 3,
+        "id_kartu": "U1-L3-06",
+        "opsi_kartu": null,
+        "kartu": "Asal",
+        "nomor_urut": 6,
+        "prasyarat": null,
+        "pilih_satu": null
+      },
+      {
+        "urutan": 4,
+        "id_kartu": "U1-L3-07",
+        "opsi_kartu": [
+          "U1-L3-07",
+          "U1-L3-08"
+        ],
+        "kartu": "Perkenalkan Teman (laki-laki atau perempuan sesuai ikon teman)",
+        "nomor_urut": 7,
+        "prasyarat": null,
+        "pilih_satu": "teman"
+      }
+    ],
+    "putaran": [
+      {
+        "no": 1,
+        "petunjuk": "penuh",
+        "penghitung": false
+      },
+      {
+        "no": 2,
+        "petunjuk": "tersembunyi_bisa_dibuka",
+        "penghitung": false
+      },
+      {
+        "no": 3,
+        "petunjuk": "tersembunyi",
+        "penghitung": "santai"
+      }
+    ]
+  },
+  "langkah": [
+    {
+      "id": "U1-M1",
+      "instruksi": "Beri salam kepada gurumu.",
+      "arab": "اَلسَّلَامُ عَلَيْكُمْ",
+      "alat_bantu": "Ikon guru berdiri menyambut di depan kelas.",
+      "kartu_acuan": [
+        "U1-L3-01"
+      ],
+      "acak": false,
+      "bentuk_ikut": null
+    },
+    {
+      "id": "U1-M2",
+      "instruksi": "Tanyakan kabar gurumu.",
+      "arab": {
+        "putra": "كَيْفَ حَالُكَ؟",
+        "putri": "كَيْفَ حَالُكِ؟"
+      },
+      "alat_bantu": "Ikon guru dengan gelembung ucapan berisi wajah tersenyum.",
+      "kartu_acuan": [
+        "U1-L3-04"
+      ],
+      "acak": false,
+      "bentuk_ikut": "bentuk_sapaan_guru"
+    },
+    {
+      "id": "U1-M3",
+      "instruksi": "Gurumu menanyakan nama dan asalmu. Jawablah.",
+      "arab": "اِسْمِي …، أَنَا مِنْ …",
+      "alat_bantu": "Ikon guru dengan dua gelembung: kartu nama dan penanda lokasi.",
+      "kartu_acuan": [
+        "U1-L3-05",
+        "U1-L3-06"
+      ],
+      "acak": false,
+      "bentuk_ikut": null
+    },
+    {
+      "id": "U1-M4",
+      "instruksi": "Gurumu memperkenalkan seseorang kepadamu. Sambutlah.",
+      "arab": {
+        "putra": "أَهْلًا بِكَ",
+        "putri": "أَهْلًا بِكِ"
+      },
+      "alat_bantu": "Ikon guru bersama ikon orang yang diperkenalkan (laki-laki atau perempuan).",
+      "kartu_acuan": [
+        "U1-L3-07",
+        "U1-L3-08"
+      ],
+      "acak": false,
+      "bentuk_ikut": "ikon_orang_diperkenalkan"
+    },
+    {
+      "id": "U1-M5",
+      "instruksi": "Bila kamu belum jelas mendengar ucapan gurumu, kamu boleh meminta gurumu mengulanginya.",
+      "arab": {
+        "putra": "أَعِدْ مِنْ فَضْلِكَ",
+        "putri": "أَعِيدِي مِنْ فَضْلِكِ"
+      },
+      "alat_bantu": "Ikon guru dengan garis gelombang suara yang rapat.",
+      "kartu_acuan": [
+        "U1-P16"
+      ],
+      "acak": false,
+      "bentuk_ikut": "bentuk_sapaan_guru"
+    },
+    {
+      "id": "U1-M6",
+      "instruksi": "Tutup percakapan dengan berpamitan.",
+      "arab": "إِلَى اللِّقَاءِ",
+      "alat_bantu": "Ikon siswa membawa tas, hendak pulang.",
+      "kartu_acuan": [
+        "U1-L3-11"
+      ],
+      "acak": false,
+      "bentuk_ikut": null
+    }
+  ],
+  "skrip_guru": [
+    {
+      "id": "U1-M1",
+      "jenis": "tetap",
+      "ucapan_guru": "وَعَلَيْكُمُ السَّلَامُ",
+      "catatan_ucapan_id": null,
+      "acuan": "اَلسَّلَامُ عَلَيْكُمْ",
+      "catatan_acuan_id": "siswa membuka dengan salam",
+      "berdampingan": null,
+      "keterangan_berdampingan_id": "sama untuk semua",
+      "gambar": "Guru dan siswa bertemu di depan kelas."
+    },
+    {
+      "id": "U1-M2",
+      "jenis": "tetap",
+      "ucapan_guru": "بِخَيْرٍ، الْحَمْدُ لِلَّهِ",
+      "catatan_ucapan_id": null,
+      "acuan": {
+        "putra": "كَيْفَ حَالُكَ؟",
+        "putri": "كَيْفَ حَالُكِ؟"
+      },
+      "catatan_acuan_id": "bentuk menurut guru",
+      "berdampingan": {
+        "putra": "كَيْفَ حَالُكَ؟",
+        "putri": "كَيْفَ حَالُكِ؟"
+      },
+      "keterangan_berdampingan_id": "ucapan guru sama; acuan siswa: guru laki-laki / guru perempuan",
+      "gambar": "Gelembung ucapan berisi wajah tersenyum."
+    },
+    {
+      "id": "U1-M3",
+      "jenis": "tetap",
+      "ucapan_guru": "مَا اسْمُكَ؟ مِنْ أَيْنَ أَنْتَ؟",
+      "catatan_ucapan_id": null,
+      "acuan": "اِسْمِي …، أَنَا مِنْ …",
+      "catatan_acuan_id": null,
+      "berdampingan": {
+        "putra": "مَا اسْمُكَ؟ مِنْ أَيْنَ أَنْتَ؟",
+        "putri": "مَا اسْمُكِ؟ مِنْ أَيْنَ أَنْتِ؟"
+      },
+      "keterangan_berdampingan_id": "menurut siswa (siswa laki-laki / siswi)",
+      "gambar": "Kartu nama dan penanda lokasi."
+    },
+    {
+      "id": "U1-M4",
+      "jenis": "tetap",
+      "ucapan_guru": {
+        "putra": "هَذَا … صَدِيقِي",
+        "putri": "هَذِهِ … صَدِيقَتِي"
+      },
+      "catatan_ucapan_id": null,
+      "acuan": {
+        "putra": "أَهْلًا بِكَ",
+        "putri": "أَهْلًا بِكِ"
+      },
+      "catatan_acuan_id": null,
+      "berdampingan": {
+        "putra": {
+          "ucapan_guru": "هَذَا … صَدِيقِي",
+          "acuan": "أَهْلًا بِكَ"
+        },
+        "putri": {
+          "ucapan_guru": "هَذِهِ … صَدِيقَتِي",
+          "acuan": "أَهْلًا بِكِ"
+        }
+      },
+      "keterangan_berdampingan_id": "menurut orang yang diperkenalkan (orang laki-laki / orang perempuan)",
+      "gambar": "Dua orang saling berkenalan di koridor."
+    },
+    {
+      "id": "U1-M5",
+      "jenis": "tetap",
+      "ucapan_guru": "مَا اسْمُكَ؟ كَيْفَ حَالُكَ؟ مِنْ أَيْنَ أَنْتَ؟",
+      "catatan_ucapan_id": "diucapkan sangat cepat sehingga tidak jelas",
+      "acuan": {
+        "putra": "أَعِدْ مِنْ فَضْلِكَ",
+        "putri": "أَعِيدِي مِنْ فَضْلِكِ"
+      },
+      "catatan_acuan_id": "guru laki-laki · guru perempuan",
+      "berdampingan": {
+        "putra": "مَا اسْمُكَ؟ كَيْفَ حَالُكَ؟ مِنْ أَيْنَ أَنْتَ؟",
+        "putri": "مَا اسْمُكِ؟ كَيْفَ حَالُكِ؟ مِنْ أَيْنَ أَنْتِ؟"
+      },
+      "keterangan_berdampingan_id": "ucapan guru untuk siswa laki-laki / untuk siswi",
+      "gambar": "Garis gelombang suara yang rapat."
+    },
+    {
+      "id": "U1-M6",
+      "jenis": "tetap",
+      "ucapan_guru": "مَعَ السَّلَامَةِ",
+      "catatan_ucapan_id": null,
+      "acuan": "إِلَى اللِّقَاءِ",
+      "catatan_acuan_id": "siswa menutup dengan pamit",
+      "berdampingan": null,
+      "keterangan_berdampingan_id": "sama untuk semua",
+      "gambar": "Gerbang madrasah menjelang pulang."
+    }
+  ],
+  "pilihan_acak": [],
+  "kartu_pilihan_diri": null,
+  "misi_keluarga": null,
+  "catatan_pakai": null,
+  "label_cepat": {
+    "Kalimat penyelamat": [
+      "memakai",
+      "tidak perlu",
+      "tidak memakai"
+    ]
+  }
+}

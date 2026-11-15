@@ -1,0 +1,52 @@
+{
+  "versi": "2026-11-15",
+  "keterangan": "Empat kalimat penyelamat bahasa Arab berharakat penuh (BP-6 S-19, IN-3 pengamatan, dan KEPUTUSAN.md SL-BARU-01: dikenalkan pada awal Unit 1 Sesi 1).",
+  "waktu_pengenalan": "awal_unit_1_sesi_1",
+  "pengantar_id": "Empat kalimat penyelamat. Ketuk untuk mendengar. Kapan pun bingung, kamu boleh memakainya.",
+  "kalimat": [
+    {
+      "id": "PN-01",
+      "urutan": 1,
+      "arab": {
+        "putra": "أَعِدْ مِنْ فَضْلِكَ",
+        "putri": "أَعِيدِي مِنْ فَضْلِكِ"
+      },
+      "arti_id": "Minta diulang",
+      "keterangan_id": "Pakai saat kamu belum jelas mendengar ucapan lawan bicara.",
+      "audio": {
+        "putra": "AUD-PN-01-PA",
+        "putri": "AUD-PN-01-PI"
+      }
+    },
+    {
+      "id": "PN-02",
+      "urutan": 2,
+      "arab": {
+        "putra": "بِبُطْءٍ مِنْ فَضْلِكَ",
+        "putri": "بِبُطْءٍ مِنْ فَضْلِكِ"
+      },
+      "arti_id": "Minta pelan-pelan",
+      "keterangan_id": "Pakai saat lawan bicara mengucapkan kalimat terlalu cepat.",
+      "audio": {
+        "putra": "AUD-PN-02-PA",
+        "putri": "AUD-PN-02-PI"
+      }
+    },
+    {
+      "id": "PN-03",
+      "urutan": 3,
+      "arab": "لَا أَفْهَمُ",
+      "arti_id": "Aku belum paham",
+      "keterangan_id": "Pakai saat kamu belum memahami maksud pertanyaan.",
+      "audio": "AUD-PN-03"
+    },
+    {
+      "id": "PN-04",
+      "urutan": 4,
+      "arab": "مَا مَعْنَى …؟",
+      "arti_id": "Menanyakan arti",
+      "keterangan_id": "Pakai saat kamu ingin menanyakan arti satu kata.",
+      "audio": "AUD-PN-04"
+    }
+  ]
+}

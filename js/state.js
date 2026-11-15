@@ -120,8 +120,8 @@ export async function perbaruiStatusServer(statusBaru) {
 /**
  * Pemuat berkas JSON dari folder konten/ dengan cache memori (FR-080)
  */
-export async function muatKontenJson(jalur) {
-  if (stateAplikasi.cache_konten[jalur]) {
+export async function muatKontenJson(jalur, { paksa = false } = {}) {
+  if (!paksa && stateAplikasi.cache_konten[jalur]) {
     return stateAplikasi.cache_konten[jalur];
   }
   const resp = await fetch(jalur, { cache: 'no-cache' });
@@ -131,6 +131,17 @@ export async function muatKontenJson(jalur) {
   const data = await resp.json();
   stateAplikasi.cache_konten[jalur] = data;
   return data;
+}
+
+/**
+ * Menghapus entri cache konten tertentu (misalnya saat validasi konten tidak cocok)
+ */
+export function hapusCacheKonten(jalur) {
+  if (jalur) {
+    delete stateAplikasi.cache_konten[jalur];
+  } else {
+    stateAplikasi.cache_konten = {};
+  }
 }
 
 /**

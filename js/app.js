@@ -13,6 +13,12 @@ import {
 } from './state.js';
 import { prosesAntreanLatar } from './api.js';
 import {
+  ambilBlokDariCache,
+  ambilMuhimmahDariCache,
+  muatBlokKonten,
+  muatMuhimmahUnit
+} from './pemuat-konten.js';
+import {
   DAFTAR_ID_LAYAR_SISWA,
   SEMUA_ID_LAYAR_APLIKASI,
   daftarkanLayar,
@@ -20,7 +26,7 @@ import {
   mulaiRouter,
   arahKe
 } from './router.js';
-import { ambilKemajuanTahap0 } from './layar/tahap0-bantu.js';
+import { ambilKemajuanTahap0, escapeHtml } from './layar/tahap0-bantu.js';
 import { renderS01 } from './layar/s01-masuk.js';
 import { renderS02 } from './layar/s02-beranda.js';
 import { renderS03 } from './layar/s03-isi-unit.js';
@@ -115,16 +121,68 @@ function ambilJudulLayar(idLayar) {
 }
 
 /**
- * Merender satu layar kosong (judul saja) untuk setiap layar S-xx sesuai TB-M1-01
+ * Merender satu layar kosong (judul saja) untuk setiap layar S-xx sesuai TB-M1-01,
+ * ditambah ringkasan konten termuat untuk S-20, S-30, dan S-40 (TB-M1-08)
  */
-function renderLayarKosong({ idLayar }) {
+async function renderLayarKosong({ idLayar, param = {} }) {
   const wadah = document.getElementById('akar-aplikasi');
   if (!wadah) return;
 
+  const state = ambilState();
   const terdaftar = SEMUA_ID_LAYAR_APLIKASI.includes(idLayar);
   const kodeTampil = terdaftar ? idLayar : 'S-01';
   const judulLayar = ambilJudulLayar(kodeTampil);
   const sublabelBp1 = NAMA_RINGKAS_BP1[kodeTampil] || '';
+
+  let ringkasanKontenHtml = '';
+  if (kodeTampil === 'S-20' || kodeTampil === 'S-30') {
+    const unitTarget = (param && param.unit) || state.unit_aktif || 'U1';
+    const blokTarget = (param && param.blok) || (param && param.unit ? '' : state.blok_aktif);
+    let blokData = blokTarget ? ambilBlokDariCache(blokTarget, unitTarget) : null;
+    if (!blokData && param && param.blok) {
+      blokData = await muatBlokKonten(param.blok, {
+        arahkanKeS91: true,
+        asal: 'S-03',
+        tujuan: 'S-03',
+        unit: unitTarget
+      });
+      if (!blokData) return;
+    }
+    if (blokData) {
+      const dialogPertama = Array.isArray(blokData.dialog) && blokData.dialog[0];
+      ringkasanKontenHtml = `
+        <section class="kartu" aria-label="Ringkasan materi blok">
+          <p class="teks-keterangan" style="margin: 0;">${escapeHtml(blokData.id)} · ${escapeHtml(blokData.judul_id)}</p>
+          <p class="teks-instruksi" style="margin: var(--jarak-2) 0 0 0;">
+            Materi siap: ${blokData.pasangan.length} pasangan · ${blokData.dialog.length} giliran dialog · ${blokData.l1.length} L1 · ${blokData.l2.length} L2 · ${blokData.l3.length} L3
+          </p>
+          ${dialogPertama ? `<p class="teks-arab" lang="ar" dir="rtl" style="margin: var(--jarak-2) 0 0 0;">${escapeHtml(dialogPertama.arab)}</p>` : ''}
+        </section>
+      `;
+    }
+  } else if (kodeTampil === 'S-40') {
+    const unitTarget = (param && param.unit) || state.unit_aktif || 'U1';
+    let muhimmahData = ambilMuhimmahDariCache(unitTarget);
+    if (!muhimmahData && param && param.unit) {
+      muhimmahData = await muatMuhimmahUnit(unitTarget, {
+        arahkanKeS91: true,
+        asal: 'S-03',
+        tujuan: 'S-03',
+        unit: unitTarget
+      });
+      if (!muhimmahData) return;
+    }
+    if (muhimmahData) {
+      ringkasanKontenHtml = `
+        <section class="kartu" aria-label="Ringkasan Muhimmah">
+          <p class="teks-keterangan" style="margin: 0;">${escapeHtml(muhimmahData.unit)} · ${escapeHtml(muhimmahData.judul)}</p>
+          <p class="teks-instruksi" style="margin: var(--jarak-2) 0 0 0;">
+            Sesi 3 siap: ${muhimmahData.sesi3.rangkaian.length} kartu rangkaian · ${muhimmahData.langkah.length} langkah misi
+          </p>
+        </section>
+      `;
+    }
+  }
 
   const indeksSekarang = DAFTAR_ID_LAYAR_SISWA.indexOf(kodeTampil);
   const idSebelum =
@@ -153,6 +211,8 @@ function renderLayarKosong({ idLayar }) {
       </div>
       <h1 id="judul-utama-layar" class="judul-layar">${judulLayar}</h1>
     </section>
+
+    ${ringkasanKontenHtml}
 
     <nav class="kartu" aria-label="Navigasi kerangka layar S-xx">
       <div class="kelompok-input">

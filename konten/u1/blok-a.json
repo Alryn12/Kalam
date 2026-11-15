@@ -1,0 +1,756 @@
+{
+  "id": "U1-BA",
+  "unit": "U1",
+  "judul_id": "Salam dan Sapaan Waktu",
+  "judul_ar": "التَّعَارُفُ",
+  "wajib": true,
+  "urutan": 1,
+  "paruh": null,
+  "pasangan": [
+    {
+      "id": "U1-P01",
+      "fungsi": "Memberi salam",
+      "tanya": "اَلسَّلَامُ عَلَيْكُمْ",
+      "jawab": "وَعَلَيْكُمُ السَّلَامُ",
+      "versi": null
+    },
+    {
+      "id": "U1-P02",
+      "fungsi": "Sapaan pagi",
+      "tanya": "صَبَاحَ الْخَيْرِ",
+      "jawab": "صَبَاحَ النُّورِ",
+      "versi": null
+    },
+    {
+      "id": "U1-P03",
+      "fungsi": "Sapaan sore",
+      "tanya": "مَسَاءَ الْخَيْرِ",
+      "jawab": "مَسَاءَ النُّورِ",
+      "versi": null
+    },
+    {
+      "id": "U1-P04",
+      "fungsi": "Sapaan siang",
+      "tanya": "نَهَارُكَ سَعِيدٌ",
+      "jawab": "سَعِيدٌ مُبَارَكٌ",
+      "versi": {
+        "tanya": {
+          "putra": "نَهَارُكَ سَعِيدٌ",
+          "putri": "نَهَارُكِ سَعِيدٌ"
+        }
+      }
+    },
+    {
+      "id": "U1-P05",
+      "fungsi": "Sapaan malam",
+      "tanya": "لَيْلَتُكَ سَعِيدَةٌ",
+      "jawab": "لَيْلَةٌ مُبَارَكَةٌ",
+      "versi": {
+        "tanya": {
+          "putra": "لَيْلَتُكَ سَعِيدَةٌ",
+          "putri": "لَيْلَتُكِ سَعِيدَةٌ"
+        }
+      }
+    },
+    {
+      "id": "U1-P06",
+      "fungsi": "Menyambut",
+      "tanya": "أَهْلًا وَسَهْلًا",
+      "jawab": "أَهْلًا بِكْ",
+      "versi": null
+    }
+  ],
+  "dialog": [
+    {
+      "id": "U1-BA-D1",
+      "penutur": "أَحْمَدُ",
+      "arab": "اَلسَّلَامُ عَلَيْكُمْ.",
+      "adegan": "Ahmad berdiri di gerbang madrasah pada pagi hari dan melambaikan tangan sambil memberi salam kepada Khalid yang baru datang.",
+      "gambar": "gambar/U1-BA-D1.webp",
+      "audio": "AUD-U1-L1-001"
+    },
+    {
+      "id": "U1-BA-D2",
+      "penutur": "خَالِدٌ",
+      "arab": "وَعَلَيْكُمُ السَّلَامُ. صَبَاحَ الْخَيْرِ.",
+      "adegan": "Khalid tersenyum membalas salam Ahmad di gerbang madrasah yang disinari matahari pagi.",
+      "gambar": "gambar/U1-BA-D2.webp",
+      "audio": [
+        "AUD-U1-L1-002",
+        "AUD-U1-L1-003"
+      ]
+    },
+    {
+      "id": "U1-BA-D3",
+      "penutur": "أَحْمَدُ",
+      "arab": "صَبَاحَ النُّورِ. أَهْلًا وَسَهْلًا.",
+      "adegan": "Ahmad membalas sapaan pagi dan menyambut Khalid dengan tangan terbuka di halaman madrasah.",
+      "gambar": "gambar/U1-BA-D3.webp",
+      "audio": [
+        "AUD-U1-L1-004",
+        "AUD-U1-L1-011"
+      ]
+    },
+    {
+      "id": "U1-BA-D4",
+      "penutur": "خَالِدٌ",
+      "arab": "أَهْلًا بِكْ.",
+      "adegan": "Khalid menjabat tangan Ahmad sambil tersenyum lebar di halaman madrasah.",
+      "gambar": "gambar/U1-BA-D4.webp",
+      "audio": "AUD-U1-L1-012"
+    }
+  ],
+  "kata_kunci": [
+    {
+      "frasa": "اَلسَّلَامُ عَلَيْكُمْ",
+      "teks_dibunyikan": [
+        "اَلسَّلَامُ عَلَيْكُمْ",
+        "وَعَلَيْكُمُ السَّلَامُ"
+      ],
+      "dibunyikan": [
+        "AUD-U1-L1-001",
+        "AUD-U1-L1-002"
+      ],
+      "id_pasangan": "U1-P01",
+      "fungsi_id": "Memberi salam"
+    },
+    {
+      "frasa": "صَبَاحَ الْخَيْرِ",
+      "teks_dibunyikan": [
+        "صَبَاحَ الْخَيْرِ",
+        "صَبَاحَ النُّورِ"
+      ],
+      "dibunyikan": [
+        "AUD-U1-L1-003",
+        "AUD-U1-L1-004"
+      ],
+      "id_pasangan": "U1-P02",
+      "fungsi_id": "Sapaan pagi"
+    },
+    {
+      "frasa": "مَسَاءَ الْخَيْرِ",
+      "teks_dibunyikan": [
+        "مَسَاءَ الْخَيْرِ",
+        "مَسَاءَ النُّورِ"
+      ],
+      "dibunyikan": [
+        "AUD-U1-L1-005",
+        "AUD-U1-L1-006"
+      ],
+      "id_pasangan": "U1-P03",
+      "fungsi_id": "Sapaan sore"
+    },
+    {
+      "frasa": {
+        "putra": "نَهَارُكَ سَعِيدٌ",
+        "putri": "نَهَارُكِ سَعِيدٌ"
+      },
+      "teks_dibunyikan": [
+        {
+          "putra": "نَهَارُكَ سَعِيدٌ",
+          "putri": "نَهَارُكِ سَعِيدٌ"
+        },
+        "سَعِيدٌ مُبَارَكٌ"
+      ],
+      "dibunyikan": {
+        "putra": [
+          "AUD-U1-L1-007",
+          "AUD-U1-L1-008"
+        ],
+        "putri": [
+          "AUD-U1-P04-P",
+          "AUD-U1-L1-008"
+        ]
+      },
+      "id_pasangan": "U1-P04",
+      "fungsi_id": "Sapaan siang"
+    },
+    {
+      "frasa": {
+        "putra": "لَيْلَتُكَ سَعِيدَةٌ",
+        "putri": "لَيْلَتُكِ سَعِيدَةٌ"
+      },
+      "teks_dibunyikan": [
+        {
+          "putra": "لَيْلَتُكَ سَعِيدَةٌ",
+          "putri": "لَيْلَتُكِ سَعِيدَةٌ"
+        },
+        "لَيْلَةٌ مُبَارَكَةٌ"
+      ],
+      "dibunyikan": {
+        "putra": [
+          "AUD-U1-L1-009",
+          "AUD-U1-L1-010"
+        ],
+        "putri": [
+          "AUD-U1-P05-P",
+          "AUD-U1-L1-010"
+        ]
+      },
+      "id_pasangan": "U1-P05",
+      "fungsi_id": "Sapaan malam"
+    },
+    {
+      "frasa": "أَهْلًا وَسَهْلًا",
+      "teks_dibunyikan": [
+        "أَهْلًا وَسَهْلًا",
+        "أَهْلًا بِكْ"
+      ],
+      "dibunyikan": [
+        "AUD-U1-L1-011",
+        "AUD-U1-L1-012"
+      ],
+      "id_pasangan": "U1-P06",
+      "fungsi_id": "Menyambut"
+    }
+  ],
+  "pemanasan": [
+    "AUD-U1-L1-001",
+    "AUD-U1-L1-002",
+    "AUD-U1-L1-003",
+    "AUD-U1-L1-004",
+    "AUD-U1-L1-005",
+    "AUD-U1-L1-006",
+    "AUD-U1-L1-007",
+    "AUD-U1-P04-P",
+    "AUD-U1-L1-008",
+    "AUD-U1-L1-009",
+    "AUD-U1-P05-P",
+    "AUD-U1-L1-010",
+    "AUD-U1-L1-011",
+    "AUD-U1-L1-012"
+  ],
+  "tiru": [
+    {
+      "no": 1,
+      "arab": "اَلسَّلَامُ عَلَيْكُمْ",
+      "id_pasangan": "U1-P01",
+      "audio": "AUD-U1-L1-001"
+    },
+    {
+      "no": 2,
+      "arab": "وَعَلَيْكُمُ السَّلَامُ",
+      "id_pasangan": "U1-P01",
+      "audio": "AUD-U1-L1-002"
+    },
+    {
+      "no": 3,
+      "arab": "صَبَاحَ الْخَيْرِ",
+      "id_pasangan": "U1-P02",
+      "audio": "AUD-U1-L1-003"
+    },
+    {
+      "no": 4,
+      "arab": "صَبَاحَ النُّورِ",
+      "id_pasangan": "U1-P02",
+      "audio": "AUD-U1-L1-004"
+    },
+    {
+      "no": 5,
+      "arab": "مَسَاءَ الْخَيْرِ",
+      "id_pasangan": "U1-P03",
+      "audio": "AUD-U1-L1-005"
+    },
+    {
+      "no": 6,
+      "arab": "مَسَاءَ النُّورِ",
+      "id_pasangan": "U1-P03",
+      "audio": "AUD-U1-L1-006"
+    },
+    {
+      "no": 7,
+      "arab": {
+        "putra": "نَهَارُكَ سَعِيدٌ",
+        "putri": "نَهَارُكِ سَعِيدٌ"
+      },
+      "id_pasangan": "U1-P04",
+      "audio": {
+        "putra": "AUD-U1-L1-007",
+        "putri": "AUD-U1-P04-P"
+      }
+    },
+    {
+      "no": 8,
+      "arab": "سَعِيدٌ مُبَارَكٌ",
+      "id_pasangan": "U1-P04",
+      "audio": "AUD-U1-L1-008"
+    },
+    {
+      "no": 9,
+      "arab": {
+        "putra": "لَيْلَتُكَ سَعِيدَةٌ",
+        "putri": "لَيْلَتُكِ سَعِيدَةٌ"
+      },
+      "id_pasangan": "U1-P05",
+      "audio": {
+        "putra": "AUD-U1-L1-009",
+        "putri": "AUD-U1-P05-P"
+      }
+    },
+    {
+      "no": 10,
+      "arab": "لَيْلَةٌ مُبَارَكَةٌ",
+      "id_pasangan": "U1-P05",
+      "audio": "AUD-U1-L1-010"
+    },
+    {
+      "no": 11,
+      "arab": "أَهْلًا وَسَهْلًا",
+      "id_pasangan": "U1-P06",
+      "audio": "AUD-U1-L1-011"
+    },
+    {
+      "no": 12,
+      "arab": "أَهْلًا بِكْ",
+      "id_pasangan": "U1-P06",
+      "audio": "AUD-U1-L1-012"
+    }
+  ],
+  "l1": [
+    {
+      "id": "U1-L1-001",
+      "arab": "اَلسَّلَامُ عَلَيْكُمْ",
+      "id_pasangan": "U1-P01",
+      "kata_wajib": [
+        "السلام",
+        "عليكم"
+      ],
+      "audio": "AUD-U1-L1-001",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L1-002",
+      "arab": "وَعَلَيْكُمُ السَّلَامُ",
+      "id_pasangan": "U1-P01",
+      "kata_wajib": [
+        "عليكم",
+        "السلام"
+      ],
+      "audio": "AUD-U1-L1-002",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L1-003",
+      "arab": "صَبَاحَ الْخَيْرِ",
+      "id_pasangan": "U1-P02",
+      "kata_wajib": [
+        "صباح",
+        "خير"
+      ],
+      "audio": "AUD-U1-L1-003",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L1-004",
+      "arab": "صَبَاحَ النُّورِ",
+      "id_pasangan": "U1-P02",
+      "kata_wajib": [
+        "صباح",
+        "نور"
+      ],
+      "audio": "AUD-U1-L1-004",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L1-005",
+      "arab": "مَسَاءَ الْخَيْرِ",
+      "id_pasangan": "U1-P03",
+      "kata_wajib": [
+        "مساء",
+        "خير"
+      ],
+      "audio": "AUD-U1-L1-005",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L1-006",
+      "arab": "مَسَاءَ النُّورِ",
+      "id_pasangan": "U1-P03",
+      "kata_wajib": [
+        "مساء",
+        "نور"
+      ],
+      "audio": "AUD-U1-L1-006",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L1-007",
+      "arab": "نَهَارُكَ سَعِيدٌ",
+      "id_pasangan": "U1-P04",
+      "kata_wajib": [
+        "نهار",
+        "سعيد"
+      ],
+      "audio": "AUD-U1-L1-007",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L1-008",
+      "arab": "سَعِيدٌ مُبَارَكٌ",
+      "id_pasangan": "U1-P04",
+      "kata_wajib": [
+        "سعيد",
+        "مبارك"
+      ],
+      "audio": "AUD-U1-L1-008",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L1-009",
+      "arab": "لَيْلَتُكَ سَعِيدَةٌ",
+      "id_pasangan": "U1-P05",
+      "kata_wajib": [
+        "ليلتك",
+        "سعيدة"
+      ],
+      "audio": "AUD-U1-L1-009",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L1-010",
+      "arab": "لَيْلَةٌ مُبَارَكَةٌ",
+      "id_pasangan": "U1-P05",
+      "kata_wajib": [
+        "ليلة",
+        "مباركة"
+      ],
+      "audio": "AUD-U1-L1-010",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L1-011",
+      "arab": "أَهْلًا وَسَهْلًا",
+      "id_pasangan": "U1-P06",
+      "kata_wajib": [
+        "اهلا",
+        "سهلا"
+      ],
+      "audio": "AUD-U1-L1-011",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L1-012",
+      "arab": "أَهْلًا بِكْ",
+      "id_pasangan": "U1-P06",
+      "kata_wajib": [
+        "اهلا",
+        "بك"
+      ],
+      "audio": "AUD-U1-L1-012",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    }
+  ],
+  "l2": [
+    {
+      "id": "U1-L2-001",
+      "jenis": "dengar-jawab",
+      "jenis_sumber": "dengar-jawab",
+      "audio_prompt": "AUD-U1-L1-001",
+      "teks_prompt_arab": "اَلسَّلَامُ عَلَيْكُمْ",
+      "catatan_prompt_id": null,
+      "gambar": null,
+      "instruksi": "Jawab salamnya!",
+      "diterima": [
+        "وَعَلَيْكُمُ السَّلَامُ"
+      ],
+      "model": {
+        "arab": "وَعَلَيْكُمُ السَّلَامُ",
+        "audio": "AUD-U1-L1-002"
+      },
+      "bentuk_ikut": null,
+      "id_pasangan": "U1-P01",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L2-002",
+      "jenis": "dengar-jawab",
+      "jenis_sumber": "dengar-jawab",
+      "audio_prompt": "AUD-U1-L1-003",
+      "teks_prompt_arab": "صَبَاحَ الْخَيْرِ",
+      "catatan_prompt_id": null,
+      "gambar": null,
+      "instruksi": "Jawab sapaannya!",
+      "diterima": [
+        "صَبَاحَ النُّورِ"
+      ],
+      "model": {
+        "arab": "صَبَاحَ النُّورِ",
+        "audio": "AUD-U1-L1-004"
+      },
+      "bentuk_ikut": null,
+      "id_pasangan": "U1-P02",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L2-003",
+      "jenis": "dengar-jawab",
+      "jenis_sumber": "dengar-jawab",
+      "audio_prompt": "AUD-U1-L1-005",
+      "teks_prompt_arab": "مَسَاءَ الْخَيْرِ",
+      "catatan_prompt_id": null,
+      "gambar": null,
+      "instruksi": "Jawab sapaannya!",
+      "diterima": [
+        "مَسَاءَ النُّورِ"
+      ],
+      "model": {
+        "arab": "مَسَاءَ النُّورِ",
+        "audio": "AUD-U1-L1-006"
+      },
+      "bentuk_ikut": null,
+      "id_pasangan": "U1-P03",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L2-004",
+      "jenis": "dengar-jawab",
+      "jenis_sumber": "dengar-jawab",
+      "audio_prompt": "AUD-U1-L1-011",
+      "teks_prompt_arab": "أَهْلًا وَسَهْلًا",
+      "catatan_prompt_id": null,
+      "gambar": null,
+      "instruksi": "Jawab sambutannya!",
+      "diterima": [
+        "أَهْلًا بِكْ"
+      ],
+      "model": {
+        "arab": "أَهْلًا بِكْ",
+        "audio": "AUD-U1-L1-012"
+      },
+      "bentuk_ikut": null,
+      "id_pasangan": "U1-P06",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L2-005",
+      "jenis": "situasi",
+      "jenis_sumber": "dengar-jawab",
+      "audio_prompt": null,
+      "teks_prompt_arab": null,
+      "catatan_prompt_id": null,
+      "gambar": "gambar/U1-L2-005.webp",
+      "instruksi": "Gambar: jam 1 siang, kamu bertemu gurumu. Ucapkan sapaan yang tepat!",
+      "diterima": [
+        "نَهَارُكَ سَعِيدٌ",
+        "نَهَارُكِ سَعِيدٌ",
+        "اَلسَّلَامُ عَلَيْكُمْ"
+      ],
+      "model": {
+        "arab": {
+          "putra": "نَهَارُكَ سَعِيدٌ",
+          "putri": "نَهَارُكِ سَعِيدٌ"
+        },
+        "audio": {
+          "putra": "AUD-U1-L1-007",
+          "putri": "AUD-U1-P04-P"
+        }
+      },
+      "bentuk_ikut": "bentuk_sapaan_guru",
+      "id_pasangan": "U1-P04",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    }
+  ],
+  "l3": [
+    {
+      "id": "U1-L3-01",
+      "fungsi": "Salam",
+      "instruksi": "Kamu yang memulai: ucapkan salam. Lalu jawablah salam itu.",
+      "slot1": {
+        "model": "اَلسَّلَامُ عَلَيْكُمْ",
+        "kata_wajib": [
+          "السلام",
+          "عليكم"
+        ],
+        "audio": "AUD-U1-L1-001"
+      },
+      "slot2": {
+        "model": "وَعَلَيْكُمُ السَّلَامُ",
+        "kata_wajib": [
+          "عليكم",
+          "السلام"
+        ],
+        "audio": "AUD-U1-L1-002"
+      },
+      "respons_awal": null,
+      "nomor_urut": 1,
+      "prasyarat": null,
+      "pilih_satu": null,
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null,
+      "pola_giliran": "satu_putaran",
+      "giliran": null
+    },
+    {
+      "id": "U1-L3-02",
+      "fungsi": "Sapaan Pagi",
+      "instruksi": "Kamu yang memulai: ucapkan sapaan pagi. Lalu jawablah sapaan itu.",
+      "slot1": {
+        "model": "صَبَاحَ الْخَيْرِ",
+        "kata_wajib": [
+          "صباح",
+          "خير"
+        ],
+        "audio": "AUD-U1-L1-003"
+      },
+      "slot2": {
+        "model": "صَبَاحَ النُّورِ",
+        "kata_wajib": [
+          "صباح",
+          "نور"
+        ],
+        "audio": "AUD-U1-L1-004"
+      },
+      "respons_awal": null,
+      "nomor_urut": 2,
+      "prasyarat": null,
+      "pilih_satu": null,
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null,
+      "pola_giliran": "satu_putaran",
+      "giliran": null
+    },
+    {
+      "id": "U1-L3-03",
+      "fungsi": "Sambutan",
+      "instruksi": "Kamu yang memulai: sambutlah temanmu. Lalu jawablah sambutan itu.",
+      "slot1": {
+        "model": "أَهْلًا وَسَهْلًا",
+        "kata_wajib": [
+          "اهلا",
+          "سهلا"
+        ],
+        "audio": "AUD-U1-L1-011"
+      },
+      "slot2": {
+        "model": "أَهْلًا بِكْ",
+        "kata_wajib": [
+          "اهلا",
+          "بك"
+        ],
+        "audio": "AUD-U1-L1-012"
+      },
+      "respons_awal": null,
+      "nomor_urut": 3,
+      "prasyarat": null,
+      "pilih_satu": null,
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null,
+      "pola_giliran": "satu_putaran",
+      "giliran": null
+    }
+  ],
+  "aku_bisa": {
+    "id": "AB-U1-BA",
+    "teks": "Aku bisa memberi salam dan sapaan sesuai waktu.",
+    "wajib": true
+  },
+  "aset_audio": [
+    {
+      "id": "AUD-U1-L1-001",
+      "teks": "اَلسَّلَامُ عَلَيْكُمْ",
+      "penutur": "netral"
+    },
+    {
+      "id": "AUD-U1-L1-002",
+      "teks": "وَعَلَيْكُمُ السَّلَامُ",
+      "penutur": "netral"
+    },
+    {
+      "id": "AUD-U1-L1-003",
+      "teks": "صَبَاحَ الْخَيْرِ",
+      "penutur": "netral"
+    },
+    {
+      "id": "AUD-U1-L1-004",
+      "teks": "صَبَاحَ النُّورِ",
+      "penutur": "netral"
+    },
+    {
+      "id": "AUD-U1-L1-005",
+      "teks": "مَسَاءَ الْخَيْرِ",
+      "penutur": "netral"
+    },
+    {
+      "id": "AUD-U1-L1-006",
+      "teks": "مَسَاءَ النُّورِ",
+      "penutur": "netral"
+    },
+    {
+      "id": "AUD-U1-L1-007",
+      "teks": "نَهَارُكَ سَعِيدٌ",
+      "penutur": "putra"
+    },
+    {
+      "id": "AUD-U1-P04-P",
+      "teks": "نَهَارُكِ سَعِيدٌ",
+      "penutur": "putri"
+    },
+    {
+      "id": "AUD-U1-L1-008",
+      "teks": "سَعِيدٌ مُبَارَكٌ",
+      "penutur": "netral"
+    },
+    {
+      "id": "AUD-U1-L1-009",
+      "teks": "لَيْلَتُكَ سَعِيدَةٌ",
+      "penutur": "putra"
+    },
+    {
+      "id": "AUD-U1-P05-P",
+      "teks": "لَيْلَتُكِ سَعِيدَةٌ",
+      "penutur": "putri"
+    },
+    {
+      "id": "AUD-U1-L1-010",
+      "teks": "لَيْلَةٌ مُبَارَكَةٌ",
+      "penutur": "netral"
+    },
+    {
+      "id": "AUD-U1-L1-011",
+      "teks": "أَهْلًا وَسَهْلًا",
+      "penutur": "netral"
+    },
+    {
+      "id": "AUD-U1-L1-012",
+      "teks": "أَهْلًا بِكْ",
+      "penutur": "netral"
+    }
+  ]
+}

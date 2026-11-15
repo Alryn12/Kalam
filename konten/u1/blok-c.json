@@ -1,0 +1,664 @@
+{
+  "id": "U1-BC",
+  "unit": "U1",
+  "judul_id": "Memperkenalkan Orang Lain",
+  "judul_ar": "التَّعَارُفُ",
+  "wajib": true,
+  "urutan": 3,
+  "paruh": null,
+  "pasangan": [
+    {
+      "id": "U1-P11",
+      "fungsi": "Memperkenalkan teman",
+      "tanya": "هَذَا … صَدِيقِي",
+      "jawab": "أَهْلًا بِكَ",
+      "versi": {
+        "tanya": {
+          "putra": "هَذَا … صَدِيقِي",
+          "putri": "هَذِهِ … صَدِيقَتِي"
+        },
+        "jawab": {
+          "putra": "أَهْلًا بِكَ",
+          "putri": "أَهْلًا بِكِ"
+        }
+      }
+    },
+    {
+      "id": "U1-P12",
+      "fungsi": "Menanyakan nama orang lain",
+      "tanya": "مَا اسْمُهُ؟",
+      "jawab": "اِسْمُهُ …",
+      "versi": {
+        "tanya": {
+          "putra": "مَا اسْمُهُ؟",
+          "putri": "مَا اسْمُهَا؟"
+        },
+        "jawab": {
+          "putra": "اِسْمُهُ …",
+          "putri": "اِسْمُهَا …"
+        }
+      }
+    },
+    {
+      "id": "U1-P13",
+      "fungsi": "Menanyakan asal orang lain",
+      "tanya": "مِنْ أَيْنَ هُوَ؟",
+      "jawab": "هُوَ مِنْ …",
+      "versi": {
+        "tanya": {
+          "putra": "مِنْ أَيْنَ هُوَ؟",
+          "putri": "مِنْ أَيْنَ هِيَ؟"
+        },
+        "jawab": {
+          "putra": "هُوَ مِنْ …",
+          "putri": "هِيَ مِنْ …"
+        }
+      }
+    }
+  ],
+  "dialog": [
+    {
+      "id": "U1-BC-D11",
+      "penutur": "أَحْمَدُ",
+      "arab": "يَا خَالِدُ، هَذَا يُوسُفُ. هُوَ صَدِيقِي.",
+      "adegan": "Ahmad memperkenalkan Yusuf kepada Khalid sambil menunjuk Yusuf yang berdiri di sebelahnya di koridor madrasah.",
+      "gambar": "gambar/U1-BC-D11.webp",
+      "audio": [
+        "AUD-U1-BC-D11-1",
+        "AUD-U1-BC-D11-2"
+      ]
+    },
+    {
+      "id": "U1-BC-D12",
+      "penutur": "خَالِدٌ",
+      "arab": "أَهْلًا بِكَ يَا يُوسُفُ.",
+      "adegan": "Khalid menyambut Yusuf dengan senyum dan menjabat tangannya di koridor madrasah.",
+      "gambar": "gambar/U1-BC-D12.webp",
+      "audio": "AUD-U1-BC-D12"
+    },
+    {
+      "id": "U1-BC-D13",
+      "penutur": "يُوسُفُ",
+      "arab": "أَهْلًا وَسَهْلًا.",
+      "adegan": "Yusuf membalas sambutan dengan ramah sambil mengangguk.",
+      "gambar": "gambar/U1-BC-D13.webp",
+      "audio": "AUD-U1-L1-011"
+    },
+    {
+      "id": "U1-BC-D14",
+      "penutur": "خَالِدٌ",
+      "arab": "مِنْ أَيْنَ هُوَ يَا أَحْمَدُ؟",
+      "adegan": "Khalid menoleh kepada Ahmad dengan wajah penasaran sambil menunjuk Yusuf.",
+      "gambar": "gambar/U1-BC-D14.webp",
+      "audio": "AUD-U1-BC-D14"
+    },
+    {
+      "id": "U1-BC-D15",
+      "penutur": "أَحْمَدُ",
+      "arab": "هُوَ مِنْ سُورَابَايَا. اِسْمُهُ يُوسُفُ.",
+      "adegan": "Ahmad menjelaskan sambil menunjuk Yusuf, dengan gelembung gambar peta kota dan kartu nama.",
+      "gambar": "gambar/U1-BC-D15.webp",
+      "audio": [
+        "AUD-U1-BC-D15-1",
+        "AUD-U1-BC-D15-2"
+      ]
+    }
+  ],
+  "kata_kunci": [
+    {
+      "frasa": {
+        "putra": "هَذَا … صَدِيقِي",
+        "putri": "هَذِهِ … صَدِيقَتِي"
+      },
+      "teks_dibunyikan": [
+        {
+          "putra": "هَذَا … صَدِيقِي",
+          "putri": "هَذِهِ … صَدِيقَتِي"
+        },
+        {
+          "putra": "أَهْلًا بِكَ",
+          "putri": "أَهْلًا بِكِ"
+        }
+      ],
+      "dibunyikan": {
+        "putra": [
+          "AUD-U1-L1-021",
+          "AUD-U1-P11-L"
+        ],
+        "putri": [
+          "AUD-U1-L1-022",
+          "AUD-U1-P11-P"
+        ]
+      },
+      "id_pasangan": "U1-P11",
+      "fungsi_id": "Memperkenalkan teman"
+    },
+    {
+      "frasa": {
+        "putra": "مَا اسْمُهُ؟",
+        "putri": "مَا اسْمُهَا؟"
+      },
+      "teks_dibunyikan": [
+        {
+          "putra": "مَا اسْمُهُ؟",
+          "putri": "مَا اسْمُهَا؟"
+        },
+        {
+          "putra": "اِسْمُهُ …",
+          "putri": "اِسْمُهَا …"
+        }
+      ],
+      "dibunyikan": {
+        "putra": [
+          "AUD-U1-L1-023",
+          "AUD-U1-L1-024"
+        ],
+        "putri": [
+          "AUD-U1-L1-025",
+          "AUD-U1-L1-026"
+        ]
+      },
+      "id_pasangan": "U1-P12",
+      "fungsi_id": "Menanyakan nama orang lain"
+    },
+    {
+      "frasa": {
+        "putra": "مِنْ أَيْنَ هُوَ؟",
+        "putri": "مِنْ أَيْنَ هِيَ؟"
+      },
+      "teks_dibunyikan": [
+        {
+          "putra": "مِنْ أَيْنَ هُوَ؟",
+          "putri": "مِنْ أَيْنَ هِيَ؟"
+        },
+        {
+          "putra": "هُوَ مِنْ …",
+          "putri": "هِيَ مِنْ …"
+        }
+      ],
+      "dibunyikan": {
+        "putra": [
+          "AUD-U1-L1-027",
+          "AUD-U1-L1-028"
+        ],
+        "putri": [
+          "AUD-U1-L1-029",
+          "AUD-U1-L1-030"
+        ]
+      },
+      "id_pasangan": "U1-P13",
+      "fungsi_id": "Menanyakan asal orang lain"
+    }
+  ],
+  "pemanasan": [
+    "AUD-U1-L1-021",
+    "AUD-U1-L1-022",
+    "AUD-U1-P11-L",
+    "AUD-U1-P11-P",
+    "AUD-U1-L1-023",
+    "AUD-U1-L1-025",
+    "AUD-U1-L1-024",
+    "AUD-U1-L1-026",
+    "AUD-U1-L1-027",
+    "AUD-U1-L1-029",
+    "AUD-U1-L1-028",
+    "AUD-U1-L1-030"
+  ],
+  "tiru": [
+    {
+      "no": 1,
+      "arab": {
+        "putra": "هَذَا … صَدِيقِي",
+        "putri": "هَذِهِ … صَدِيقَتِي"
+      },
+      "id_pasangan": "U1-P11",
+      "audio": {
+        "putra": "AUD-U1-L1-021",
+        "putri": "AUD-U1-L1-022"
+      }
+    },
+    {
+      "no": 2,
+      "arab": {
+        "putra": "أَهْلًا بِكَ",
+        "putri": "أَهْلًا بِكِ"
+      },
+      "id_pasangan": "U1-P11",
+      "audio": {
+        "putra": "AUD-U1-P11-L",
+        "putri": "AUD-U1-P11-P"
+      }
+    },
+    {
+      "no": 3,
+      "arab": {
+        "putra": "مَا اسْمُهُ؟",
+        "putri": "مَا اسْمُهَا؟"
+      },
+      "id_pasangan": "U1-P12",
+      "audio": {
+        "putra": "AUD-U1-L1-023",
+        "putri": "AUD-U1-L1-025"
+      }
+    },
+    {
+      "no": 4,
+      "arab": {
+        "putra": "اِسْمُهُ …",
+        "putri": "اِسْمُهَا …"
+      },
+      "id_pasangan": "U1-P12",
+      "audio": {
+        "putra": "AUD-U1-L1-024",
+        "putri": "AUD-U1-L1-026"
+      }
+    },
+    {
+      "no": 5,
+      "arab": {
+        "putra": "مِنْ أَيْنَ هُوَ؟",
+        "putri": "مِنْ أَيْنَ هِيَ؟"
+      },
+      "id_pasangan": "U1-P13",
+      "audio": {
+        "putra": "AUD-U1-L1-027",
+        "putri": "AUD-U1-L1-029"
+      }
+    },
+    {
+      "no": 6,
+      "arab": {
+        "putra": "هُوَ مِنْ …",
+        "putri": "هِيَ مِنْ …"
+      },
+      "id_pasangan": "U1-P13",
+      "audio": {
+        "putra": "AUD-U1-L1-028",
+        "putri": "AUD-U1-L1-030"
+      }
+    }
+  ],
+  "l1": [
+    {
+      "id": "U1-L1-021",
+      "arab": "هَذَا … صَدِيقِي",
+      "id_pasangan": "U1-P11",
+      "kata_wajib": [
+        "هذا",
+        "صديقي"
+      ],
+      "audio": "AUD-U1-L1-021",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L1-022",
+      "arab": "هَذِهِ … صَدِيقَتِي",
+      "id_pasangan": "U1-P11",
+      "kata_wajib": [
+        "هذه",
+        "صديقتي"
+      ],
+      "audio": "AUD-U1-L1-022",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L1-023",
+      "arab": "مَا اسْمُهُ؟",
+      "id_pasangan": "U1-P12",
+      "kata_wajib": [
+        "اسمه"
+      ],
+      "audio": "AUD-U1-L1-023",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L1-024",
+      "arab": "اِسْمُهُ …",
+      "id_pasangan": "U1-P12",
+      "kata_wajib": [
+        "اسمه"
+      ],
+      "audio": "AUD-U1-L1-024",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L1-025",
+      "arab": "مَا اسْمُهَا؟",
+      "id_pasangan": "U1-P12",
+      "kata_wajib": [
+        "اسمها"
+      ],
+      "audio": "AUD-U1-L1-025",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L1-026",
+      "arab": "اِسْمُهَا …",
+      "id_pasangan": "U1-P12",
+      "kata_wajib": [
+        "اسمها"
+      ],
+      "audio": "AUD-U1-L1-026",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L1-027",
+      "arab": "مِنْ أَيْنَ هُوَ؟",
+      "id_pasangan": "U1-P13",
+      "kata_wajib": [
+        "اين",
+        "هو"
+      ],
+      "audio": "AUD-U1-L1-027",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L1-028",
+      "arab": "هُوَ مِنْ …",
+      "id_pasangan": "U1-P13",
+      "kata_wajib": [
+        "هو",
+        "من"
+      ],
+      "audio": "AUD-U1-L1-028",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L1-029",
+      "arab": "مِنْ أَيْنَ هِيَ؟",
+      "id_pasangan": "U1-P13",
+      "kata_wajib": [
+        "اين",
+        "هي"
+      ],
+      "audio": "AUD-U1-L1-029",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L1-030",
+      "arab": "هِيَ مِنْ …",
+      "id_pasangan": "U1-P13",
+      "kata_wajib": [
+        "هي",
+        "من"
+      ],
+      "audio": "AUD-U1-L1-030",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    }
+  ],
+  "l2": [
+    {
+      "id": "U1-L2-013",
+      "jenis": "situasi",
+      "jenis_sumber": "dengar-jawab",
+      "audio_prompt": null,
+      "teks_prompt_arab": null,
+      "catatan_prompt_id": null,
+      "gambar": null,
+      "instruksi": "Ada teman laki-lakimu yang belum dikenal temanmu yang lain. Perkenalkan teman laki-lakimu!",
+      "diterima": [
+        "هَذَا … صَدِيقِي"
+      ],
+      "model": {
+        "arab": "هَذَا … صَدِيقِي",
+        "audio": "AUD-U1-L1-021"
+      },
+      "bentuk_ikut": null,
+      "id_pasangan": "U1-P11",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L2-014",
+      "jenis": "situasi",
+      "jenis_sumber": "dengar-jawab",
+      "audio_prompt": null,
+      "teks_prompt_arab": null,
+      "catatan_prompt_id": null,
+      "gambar": null,
+      "instruksi": "Ada teman perempuanmu yang belum dikenal temanmu yang lain. Perkenalkan teman perempuanmu!",
+      "diterima": [
+        "هَذِهِ … صَدِيقَتِي"
+      ],
+      "model": {
+        "arab": "هَذِهِ … صَدِيقَتِي",
+        "audio": "AUD-U1-L1-022"
+      },
+      "bentuk_ikut": null,
+      "id_pasangan": "U1-P11",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L2-015",
+      "jenis": "dengar-jawab",
+      "jenis_sumber": "dengar-jawab",
+      "audio_prompt": "AUD-U1-L1-023",
+      "teks_prompt_arab": "مَا اسْمُهُ؟",
+      "catatan_prompt_id": null,
+      "gambar": null,
+      "instruksi": "Temanmu menunjuk seorang laki-laki dan bertanya. Jawab nama temanmu!",
+      "diterima": [
+        "اِسْمُهُ …"
+      ],
+      "model": {
+        "arab": "اِسْمُهُ …",
+        "audio": "AUD-U1-L1-024"
+      },
+      "bentuk_ikut": null,
+      "id_pasangan": "U1-P12",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    },
+    {
+      "id": "U1-L2-016",
+      "jenis": "dengar-jawab",
+      "jenis_sumber": "dengar-jawab",
+      "audio_prompt": "AUD-U1-L1-027",
+      "teks_prompt_arab": "مِنْ أَيْنَ هُوَ؟",
+      "catatan_prompt_id": null,
+      "gambar": null,
+      "instruksi": "Temanmu bertanya tentang orang itu. Jawab asalnya!",
+      "diterima": [
+        "هُوَ مِنْ …"
+      ],
+      "model": {
+        "arab": "هُوَ مِنْ …",
+        "audio": "AUD-U1-L1-028"
+      },
+      "bentuk_ikut": null,
+      "id_pasangan": "U1-P13",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null
+    }
+  ],
+  "l3": [
+    {
+      "id": "U1-L3-07",
+      "fungsi": "Perkenalkan Teman (laki-laki)",
+      "instruksi": "Perkenalkan temanmu yang laki-laki: katakan \"ini temanku\", lalu sebutkan nama dan asalnya.",
+      "slot1": {
+        "model": "هَذَا … صَدِيقِي",
+        "kata_wajib": [
+          "هذا",
+          "صديقي"
+        ],
+        "audio": "AUD-U1-L1-021"
+      },
+      "slot2": {
+        "model": "اِسْمُهُ …، هُوَ مِنْ …",
+        "kata_wajib": [
+          "اسمه",
+          "هو"
+        ],
+        "audio": [
+          "AUD-U1-L1-024",
+          "AUD-U1-L1-028"
+        ]
+      },
+      "respons_awal": null,
+      "nomor_urut": 7,
+      "prasyarat": null,
+      "pilih_satu": "teman",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null,
+      "pola_giliran": "satu_putaran",
+      "giliran": null
+    },
+    {
+      "id": "U1-L3-08",
+      "fungsi": "Perkenalkan Teman (perempuan)",
+      "instruksi": "Perkenalkan temanmu yang perempuan: katakan \"ini temanku\", lalu sebutkan nama dan asalnya.",
+      "slot1": {
+        "model": "هَذِهِ … صَدِيقَتِي",
+        "kata_wajib": [
+          "هذه",
+          "صديقتي"
+        ],
+        "audio": "AUD-U1-L1-022"
+      },
+      "slot2": {
+        "model": "اِسْمُهَا …، هِيَ مِنْ …",
+        "kata_wajib": [
+          "اسمها",
+          "هي"
+        ],
+        "audio": [
+          "AUD-U1-L1-026",
+          "AUD-U1-L1-030"
+        ]
+      },
+      "respons_awal": null,
+      "nomor_urut": 7,
+      "prasyarat": null,
+      "pilih_satu": "teman",
+      "paruh": null,
+      "teks_bingkai_id": null,
+      "lewati_keadaan": null,
+      "pola_giliran": "satu_putaran",
+      "giliran": null
+    }
+  ],
+  "aku_bisa": {
+    "id": "AB-U1-BC",
+    "teks": "Aku bisa memperkenalkan temanku.",
+    "wajib": true
+  },
+  "aset_audio": [
+    {
+      "id": "AUD-U1-L1-021",
+      "teks": "هَذَا … صَدِيقِي",
+      "penutur": "netral"
+    },
+    {
+      "id": "AUD-U1-L1-022",
+      "teks": "هَذِهِ … صَدِيقَتِي",
+      "penutur": "netral"
+    },
+    {
+      "id": "AUD-U1-P11-L",
+      "teks": "أَهْلًا بِكَ",
+      "penutur": "putra"
+    },
+    {
+      "id": "AUD-U1-P11-P",
+      "teks": "أَهْلًا بِكِ",
+      "penutur": "putri"
+    },
+    {
+      "id": "AUD-U1-L1-023",
+      "teks": "مَا اسْمُهُ؟",
+      "penutur": "netral"
+    },
+    {
+      "id": "AUD-U1-L1-024",
+      "teks": "اِسْمُهُ …",
+      "penutur": "netral"
+    },
+    {
+      "id": "AUD-U1-L1-025",
+      "teks": "مَا اسْمُهَا؟",
+      "penutur": "netral"
+    },
+    {
+      "id": "AUD-U1-L1-026",
+      "teks": "اِسْمُهَا …",
+      "penutur": "netral"
+    },
+    {
+      "id": "AUD-U1-L1-027",
+      "teks": "مِنْ أَيْنَ هُوَ؟",
+      "penutur": "netral"
+    },
+    {
+      "id": "AUD-U1-L1-028",
+      "teks": "هُوَ مِنْ …",
+      "penutur": "netral"
+    },
+    {
+      "id": "AUD-U1-L1-029",
+      "teks": "مِنْ أَيْنَ هِيَ؟",
+      "penutur": "netral"
+    },
+    {
+      "id": "AUD-U1-L1-030",
+      "teks": "هِيَ مِنْ …",
+      "penutur": "netral"
+    },
+    {
+      "id": "AUD-U1-BC-D11-1",
+      "teks": "يَا خَالِدُ، هَذَا يُوسُفُ.",
+      "penutur": "netral"
+    },
+    {
+      "id": "AUD-U1-BC-D11-2",
+      "teks": "هُوَ صَدِيقِي.",
+      "penutur": "netral"
+    },
+    {
+      "id": "AUD-U1-BC-D12",
+      "teks": "أَهْلًا بِكَ يَا يُوسُفُ.",
+      "penutur": "putra"
+    },
+    {
+      "id": "AUD-U1-BC-D14",
+      "teks": "مِنْ أَيْنَ هُوَ يَا أَحْمَدُ؟",
+      "penutur": "netral"
+    },
+    {
+      "id": "AUD-U1-BC-D15-1",
+      "teks": "هُوَ مِنْ سُورَابَايَا.",
+      "penutur": "netral"
+    },
+    {
+      "id": "AUD-U1-BC-D15-2",
+      "teks": "اِسْمُهُ يُوسُفُ.",
+      "penutur": "netral"
+    }
+  ]
+}
