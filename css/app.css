@@ -1530,3 +1530,53 @@ h1, h2, h3, p {
   background-color: var(--warna-utama-muda);
   color: var(--warna-utama-gelap);
 }
+
+/* Tambahan komponen layar Sesi 2 (S-30 s.d. S-37) & bingkai situasi SL-BARU-10 */
+.pita-bingkai {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--jarak-2);
+  background-color: var(--warna-aksen-muda);
+  border: 1px solid var(--warna-aksen);
+  border-left: 4px solid var(--warna-aksen);
+  border-radius: var(--radius-kecil);
+  padding: var(--jarak-2) var(--jarak-3);
+  color: var(--warna-aksen-gelap);
+  font-size: var(--ukuran-teks-kecil);
+  font-weight: 600;
+}
+
+.butir-tangga--selesai {
+  background-color: var(--warna-utama-muda);
+  color: var(--warna-utama-gelap);
+  border-color: var(--warna-utama);
+}
+
+.panel-pilihan-sesi {
+  background-color: var(--warna-permukaan-lembut);
+  border: 1px solid var(--warna-garis);
+  border-radius: var(--radius-sedang);
+  padding: var(--jarak-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--jarak-2);
+}
+
+.tombol-kartu-arab {
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--font-ui);
+  color: var(--warna-teks);
+}
+
+.tombol-kartu-arab:hover,
+.tombol-kartu-arab:active {
+  border-color: var(--warna-utama);
+  background-color: var(--warna-permukaan-lembut);
+}
+
+.tombol-kartu-arab:focus-visible {
+  outline: none;
+  box-shadow: var(--bayangan-fokus);
+}

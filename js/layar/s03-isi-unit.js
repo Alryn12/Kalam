@@ -9,6 +9,7 @@ import { muatBlokKonten, muatMuhimmahUnit } from '../pemuat-konten.js';
 import { arahKe } from '../router.js';
 import { ambilState, ambilTeks, perbaruiStatusServer } from '../state.js';
 import { KATALOG_UNIT_KALAM } from './s02-beranda.js';
+import { ambilKemajuanSesi2 } from './sesi2-bantu.js';
 import { escapeHtml, kirimAtauAntre, siapkanWadahLayar } from './tahap0-bantu.js';
 
 function normalkanNomorUnit(paramUnit) {
@@ -42,6 +43,60 @@ export async function renderS03({ param = {} } = {}) {
   if (!wadah) return;
 
   let aktifDiLayar = true;
+  let blokPilihanTerbuka = '';
+
+  function renderPanelPilihanSesi(blok, lvMaks, selesaiBlok) {
+    if (blokPilihanTerbuka !== blok.id) return '';
+    const lvTerbuka = selesaiBlok ? 3 : Math.max(1, Number(lvMaks || 1));
+    const judulPilih = ambilTeks('S-03', 'pilihan_ulangi_judul', { nama_blok: blok.kode }) ||
+      `Pilih bagian untuk ${blok.kode}:`;
+    const lblS1 = ambilTeks('S-03', 'ulangi_sesi1') || 'Ulangi Sesi 1 (Tonton · Kata Kunci · Tiru · Rekam)';
+    const lblS2 = ambilTeks('S-03', 'ulangi_sesi2') || 'Ulangi Sesi 2 · Pemanasan';
+    const ulangParam = selesaiBlok ? '1' : '';
+
+    const tombolLevelHtml = [1, 2, 3].filter((n) => n <= lvTerbuka).map((n) => {
+      const layar = n === 1 ? 'S-31' : (n === 2 ? 'S-32' : 'S-33');
+      const lblLv = ambilTeks('S-03', 'buka_level', { n }) || `Buka Level ${n}`;
+      return `
+        <button
+          type="button"
+          class="tombol tombol--sekunder tombol-tuju-sesi-s03"
+          data-blok="${blok.id}"
+          data-tujuan-layar="${layar}"
+          data-ulang="${ulangParam}"
+        >
+          ${escapeHtml(lblLv)}
+        </button>
+      `;
+    }).join('');
+
+    return `
+      <div class="panel-pilihan-sesi" role="region" aria-label="${escapeHtml(judulPilih)}">
+        <p class="teks-keterangan" style="margin: 0; font-weight: 600;">${escapeHtml(judulPilih)}</p>
+        <div class="baris-tombol">
+          <button
+            type="button"
+            class="tombol tombol--sekunder tombol-tuju-sesi-s03"
+            data-blok="${blok.id}"
+            data-tujuan-layar="S-20"
+            data-ulang=""
+          >
+            ${escapeHtml(lblS1)}
+          </button>
+          <button
+            type="button"
+            class="tombol tombol--sekunder tombol-tuju-sesi-s03"
+            data-blok="${blok.id}"
+            data-tujuan-layar="S-30"
+            data-ulang=""
+          >
+            ${escapeHtml(lblS2)}
+          </button>
+          ${tombolLevelHtml}
+        </div>
+      </div>
+    `;
+  }
 
   function gambar() {
     if (!aktifDiLayar) return;
@@ -151,12 +206,13 @@ export async function renderS03({ param = {} } = {}) {
             </p>
             <button
               type="button"
-              class="tombol tombol--sekunder tombol-pilih-blok-s03"
+              class="tombol tombol--sekunder tombol-buka-pilihan-s03"
               data-blok="${blok.id}"
-              data-aksi="ulangi"
+              aria-expanded="${blokPilihanTerbuka === blok.id}"
             >
               ${escapeHtml(teksUlangi)}
             </button>
+            ${renderPanelPilihanSesi(blok, 3, true)}
           </li>
         `;
       }
@@ -164,6 +220,7 @@ export async function renderS03({ param = {} } = {}) {
       if (terbuka) {
         const sedangBerjalan = sesi1Sudah || lvTerbuka > 0;
         const labelTahapAktif = sedangBerjalan ? `Level ${Math.max(1, lvTerbuka)}` : 'Sesi 1';
+        const lblPilihBagian = ambilTeks('S-03', 'pilih_bagian') || 'Pilih sesi atau level';
         return `
           <li class="kartu-unit kartu-unit--terbuka">
             <div class="kartu-unit__kepala">
@@ -179,14 +236,28 @@ export async function renderS03({ param = {} } = {}) {
             <p class="teks-keterangan" style="margin: 0; font-weight: 600;">
               ${barisStatusHtml}
             </p>
-            <button
-              type="button"
-              class="tombol tombol--utama tombol-pilih-blok-s03"
-              data-blok="${blok.id}"
-              data-aksi="${sedangBerjalan ? 'lanjut' : 'mulai'}"
-            >
-              ${escapeHtml(sedangBerjalan ? teksLanjut : teksMulai)}
-            </button>
+            <div class="baris-tombol">
+              <button
+                type="button"
+                class="tombol tombol--utama tombol-pilih-blok-s03"
+                data-blok="${blok.id}"
+                data-aksi="${sedangBerjalan ? 'lanjut' : 'mulai'}"
+                data-lv="${lvTerbuka}"
+              >
+                ${escapeHtml(sedangBerjalan ? teksLanjut : teksMulai)}
+              </button>
+              ${sesi1Sudah ? `
+                <button
+                  type="button"
+                  class="tombol tombol--sekunder tombol-buka-pilihan-s03"
+                  data-blok="${blok.id}"
+                  aria-expanded="${blokPilihanTerbuka === blok.id}"
+                >
+                  ${escapeHtml(lblPilihBagian)}
+                </button>
+              ` : ''}
+            </div>
+            ${sesi1Sudah ? renderPanelPilihanSesi(blok, lvTerbuka, false) : ''}
           </li>
         `;
       }
@@ -290,39 +361,84 @@ export async function renderS03({ param = {} } = {}) {
       btnBeranda.addEventListener('click', () => arahKe('S-02'));
     }
 
+    async function muatDanArahkanBlok(idBlok, tentukanTujuan) {
+      const blokData = await muatBlokKonten(idBlok, {
+        arahkanKeS91: true,
+        asal: 'S-03',
+        tujuan: 'S-03',
+        unit: infoUnit.id
+      });
+      if (!blokData) return;
+
+      state.unit_aktif = infoUnit.id;
+      state.blok_aktif = blokData.id;
+
+      kirimAtauAntre(
+        'catat',
+        { jenis: 'aktivitas', aktivitas: 'blok_dipilih', unit: infoUnit.no, blok: blokData.id },
+        `Pilih blok ${blokData.id}`,
+        'ANGKA'
+      ).catch(() => {});
+
+      await tentukanTujuan(blokData);
+    }
+
     const tombolBlok = Array.from(wadah.querySelectorAll('.tombol-pilih-blok-s03'));
     tombolBlok.forEach((btn) => {
       btn.addEventListener('click', async () => {
         if (btn.disabled) return;
         const idBlok = btn.getAttribute('data-blok') || `${infoUnit.id}-BA`;
         const aksi = btn.getAttribute('data-aksi') || 'mulai';
+        const lvBlok = Number(btn.getAttribute('data-lv') || 1);
         btn.disabled = true;
         btn.textContent = 'Memuat…';
 
-        const blokData = await muatBlokKonten(idBlok, {
-          arahkanKeS91: true,
-          asal: 'S-03',
-          tujuan: 'S-03',
-          unit: infoUnit.id
+        await muatDanArahkanBlok(idBlok, async (blokData) => {
+          const sesi1Sudah = blokSesi1Selesai.includes(blokData.id) || lvBlok > 0;
+          if (aksi === 'lanjut' && sesi1Sudah) {
+            const kemS2 = await ambilKemajuanSesi2(state.kode_siswa || 'tamu', blokData.id);
+            if (kemS2 && kemS2.pemanasanSelesai) {
+              const layarLv = lvBlok >= 3 ? 'S-33' : (lvBlok === 2 ? 'S-32' : 'S-31');
+              arahKe(layarLv, {
+                unit: infoUnit.id,
+                blok: blokData.id,
+                ...(lvBlok >= 3 ? { konteks: 'sesi2' } : {})
+              });
+              return;
+            }
+            arahKe('S-30', { unit: infoUnit.id, blok: blokData.id });
+          } else {
+            arahKe('S-20', { unit: infoUnit.id, blok: blokData.id });
+          }
         });
-        if (!blokData) return;
+      });
+    });
 
-        state.unit_aktif = infoUnit.id;
-        state.blok_aktif = blokData.id;
+    wadah.querySelectorAll('.tombol-buka-pilihan-s03').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const idBlok = btn.getAttribute('data-blok') || '';
+        blokPilihanTerbuka = blokPilihanTerbuka === idBlok ? '' : idBlok;
+        gambar();
+      });
+    });
 
-        kirimAtauAntre(
-          'catat',
-          { jenis: 'aktivitas', aktivitas: 'blok_dipilih', unit: infoUnit.no, blok: blokData.id },
-          `Pilih blok ${blokData.id}`,
-          'ANGKA'
-        ).catch(() => {});
+    wadah.querySelectorAll('.tombol-tuju-sesi-s03').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        if (btn.disabled) return;
+        const idBlok = btn.getAttribute('data-blok') || `${infoUnit.id}-BA`;
+        const layar = btn.getAttribute('data-tujuan-layar') || 'S-30';
+        const ulang = btn.getAttribute('data-ulang') || '';
+        btn.disabled = true;
+        btn.textContent = 'Memuat…';
 
-        const sesi1Sudah = blokSesi1Selesai.includes(blokData.id);
-        if (aksi === 'lanjut' && sesi1Sudah) {
-          arahKe('S-30', { unit: infoUnit.id, blok: blokData.id });
-        } else {
-          arahKe('S-20', { unit: infoUnit.id, blok: blokData.id });
-        }
+        await muatDanArahkanBlok(idBlok, async (blokData) => {
+          arahKe(layar, {
+            unit: infoUnit.id,
+            blok: blokData.id,
+            ...(layar === 'S-33' ? { konteks: 'sesi2' } : {}),
+            ...(ulang ? { ulang } : {})
+          });
+        });
       });
     });
 

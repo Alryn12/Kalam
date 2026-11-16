@@ -45,6 +45,14 @@ import { renderS21 } from './layar/s21-kata-kunci.js';
 import { renderS22 } from './layar/s22-tiru.js';
 import { renderS23 } from './layar/s23-rekam.js';
 import { renderS24 } from './layar/s24-refleksi.js';
+import { renderS30 } from './layar/s30-pemanasan.js';
+import { renderS31 } from './layar/s31-level1.js';
+import { renderS32 } from './layar/s32-level2.js';
+import { renderS33 } from './layar/s33-level3.js';
+import { renderS34 } from './layar/s34-dengar-pasangan.js';
+import { renderS35 } from './layar/s35-penutup-level.js';
+import { renderS36 } from './layar/s36-refleksi-sesi2.js';
+import { renderS37 } from './layar/s37-blok-selesai.js';
 import { renderS90 } from './layar/s90-status-pengiriman.js';
 import { renderS91 } from './layar/s91-pesan-sistem.js';
 
@@ -300,6 +308,14 @@ async function inisialisasiAplikasi() {
     daftarkanLayar('S-22', denganSesi(renderS22));
     daftarkanLayar('S-23', denganSesi(renderS23));
     daftarkanLayar('S-24', denganSesi(renderS24));
+    daftarkanLayar('S-30', denganSesi(renderS30));
+    daftarkanLayar('S-31', denganSesi(renderS31));
+    daftarkanLayar('S-32', denganSesi(renderS32));
+    daftarkanLayar('S-33', denganSesi(renderS33));
+    daftarkanLayar('S-34', denganSesi(renderS34));
+    daftarkanLayar('S-35', denganSesi(renderS35));
+    daftarkanLayar('S-36', denganSesi(renderS36));
+    daftarkanLayar('S-37', denganSesi(renderS37));
     daftarkanLayar('S-90', denganSesi(renderS90));
     daftarkanLayar('S-91', renderS91);
 
