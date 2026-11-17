@@ -25,7 +25,14 @@ function tentukanTujuanBerikut(konteks, param = {}, fase = 'T0') {
     return { layar: 'S-31', param: { unit: param.unit || '', blok: param.blok || '' } };
   }
   if (konteks === 'sesi3') {
-    return { layar: 'S-33', param: { unit: param.unit || '', konteks: 'p1' } };
+    return {
+      layar: 'S-33',
+      param: {
+        unit: param.unit || '',
+        konteks: 'p1',
+        ...(param.item ? { item: param.item } : {})
+      }
+    };
   }
   return { layar: 'S-13', param: { fase } };
 }

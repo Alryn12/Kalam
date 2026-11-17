@@ -940,6 +940,7 @@ export function buatPengendaliRekamSesi2({
   pemutarSuaraku,
   dapatkanSlotAktif,
   maksPercobaan = 3,
+  modeSesi3 = false,
   padaPerubahan
 }) {
   const { paramUmum, kalibrasiLatar } = konteks;
@@ -1007,7 +1008,11 @@ export function buatPengendaliRekamSesi2({
           slot.pesanStatus = ambilTeks('S-31', 'pesan_tidak_bersuara') || ev.pesan;
           slot.waktu_mulai_bicara = null;
           slot.durasi_bicara = 0;
-          if (maksPercobaan > 0 && slot.percobaan >= maksPercobaan &&
+          if (modeSesi3) {
+            slot.hasil = 'tidak';
+            slot.penandaTampil = 'tersimpan';
+            slot.selesaiDicoba = true;
+          } else if (maksPercobaan > 0 && slot.percobaan >= maksPercobaan &&
               slot.hasil !== 'terdeteksi' && slot.hasil !== 'mandiri_ya') {
             slot.hasil = 'tidak';
             slot.penandaTampil = 'coba_lagi';
@@ -1030,6 +1035,8 @@ export function buatPengendaliRekamSesi2({
         slot.percobaan += 1;
         slot.waktu_mulai_bicara = ev.waktu_mulai_bicara;
         slot.durasi_bicara = ev.durasi_bicara;
+        slot.durasi_total = res.durasi || ev.durasi_bicara || 0;
+        slot.mime = res.mime || 'audio/webm';
         slot.pesanStatus = '';
 
         const det = res.deteksi;
@@ -1052,8 +1059,8 @@ export function buatPengendaliRekamSesi2({
         } else {
           slot.menungguMandiri = false;
           slot.hasil = 'tidak';
-          slot.penandaTampil = 'coba_lagi';
-          slot.selesaiDicoba = maksPercobaan > 0 && slot.percobaan >= maksPercobaan;
+          slot.penandaTampil = modeSesi3 ? 'tersimpan' : 'coba_lagi';
+          slot.selesaiDicoba = modeSesi3 ? true : (maksPercobaan > 0 && slot.percobaan >= maksPercobaan);
         }
 
         padaPerubahan();

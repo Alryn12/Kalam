@@ -8,6 +8,7 @@ import { ambilSemuaAntrean } from '../antrean.js';
 import { langgananPerubahanAntrean, panggilApi } from '../api.js';
 import { arahKe } from '../router.js';
 import { ambilState, ambilTeks, hapusTokenSesi } from '../state.js';
+import { ambilKemajuanSesi3, apakahSesi3UnitTerbuka } from './sesi3-bantu.js';
 import { ambilKemajuanTahap0, escapeHtml, kirimAtauAntre, siapkanWadahLayar } from './tahap0-bantu.js';
 
 export const KATALOG_UNIT_KALAM = [
@@ -91,7 +92,17 @@ export const KATALOG_UNIT_KALAM = [
   }
 ];
 
-function tentukanLangkahLanjut(st, kemajuanT0) {
+function pilihUnitAktifUntukLanjut(st) {
+  const unitSelesai = Array.isArray(st && st.unit_selesai) ? st.unit_selesai.map(Number) : [];
+  const unitTerbuka = Math.max(1, Number((st && st.unit_terbuka) || 1));
+  let unitAktif = KATALOG_UNIT_KALAM.find((u) => u.no <= unitTerbuka && !unitSelesai.includes(u.no));
+  if (!unitAktif) {
+    unitAktif = KATALOG_UNIT_KALAM.find((u) => u.no === unitTerbuka) || KATALOG_UNIT_KALAM[0];
+  }
+  return unitAktif;
+}
+
+function tentukanLangkahLanjut(st, kemajuanT0, kemajuanS3Aktif = null) {
   if (!st || !st.tahap0_selesai) {
     if (Number((st && st.persetujuan_T0) || 0) !== 1) {
       return {
@@ -112,7 +123,7 @@ function tentukanLangkahLanjut(st, kemajuanT0) {
 
   const unitSelesai = Array.isArray(st.unit_selesai) ? st.unit_selesai.map(Number) : [];
   const blokSelesai = Array.isArray(st.blok_selesai) ? st.blok_selesai : [];
-  const unitTerbuka = Math.max(1, Number(st.unit_terbuka || 1));
+  const sesi3Selesai = Array.isArray(st.sesi3_selesai) ? st.sesi3_selesai.map(Number) : [];
 
   if (st.after_terbuka && !st.after_selesai && unitSelesai.includes(6)) {
     return {
@@ -124,14 +135,58 @@ function tentukanLangkahLanjut(st, kemajuanT0) {
   }
 
   // Cari unit terbuka pertama yang belum selesai
-  let unitAktif = KATALOG_UNIT_KALAM.find((u) => u.no <= unitTerbuka && !unitSelesai.includes(u.no));
-  if (!unitAktif) {
-    unitAktif = KATALOG_UNIT_KALAM.find((u) => u.no === unitTerbuka) || KATALOG_UNIT_KALAM[0];
+  const unitAktif = pilihUnitAktifUntukLanjut(st);
+  const blokBelumSelesai = unitAktif.blok.find((b) => b.wajib && !blokSelesai.includes(b.id));
+  if (blokBelumSelesai) {
+    return {
+      labelAtas: `Unit ${unitAktif.no} · ${blokBelumSelesai.kode}`,
+      judulArab: unitAktif.judul_arab,
+      layar: 'S-03',
+      param: { unit: unitAktif.id }
+    };
   }
 
-  const blokBelumSelesai = unitAktif.blok.find((b) => b.wajib && !blokSelesai.includes(b.id)) || unitAktif.blok[0];
+  if (kemajuanS3Aktif && kemajuanS3Aktif.sedangBerjalan) {
+    const pAktif = [1, 2, 3].includes(Number(kemajuanS3Aktif.putaranAktif)) ? Number(kemajuanS3Aktif.putaranAktif) : 1;
+    const idxAktif = Math.max(0, Number(kemajuanS3Aktif.indeksKartuAktif || 0));
+    if (pAktif === 1 && idxAktif === 0 && !kemajuanS3Aktif.s12Sesi3Sudah) {
+      return {
+        labelAtas: `Unit ${unitAktif.no} · Sesi 3`,
+        judulArab: unitAktif.judul_arab,
+        layar: 'S-12',
+        param: { konteks: 'sesi3', unit: unitAktif.id }
+      };
+    }
+    return {
+      labelAtas: `Unit ${unitAktif.no} · Sesi 3 (Putaran ${pAktif})`,
+      judulArab: unitAktif.judul_arab,
+      layar: 'S-33',
+      param: { unit: unitAktif.id, konteks: `p${pAktif}`, item: String(idxAktif) }
+    };
+  }
+
+  if (!unitSelesai.includes(unitAktif.no)) {
+    if (!sesi3Selesai.includes(unitAktif.no) && apakahSesi3UnitTerbuka(st, unitAktif.id)) {
+      return {
+        labelAtas: `Unit ${unitAktif.no} · Sesi 3`,
+        judulArab: unitAktif.judul_arab,
+        layar: 'S-40',
+        param: { unit: unitAktif.id }
+      };
+    }
+    if (sesi3Selesai.includes(unitAktif.no)) {
+      return {
+        labelAtas: `Unit ${unitAktif.no} · Muhimmah`,
+        judulArab: unitAktif.judul_arab,
+        layar: kemajuanS3Aktif && kemajuanS3Aktif.kesiapan ? 'S-43' : 'S-42',
+        param: { unit: unitAktif.id }
+      };
+    }
+  }
+
+  const blokCadangan = unitAktif.blok[0];
   return {
-    labelAtas: `Unit ${unitAktif.no} · ${blokBelumSelesai.kode}`,
+    labelAtas: `Unit ${unitAktif.no} · ${blokCadangan.kode}`,
     judulArab: unitAktif.judul_arab,
     layar: 'S-03',
     param: { unit: unitAktif.id }
@@ -164,7 +219,12 @@ export async function renderS02() {
       after_selesai: ''
     };
     const kemajuanT0 = await ambilKemajuanTahap0();
+    const unitAktifS3 = st && st.tahap0_selesai ? pilihUnitAktifUntukLanjut(st) : null;
+    const kemajuanS3Aktif = unitAktifS3
+      ? await ambilKemajuanSesi3(ambilState().kode_siswa || 'tamu', unitAktifS3.id)
+      : null;
     const daftarAntrean = await ambilSemuaAntrean();
+    if (!aktifDiLayar) return;
     const jmlMenunggu = daftarAntrean.filter((a) => a.status !== 'Terkirim').length;
 
     const sapaan = ambilTeks('S-02', 'sapaan', { nama_panggilan: ambilState().nama_panggilan || namaPanggilan }) ||
@@ -193,7 +253,7 @@ export async function renderS02() {
     const teksBukaStatusKirim = ambilTeks('S-02', 'tombol_buka_status_kirim') || 'Buka Status Pengiriman';
     const teksTetapKeluar = ambilTeks('S-02', 'tombol_tetap_keluar') || 'Tetap keluar';
 
-    const langkahLanjut = tentukanLangkahLanjut(st, kemajuanT0);
+    const langkahLanjut = tentukanLangkahLanjut(st, kemajuanT0, kemajuanS3Aktif);
     const unitSelesai = Array.isArray(st.unit_selesai) ? st.unit_selesai.map(Number) : [];
     const sesi3Selesai = Array.isArray(st.sesi3_selesai) ? st.sesi3_selesai.map(Number) : [];
     const blokTerbuka = Array.isArray(st.blok_terbuka) ? st.blok_terbuka : [];

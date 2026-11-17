@@ -10,6 +10,7 @@ import { arahKe } from '../router.js';
 import { ambilState, ambilTeks, perbaruiStatusServer } from '../state.js';
 import { KATALOG_UNIT_KALAM } from './s02-beranda.js';
 import { ambilKemajuanSesi2 } from './sesi2-bantu.js';
+import { ambilKemajuanSesi3 } from './sesi3-bantu.js';
 import { escapeHtml, kirimAtauAntre, siapkanWadahLayar } from './tahap0-bantu.js';
 
 function normalkanNomorUnit(paramUnit) {
@@ -105,7 +106,7 @@ export async function renderS03({ param = {} } = {}) {
     `;
   }
 
-  function gambar() {
+  async function gambar() {
     if (!aktifDiLayar) return;
     const st = ambilState().status_server || {
       tahap0_selesai: '',
@@ -307,6 +308,19 @@ export async function renderS03({ param = {} } = {}) {
     const apakahSesi3Terbuka = semuaBlokWajibSelesai || sesi3Terbuka.includes(infoUnit.no);
     const apakahSesi3Selesai = sesi3Selesai.includes(infoUnit.no) || unitSelesai.includes(infoUnit.no);
 
+    let kemajuanS3 = null;
+    if (apakahSesi3Terbuka) {
+      kemajuanS3 = await ambilKemajuanSesi3(ambilState().kode_siswa || 'tamu', infoUnit.id);
+      if (!aktifDiLayar) return;
+    }
+    const adaLanjutanS3 = !!(kemajuanS3 && kemajuanS3.sedangBerjalan);
+    const labelStatusS3 = adaLanjutanS3
+      ? `Putaran ${kemajuanS3.putaranAktif || 1}`
+      : teksSiapDimulai;
+    const labelTombolS3 = adaLanjutanS3
+      ? teksLanjut
+      : (apakahSesi3Selesai ? teksUlangi : teksMulai);
+
     const barisAkhirHtml = apakahSesi3Terbuka ? `
       <li class="kartu-unit ${apakahSesi3Selesai ? 'kartu-unit--selesai' : 'kartu-unit--terbuka'}">
         <div class="kartu-unit__kepala">
@@ -314,17 +328,17 @@ export async function renderS03({ param = {} } = {}) {
             <span class="kartu-unit__nomor">${escapeHtml(teksAkhirUnit)}</span>
             <h2 class="kartu-unit__judul-id">${escapeHtml(teksBarisAkhir)}</h2>
           </div>
-          ${apakahSesi3Selesai ? `
+          ${apakahSesi3Selesai && !adaLanjutanS3 ? `
             <span class="penanda-status penanda-status--terdeteksi">
               <span class="penanda-status__ikon" aria-hidden="true">&#10003;</span>
               <span>${escapeHtml(teksLabelSelesai)}</span>
             </span>
           ` : `
-            <span class="kartu-arab__label">${escapeHtml(teksSiapDimulai)}</span>
+            <span class="kartu-arab__label">${escapeHtml(labelStatusS3)}</span>
           `}
         </div>
         <button type="button" id="tombol-sesi3-s03" class="tombol tombol--utama">
-          ${escapeHtml(apakahSesi3Selesai ? teksUlangi : teksMulai)}
+          ${escapeHtml(labelTombolS3)}
         </button>
       </li>
     ` : `
@@ -471,6 +485,16 @@ export async function renderS03({ param = {} } = {}) {
         if (!muhimmahData) return;
 
         state.unit_aktif = infoUnit.id;
+        if (kemajuanS3 && kemajuanS3.sedangBerjalan) {
+          const putaranAktif = [1, 2, 3].includes(Number(kemajuanS3.putaranAktif)) ? Number(kemajuanS3.putaranAktif) : 1;
+          const idxAktif = Math.max(0, Number(kemajuanS3.indeksKartuAktif || 0));
+          if (putaranAktif === 1 && idxAktif === 0 && !kemajuanS3.s12Sesi3Sudah) {
+            arahKe('S-12', { konteks: 'sesi3', unit: infoUnit.id });
+          } else {
+            arahKe('S-33', { unit: infoUnit.id, konteks: `p${putaranAktif}`, item: String(idxAktif) });
+          }
+          return;
+        }
         arahKe('S-40', { unit: infoUnit.id });
       });
     }
@@ -480,7 +504,7 @@ export async function renderS03({ param = {} } = {}) {
     aktifDiLayar = false;
   }, { once: true });
 
-  gambar();
+  await gambar();
 
   // Periksa status buka-kunci unit ke server saat dibuka (FR-003, R-44, UJ-KEA-01)
   if (typeof navigator === 'undefined' || navigator.onLine) {
@@ -490,7 +514,7 @@ export async function renderS03({ param = {} } = {}) {
       });
       if (hasil && hasil.ok && hasil.data) {
         await perbaruiStatusServer(hasil.data.status || hasil.data);
-        if (aktifDiLayar) gambar();
+        if (aktifDiLayar) await gambar();
       }
     } catch (_) {}
   }

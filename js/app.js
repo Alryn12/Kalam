@@ -53,6 +53,10 @@ import { renderS34 } from './layar/s34-dengar-pasangan.js';
 import { renderS35 } from './layar/s35-penutup-level.js';
 import { renderS36 } from './layar/s36-refleksi-sesi2.js';
 import { renderS37 } from './layar/s37-blok-selesai.js';
+import { renderS40 } from './layar/s40-sesi3-pengantar.js';
+import { renderS41 } from './layar/s41-ringkasan-putaran.js';
+import { renderS42 } from './layar/s42-kesiapan.js';
+import { renderS43 } from './layar/s43-misi-muhimmah.js';
 import { renderS90 } from './layar/s90-status-pengiriman.js';
 import { renderS91 } from './layar/s91-pesan-sistem.js';
 
@@ -173,28 +177,21 @@ async function renderLayarKosong({ idLayar, param = {} }) {
         </section>
       `;
     }
-  } else if (kodeTampil === 'S-40') {
+  } else if (kodeTampil === 'S-44') {
     const unitTarget = (param && param.unit) || state.unit_aktif || 'U1';
     let muhimmahData = ambilMuhimmahDariCache(unitTarget);
-    if (!muhimmahData && param && param.unit) {
-      muhimmahData = await muatMuhimmahUnit(unitTarget, {
-        arahkanKeS91: true,
-        asal: 'S-03',
-        tujuan: 'S-03',
-        unit: unitTarget
-      });
-      if (!muhimmahData) return;
+    if (!muhimmahData) {
+      muhimmahData = await muatMuhimmahUnit(unitTarget, { arahkanKeS91: false }).catch(() => null);
     }
-    if (muhimmahData) {
-      ringkasanKontenHtml = `
-        <section class="kartu" aria-label="Ringkasan Muhimmah">
-          <p class="teks-keterangan" style="margin: 0;">${escapeHtml(muhimmahData.unit)} · ${escapeHtml(muhimmahData.judul)}</p>
-          <p class="teks-instruksi" style="margin: var(--jarak-2) 0 0 0;">
-            Sesi 3 siap: ${muhimmahData.sesi3.rangkaian.length} kartu rangkaian · ${muhimmahData.langkah.length} langkah misi
-          </p>
-        </section>
-      `;
-    }
+    const teksKetS44 = ambilTeks('S-44', 'keterangan') || 'Temui gurumu secara langsung untuk setoran. Gurumu akan membuka layar penilaian di halaman guru.';
+    ringkasanKontenHtml = `
+      <section class="kartu" aria-label="Siap Setoran ke Guru">
+        <p class="teks-keterangan" style="margin: 0;">${escapeHtml(state.kode_siswa || 'S001')} · ${escapeHtml(unitTarget)}${muhimmahData ? ` · ${escapeHtml(muhimmahData.judul || '')}` : ''}</p>
+        <p class="teks-instruksi" style="margin: var(--jarak-2) 0 0 0;">
+          ${escapeHtml(teksKetS44)}
+        </p>
+      </section>
+    `;
   }
 
   const indeksSekarang = DAFTAR_ID_LAYAR_SISWA.indexOf(kodeTampil);
@@ -316,6 +313,10 @@ async function inisialisasiAplikasi() {
     daftarkanLayar('S-35', denganSesi(renderS35));
     daftarkanLayar('S-36', denganSesi(renderS36));
     daftarkanLayar('S-37', denganSesi(renderS37));
+    daftarkanLayar('S-40', denganSesi(renderS40));
+    daftarkanLayar('S-41', denganSesi(renderS41));
+    daftarkanLayar('S-42', denganSesi(renderS42));
+    daftarkanLayar('S-43', denganSesi(renderS43));
     daftarkanLayar('S-90', denganSesi(renderS90));
     daftarkanLayar('S-91', renderS91);
 

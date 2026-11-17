@@ -359,7 +359,11 @@
     "pesan_3_kali": "Tidak apa-apa, kita lanjut ke langkah berikutnya.",
     "tombol_lanjut_bagian2": "Lanjut ke bagian kedua",
     "tombol_lanjut_s34": "Lanjut dengar pasangannya",
-    "catatan_bantuan_terbuka": "Petunjuk bagian ini sudah dibuka."
+    "catatan_bantuan_terbuka": "Petunjuk bagian ini sudah dibuka.",
+    "judul_putaran": "Putaran {n} dari 3",
+    "pesan_putaran_1": "Putaran 1: teks Arab dan petunjuk tampil penuh.",
+    "pesan_putaran_2": "Putaran 2: petunjuk disembunyikan, boleh dibuka bila perlu.",
+    "pesan_putaran_3": "Putaran 3: berbicara dengan santai, tanpa batas waktu."
   },
   "S-34": {
     "judul": "Dengar pasangannya",
@@ -371,7 +375,8 @@
     "status_selesai_putar": "Pasangan selesai diputar.",
     "tombol": "Kartu berikutnya",
     "tombol_kartu_terakhir": "Selesai",
-    "penutup_putaran": "Putaran {n} selesai. Lanjut ke putaran berikutnya."
+    "penutup_putaran": "Putaran {n} selesai. Lanjut ke putaran berikutnya.",
+    "tombol_putaran_berikutnya": "Lanjut ke Putaran {n}"
   },
   "S-35": {
     "judul": "Level selesai dicoba",
@@ -412,7 +417,19 @@
     "judul": "Sesi 3 · Ulang dan berani",
     "penjelasan": "Kamu akan mengulang kartu yang sama tiga kali. Tiap putaran bantuannya makin sedikit.",
     "daftar": "Kartu yang akan kamu ucapkan",
-    "tombol": "Mulai Putaran 1"
+    "tombol": "Mulai Putaran 1",
+    "tombol_kembali_unit": "Kembali ke Isi Unit",
+    "judul_putaran": "Tiga putaran berurutan",
+    "ket_putaran_1": "Putaran 1: teks Arab dan petunjuk tampil penuh.",
+    "ket_putaran_2": "Putaran 2: petunjuk tersembunyi, bisa dibuka saat perlu.",
+    "ket_putaran_3": "Putaran 3: penghitung maju santai, tanpa batas waktu.",
+    "pilih_ikon_teman": "Pilih ikon teman untuk kartu perkenalan teman",
+    "label_teman_putra": "Teman laki-laki",
+    "label_teman_putri": "Teman perempuan",
+    "pesan_lanjut_putaran": "Kamu sedang berada di Putaran {n}, Kartu {k} dari {total}.",
+    "tombol_lanjut_putaran": "Lanjutkan Putaran {n}",
+    "tombol_ulang_dari_awal": "Mulai lagi dari Putaran 1",
+    "label_mengirim": "Menyiapkan…"
   },
   "S-41": {
     "judul": "Perjalananmu di sesi ini",
@@ -420,7 +437,10 @@
     "baris_bantuan": "Memakai bantuan: Putaran 1 {a} kali, Putaran 3 {b} kali",
     "baris_rekor": "Rekor pribadimu: {detik} detik",
     "pembanding": "Ini hanya dibandingkan dengan dirimu sendiri.",
-    "tombol": "Lanjut"
+    "tombol": "Lanjut",
+    "rincian_kartu": "Perbandingan waktumu tiap kartu",
+    "label_putaran_kartu": "Putaran 1: {a} detik · Putaran 3: {b} detik",
+    "tombol_ulangi_sesi3": "Ulangi Sesi 3"
   },
   "S-42": {
     "judul": "Sebelum bertemu gurumu",
@@ -430,7 +450,10 @@
     "label_skala_2": "1 Santai · 5 Sangat tegang",
     "tombol": "Lanjut · Lewati",
     "tombol_lanjut": "Lanjut",
-    "tombol_lewati": "Lewati"
+    "tombol_lewati": "Lewati",
+    "petunjuk": "Pilih angka 1 sampai 5, atau ketuk Lewati.",
+    "pesan_pilih_dulu": "Pilih minimal satu angka terlebih dahulu atau ketuk Lewati.",
+    "penanda_dua_setoran": "Setoran {n} dari 2"
   },
   "S-43": {
     "judul": "Misi bersama gurumu",
@@ -438,7 +461,13 @@
     "tombol_teks_arab": "Lihat teks Arab",
     "tombol_gambar_bantu": "Lihat gambar bantu",
     "penanda_dua_setoran": "Setoran {n} dari 2",
-    "tombol": "Aku siap bertemu gurumu"
+    "tombol": "Aku siap bertemu gurumu",
+    "tombol_tutup_arab": "Sembunyikan teks Arab",
+    "tombol_tutup_gambar": "Sembunyikan gambar bantu",
+    "label_langkah": "Langkah {n} dari {total}",
+    "label_alat_bantu": "Alat bantu gambar:",
+    "label_putra": "Bentuk putra",
+    "label_putri": "Bentuk putri"
   },
   "S-44": {
     "judul": "Serahkan HP-mu ke gurumu",
