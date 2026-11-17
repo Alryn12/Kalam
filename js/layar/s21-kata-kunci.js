@@ -110,12 +110,15 @@ export async function renderS21({ param = {} } = {}) {
 
     const pasanganHtml = daftarPasangan.map((p) => {
       const tanya = pilihBentukTeks((p.versi && p.versi.tanya) || p.tanya, bentuk);
-      const jawab = p.jawab === null
+      const jawabMentah = p.jawab === null
         ? ''
         : pilihBentukTeks((p.versi && p.versi.jawab) || p.jawab, bentuk);
       const alt = Array.isArray(p.jawab_alternatif)
         ? ratakanBentukTeks(p.jawab_alternatif, bentuk).join(' · ')
         : '';
+      // Jika jawabMentah adalah gabungan dengan "؛" dan jawab_alternatif tersedia, tampilkan baris alternatif yang sudah bersih
+      const jawabUtama = (alt && jawabMentah.includes('؛')) ? alt : jawabMentah;
+      const tampilAltTerpisah = Boolean(alt && alt !== jawabUtama && !jawabMentah.includes('؛'));
       const punyaAudioJawab = cariAudioBagianPasangan(p.id, bentuk, 'jawab').length > 0;
 
       return `
@@ -129,10 +132,10 @@ export async function renderS21({ param = {} } = {}) {
           </div>
           <div>
             <p class="teks-keterangan" style="margin: 0;">${escapeHtml(lblJawab)}</p>
-            ${jawab
-              ? `<p class="teks-arab" lang="ar" dir="rtl" style="margin: 0;">${escapeHtml(jawab)}</p>`
+            ${jawabUtama
+              ? `<p class="teks-arab" lang="ar" dir="rtl" style="margin: 0;">${escapeHtml(jawabUtama)}</p>`
               : `<p class="teks-keterangan" style="margin: 0;">${escapeHtml(lblTanpaJawab)}</p>`}
-            ${alt && alt !== jawab ? `<p class="teks-arab" lang="ar" dir="rtl" style="margin: var(--jarak-1) 0 0 0;">${escapeHtml(alt)}</p>` : ''}
+            ${tampilAltTerpisah ? `<p class="teks-arab" lang="ar" dir="rtl" style="margin: var(--jarak-1) 0 0 0;">${escapeHtml(alt)}</p>` : ''}
           </div>
           <div class="baris-kontrol">
             <button type="button" class="tombol tombol--sekunder" data-putar-pasangan="${escapeHtml(p.id)}" data-bagian="tanya" data-laju="1">${escapeHtml(lblDengarTanya)}</button>

@@ -54,6 +54,16 @@ export async function renderS11({ param = {} } = {}) {
   const teksBantuan = ambilTeks('S-11', 'tombol_bantuan');
   const teksInternet = ambilTeks('S-11', 'internet_bermasalah');
   const teksLanjut = ambilTeks('S-11', 'tombol');
+  const teksPeriksaInternet = ambilTeks('S-11', 'status_periksa_internet') || 'Memeriksa internet…';
+  const teksCobaLagi = ambilTeks('S-11', 'tombol_coba_lagi') || 'Coba lagi';
+  const panduan1 = ambilTeks('S-11', 'panduan_izin_1') || '1. Ketuk ikon gembok atau pengaturan di sebelah alamat situs pada perambanmu.';
+  const panduan2 = ambilTeks('S-11', 'panduan_izin_2') || '2. Pilih Mikrofon lalu ubah ke Izinkan.';
+  const panduan3 = ambilTeks('S-11', 'panduan_izin_3') || '3. Jika masih belum bisa, tunjukkan layar ini ke gurumu untuk memakai HP lain.';
+  const teksMikrofonDiizinkan = ambilTeks('S-11', 'mikrofon_diizinkan') || '✓ Mikrofon diizinkan';
+  const teksMerekam3d = ambilTeks('S-11', 'status_merekam_3d') || 'Merekam (3 detik)…';
+  const teksPetunjukMerekam = ambilTeks('S-11', 'petunjuk_merekam') || 'Ucapkan namamu sekarang…';
+  const teksSiapDengar = ambilTeks('S-11', 'status_siap_dengar') || '✓ Rekaman siap didengarkan';
+  const teksPerluBantuanGuru = ambilTeks('S-11', 'pesan_perlu_bantuan_guru') || 'Sepertinya mikrofon HP ini butuh bantuan gurumu. Tunjukkan layar ini ke gurumu ya.';
 
   let izinMikrofon = 0;
   let tesRekamOk = 0;
@@ -72,13 +82,13 @@ export async function renderS11({ param = {} } = {}) {
       <div id="status-internet-s11" class="daftar-status" aria-live="polite">
         <span class="penanda-status penanda-status--menunggu">
           <span class="penanda-status__ikon" aria-hidden="true">&#9719;</span>
-          <span>Memeriksa internet…</span>
+          <span>${escapeHtml(teksPeriksaInternet)}</span>
         </span>
       </div>
 
       <div id="kotak-internet-masalah-s11" class="pesan-hangat pesan-hangat--aksen" role="status" hidden>
         <p class="pesan-hangat__isi">${escapeHtml(teksInternet)}</p>
-        <button type="button" id="tombol-cek-internet-s11" class="tombol tombol--sekunder">Coba lagi</button>
+        <button type="button" id="tombol-cek-internet-s11" class="tombol tombol--sekunder">${escapeHtml(teksCobaLagi)}</button>
       </div>
 
       <button type="button" id="tombol-izin-s11" class="tombol tombol--utama">
@@ -92,9 +102,9 @@ export async function renderS11({ param = {} } = {}) {
         </button>
         <div id="isi-bantuan-s11" class="pesan-hangat" hidden style="margin-top: var(--jarak-2);">
           <p class="pesan-hangat__isi">
-            1. Ketuk ikon gembok atau pengaturan di sebelah alamat situs pada perambanmu.<br>
-            2. Pilih <strong>Mikrofon</strong> lalu ubah ke <strong>Izinkan</strong>.<br>
-            3. Jika masih belum bisa, tunjukkan layar ini ke gurumu untuk memakai HP lain.
+            ${escapeHtml(panduan1)}<br>
+            ${escapeHtml(panduan2)}<br>
+            ${escapeHtml(panduan3)}
           </p>
         </div>
       </div>
@@ -210,7 +220,7 @@ export async function renderS11({ param = {} } = {}) {
         if (elIzinDitolak) elIzinDitolak.hidden = true;
         if (elKotakRekam) elKotakRekam.hidden = false;
         btnIzin.className = 'tombol tombol--terpilih';
-        btnIzin.textContent = '✓ Mikrofon diizinkan';
+        btnIzin.textContent = teksMikrofonDiizinkan;
       } catch (_) {
         izinMikrofon = 0;
         btnIzin.disabled = false;
@@ -277,9 +287,9 @@ export async function renderS11({ param = {} } = {}) {
       }
       btnRekam.disabled = true;
       btnRekam.className = 'tombol tombol-rekam--merekam';
-      btnRekam.innerHTML = '<span class="titik-gelombang" aria-hidden="true"></span> Merekam (3 detik)…';
+      btnRekam.innerHTML = `<span class="titik-gelombang" aria-hidden="true"></span> ${escapeHtml(teksMerekam3d)}`;
       if (elStatusRekam) {
-        elStatusRekam.innerHTML = '<p class="indikator-gelombang">Ucapkan namamu sekarang…</p>';
+        elStatusRekam.innerHTML = `<p class="indikator-gelombang">${escapeHtml(teksPetunjukMerekam)}</p>`;
       }
 
       recorder.onstop = async () => {
@@ -310,7 +320,7 @@ export async function renderS11({ param = {} } = {}) {
         btnRekam.className = 'tombol tombol-rekam--siap';
         btnRekam.innerHTML = `<span aria-hidden="true">&#9679;</span> ${escapeHtml(teksRekam)}`;
         if (elStatusRekam) {
-          elStatusRekam.innerHTML = '<p class="label-rekam-tersimpan">&#10003; Rekaman siap didengarkan</p>';
+          elStatusRekam.innerHTML = `<p class="label-rekam-tersimpan">${escapeHtml(teksSiapDengar)}</p>`;
         }
         if (elAreaPutar) elAreaPutar.hidden = false;
       };
@@ -360,10 +370,12 @@ export async function renderS11({ param = {} } = {}) {
       perbaruiTombolLanjut();
 
       if (jumlahTidakTerdengar <= 2) {
+        const pesanUlang = ambilTeks('S-11', 'pesan_ulang_rekam', { n: jumlahTidakTerdengar }) ||
+          `Tidak apa-apa. Dekatkan mikrofon lalu tekan Rekam 3 detik sekali lagi (${jumlahTidakTerdengar} dari 2 ulang).`;
         if (elPesanHasil) {
           elPesanHasil.innerHTML = `
             <div class="pesan-hangat pesan-hangat--aksen" role="status">
-              <p class="pesan-hangat__isi">Tidak apa-apa. Dekatkan mikrofon lalu tekan Rekam 3 detik sekali lagi (${jumlahTidakTerdengar} dari 2 ulang).</p>
+              <p class="pesan-hangat__isi">${escapeHtml(pesanUlang)}</p>
             </div>
           `;
         }
@@ -371,7 +383,7 @@ export async function renderS11({ param = {} } = {}) {
         if (elPesanHasil) {
           elPesanHasil.innerHTML = `
             <div class="pesan-hangat pesan-hangat--aksen" role="status">
-              <p class="pesan-hangat__isi">Sepertinya mikrofon HP ini butuh bantuan gurumu. Tunjukkan layar ini ke gurumu ya.</p>
+              <p class="pesan-hangat__isi">${escapeHtml(teksPerluBantuanGuru)}</p>
               <button type="button" id="tombol-bantuan-rekam-s11" class="tombol tombol--sekunder" style="margin-top: var(--jarak-2);">
                 ${escapeHtml(teksBantuan)}
               </button>

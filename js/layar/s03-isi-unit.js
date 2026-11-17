@@ -20,14 +20,21 @@ function normalkanNomorUnit(paramUnit) {
 }
 
 function susunTeksStatusBlok({ selesai, sesi1Selesai, levelTerbuka }) {
+  const templat = ambilTeks('S-03', 'status_blok') || 'Sesi 1 · Level 1 · Level 2 · Level 3';
+  const bagian = templat.split('·').map((s) => s.trim());
+  const lblS1 = bagian[0] || 'Sesi 1';
+  const lblL1 = bagian[1] || 'Level 1';
+  const lblL2 = bagian[2] || 'Level 2';
+  const lblL3 = bagian[3] || 'Level 3';
+
   if (selesai) {
-    return 'Sesi 1 &#10003; &middot; Level 1 &#10003; &middot; Level 2 &#10003; &middot; Level 3 &#10003;';
+    return `${escapeHtml(lblS1)} &#10003; &middot; ${escapeHtml(lblL1)} &#10003; &middot; ${escapeHtml(lblL2)} &#10003; &middot; ${escapeHtml(lblL3)} &#10003;`;
   }
-  const tandaSesi1 = sesi1Selesai ? 'Sesi 1 &#10003;' : 'Sesi 1';
+  const tandaSesi1 = sesi1Selesai ? `${escapeHtml(lblS1)} &#10003;` : escapeHtml(lblS1);
   const lv = Number(levelTerbuka || 0);
-  const tandaL1 = lv >= 2 ? 'Level 1 &#10003;' : 'Level 1';
-  const tandaL2 = lv >= 3 ? 'Level 2 &#10003;' : 'Level 2';
-  const tandaL3 = 'Level 3';
+  const tandaL1 = lv >= 2 ? `${escapeHtml(lblL1)} &#10003;` : escapeHtml(lblL1);
+  const tandaL2 = lv >= 3 ? `${escapeHtml(lblL2)} &#10003;` : escapeHtml(lblL2);
+  const tandaL3 = escapeHtml(lblL3);
   return `${tandaSesi1} &middot; ${tandaL1} &middot; ${tandaL2} &middot; ${tandaL3}`;
 }
 
@@ -120,6 +127,12 @@ export async function renderS03({ param = {} } = {}) {
     const teksBarisAkhir = ambilTeks('S-03', 'baris_akhir_unit') || 'Sesi 3 dan misi bersama gurumu';
     const teksBarisAkhirTerkunci = ambilTeks('S-03', 'baris_akhir_terkunci') || 'Terbuka setelah semua blok selesai';
     const teksUnitTerkunci = ambilTeks('S-03', 'unit_terkunci') || 'Unit ini terbuka setelah setoran ke gurumu';
+    const teksTautanBeranda = ambilTeks('S-03', 'tautan_beranda') || '← Beranda';
+    const teksKembaliBeranda = ambilTeks('S-03', 'tombol_kembali_beranda') || 'Kembali ke Beranda';
+    const teksLabelTerkunci = ambilTeks('S-03', 'label_terkunci') || 'Terkunci';
+    const teksLabelSelesai = ambilTeks('S-03', 'label_selesai') || 'Selesai';
+    const teksSiapDimulai = ambilTeks('S-03', 'label_siap_dimulai') || 'Siap dimulai';
+    const teksAkhirUnit = ambilTeks('S-03', 'label_akhir_unit') || 'Akhir Unit';
 
     const unitSelesai = Array.isArray(st.unit_selesai) ? st.unit_selesai.map(Number) : [];
     const blokTerbuka = Array.isArray(st.blok_terbuka) ? st.blok_terbuka : [];
@@ -145,7 +158,7 @@ export async function renderS03({ param = {} } = {}) {
             <span class="kartu-unit__nomor">Unit ${infoUnit.no}</span>
             <span class="penanda-status penanda-status--menunggu">
               <span class="penanda-status__ikon" aria-hidden="true">&#128274;</span>
-              <span>Terkunci</span>
+              <span>${escapeHtml(teksLabelTerkunci)}</span>
             </span>
           </div>
           <h1 id="judul-unit-s03" class="judul-layar" style="margin-bottom: 0;">
@@ -158,7 +171,7 @@ export async function renderS03({ param = {} } = {}) {
             <p class="pesan-hangat__isi">${escapeHtml(teksUnitTerkunci)}</p>
           </div>
           <button type="button" id="tombol-kembali-beranda-s03" class="tombol tombol--utama">
-            Kembali ke Beranda
+            ${escapeHtml(teksKembaliBeranda)}
           </button>
         </section>
       `;
@@ -197,7 +210,7 @@ export async function renderS03({ param = {} } = {}) {
                 ${lencanaPengayaanHtml}
                 <span class="penanda-status penanda-status--terdeteksi">
                   <span class="penanda-status__ikon" aria-hidden="true">&#10003;</span>
-                  <span>Selesai</span>
+                  <span>${escapeHtml(teksLabelSelesai)}</span>
                 </span>
               </div>
             </div>
@@ -273,7 +286,7 @@ export async function renderS03({ param = {} } = {}) {
               ${lencanaPengayaanHtml}
               <span class="penanda-status penanda-status--menunggu">
                 <span class="penanda-status__ikon" aria-hidden="true">&#128274;</span>
-                <span>Terkunci</span>
+                <span>${escapeHtml(teksLabelTerkunci)}</span>
               </span>
             </div>
           </div>
@@ -298,16 +311,16 @@ export async function renderS03({ param = {} } = {}) {
       <li class="kartu-unit ${apakahSesi3Selesai ? 'kartu-unit--selesai' : 'kartu-unit--terbuka'}">
         <div class="kartu-unit__kepala">
           <div>
-            <span class="kartu-unit__nomor">Akhir Unit</span>
+            <span class="kartu-unit__nomor">${escapeHtml(teksAkhirUnit)}</span>
             <h2 class="kartu-unit__judul-id">${escapeHtml(teksBarisAkhir)}</h2>
           </div>
           ${apakahSesi3Selesai ? `
             <span class="penanda-status penanda-status--terdeteksi">
               <span class="penanda-status__ikon" aria-hidden="true">&#10003;</span>
-              <span>Selesai</span>
+              <span>${escapeHtml(teksLabelSelesai)}</span>
             </span>
           ` : `
-            <span class="kartu-arab__label">Siap dimulai</span>
+            <span class="kartu-arab__label">${escapeHtml(teksSiapDimulai)}</span>
           `}
         </div>
         <button type="button" id="tombol-sesi3-s03" class="tombol tombol--utama">
@@ -318,12 +331,12 @@ export async function renderS03({ param = {} } = {}) {
       <li class="kartu-unit kartu-unit--terkunci">
         <div class="kartu-unit__kepala">
           <div>
-            <span class="kartu-unit__nomor">Akhir Unit</span>
+            <span class="kartu-unit__nomor">${escapeHtml(teksAkhirUnit)}</span>
             <h2 class="kartu-unit__judul-id">${escapeHtml(teksBarisAkhir)}</h2>
           </div>
           <span class="penanda-status penanda-status--menunggu">
             <span class="penanda-status__ikon" aria-hidden="true">&#128274;</span>
-            <span>Terkunci</span>
+            <span>${escapeHtml(teksLabelTerkunci)}</span>
           </span>
         </div>
         <p class="teks-keterangan" style="margin: 0; font-weight: 600;">
@@ -336,8 +349,8 @@ export async function renderS03({ param = {} } = {}) {
       <section class="kartu" aria-labelledby="judul-unit-s03">
         <div class="daftar-status" style="justify-content: space-between;">
           <span class="kartu-unit__nomor">Unit ${infoUnit.no}</span>
-          <button type="button" id="tautan-beranda-s03" class="tautan-aksi-tombol">
-            &larr; Beranda
+          <button type="button" id="tautan-beranda-s03" class="tautan-aksi tautan-aksi-tombol" style="width: auto; padding-inline: var(--jarak-2);">
+            ${escapeHtml(teksTautanBeranda)}
           </button>
         </div>
         <h1 id="judul-unit-s03" class="judul-layar" style="margin-bottom: 0;">

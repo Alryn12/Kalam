@@ -43,7 +43,7 @@ export async function renderS15({ param = {} } = {}) {
         <input
           type="range"
           id="penggeser-teman-s15"
-          class="input-penggeser"
+          class="input-penggeser input-penggeser--belum-disentuh"
           min="1"
           max="10"
           step="1"
@@ -65,7 +65,7 @@ export async function renderS15({ param = {} } = {}) {
         <input
           type="range"
           id="penggeser-guru-s15"
-          class="input-penggeser"
+          class="input-penggeser input-penggeser--belum-disentuh"
           min="1"
           max="10"
           step="1"
@@ -109,6 +109,7 @@ export async function renderS15({ param = {} } = {}) {
   function hubungkanPenggeser(inputEl, labelEl, saatUbah) {
     if (!inputEl) return;
     const tanganiSentuh = () => {
+      inputEl.classList.remove('input-penggeser--belum-disentuh');
       const angka = Number(inputEl.value);
       saatUbah(angka);
       if (labelEl) labelEl.textContent = String(angka);

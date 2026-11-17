@@ -28,14 +28,16 @@ export async function renderS91({ param = {} } = {}) {
       'Berkas materi belum dapat dimuat sekarang. Periksa sinyalmu lalu ketuk Coba lagi.';
   } else if (jenis === 'audio') {
     judul = ambilTeks('S-91', 'judul_audio') || 'Audio belum termuat';
-    penjelasan = 'Berkas belum dapat dimuat sekarang. Periksa sinyalmu lalu ketuk Coba lagi.';
+    penjelasan = ambilTeks('S-91', 'penjelasan_audio') ||
+      'Berkas belum dapat dimuat sekarang. Periksa sinyalmu lalu ketuk Coba lagi.';
   } else if (jenis === 'mikrofon') {
-    judul = 'Mikrofon belum siap';
+    judul = ambilTeks('S-91', 'judul_mikrofon') || 'Mikrofon belum siap';
     penjelasan = ambilTeks('S-11', 'izin_ditolak') ||
       'Mikrofon belum diizinkan. Buka pengaturan peramban lalu izinkan mikrofon, atau minta bantuan gurumu.';
   } else if (jenis === 'perlu_internet') {
-    judul = 'Perlu internet';
-    penjelasan = 'Sambungkan HP-mu ke internet terlebih dahulu, lalu ketuk Coba lagi.';
+    judul = ambilTeks('S-91', 'judul_perlu_internet') || 'Perlu internet';
+    penjelasan = ambilTeks('S-91', 'penjelasan_perlu_internet') ||
+      'Sambungkan HP-mu ke internet terlebih dahulu, lalu ketuk Coba lagi.';
   }
 
   const wadah = siapkanWadahLayar('S-91', judul);

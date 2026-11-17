@@ -28,7 +28,8 @@ const IKON_ADEGAN_SVG = '<svg width="36" height="36" viewBox="0 0 24 24" fill="n
 
 function renderPanelPenyelamat(daftarKalimat, bentukLawan) {
   const judul = ambilTeks('S-20', 'judul_penyelamat') || '4 Kalimat Penyelamat';
-  const subjudul = ambilTeks('S-20', 'subjudul_penyelamat') || ambilTeks('S-19', 'pengantar_frasa') || '';
+  const subjudul = ambilTeks('S-20', 'subjudul_penyelamat') ||
+    'Kenalan dulu sebelum mulai. Ketuk untuk mendengar, lalu pakai kapan pun kamu butuh.';
   const tombolLanjut = ambilTeks('S-20', 'tombol_lanjut_tonton') || 'Aku siap, mulai menonton';
 
   const daftarHtml = (daftarKalimat || []).map((k) => {
@@ -123,7 +124,7 @@ export async function renderS20({ param = {} } = {}) {
 
     wadah.innerHTML = `
       <section class="wadah-layar" aria-label="${escapeHtml(blokData.judul_id)}">
-        ${renderKepalaSesi1(konteks, 'S-20')}
+        ${renderKepalaSesi1(konteks, 'S-20', { sembunyikanTab: tampilkanPenyelamat })}
         ${tampilkanPenyelamat ? renderPanelPenyelamat(daftarPenyelamat, bentuk) : ''}
         <section id="panel-dialog-s20" style="display: flex; flex-direction: column; gap: var(--jarak-3);" ${tampilkanPenyelamat ? 'hidden' : ''}>
           <div class="kotak-adegan" aria-live="polite">

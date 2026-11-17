@@ -34,9 +34,10 @@ export async function renderS17({ param = {} } = {}) {
 
   const state = ambilState();
   const paramRekam = (state.parameter && state.parameter.perekaman) || {};
+  const batasDurasi = paramRekam.batas_durasi_detik || {};
   const batasDetik = fase === 'AF'
-    ? (Number(paramRekam.batas_detik_after) || 30)
-    : (Number(paramRekam.batas_detik_tahap0) || 20);
+    ? (Number(batasDurasi.after_suara_hari_ini || paramRekam.batas_detik_after) || 30)
+    : (Number(batasDurasi.tahap0_suara_hari_pertama || paramRekam.batas_detik_tahap0) || 20);
   const bitrateBps = Number(paramRekam.bitrate_bps) || 24000;
 
   const instruksi = fase === 'AF'
@@ -90,10 +91,10 @@ export async function renderS17({ param = {} } = {}) {
 
         <div class="pesan-hangat" style="display: flex; align-items: center; gap: var(--jarak-3);">
           <svg width="44" height="44" viewBox="0 0 48 48" fill="none" aria-hidden="true" style="flex-shrink: 0;">
-            <circle cx="24" cy="24" r="22" fill="#E0F2FE" stroke="#0369A1" stroke-width="2"/>
-            <circle cx="17" cy="20" r="2.5" fill="#0C4A6E"/>
-            <circle cx="31" cy="20" r="2.5" fill="#0C4A6E"/>
-            <path d="M16 28C18 32 30 32 32 28" stroke="#0C4A6E" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="24" cy="24" r="22" fill="var(--warna-utama-muda)" stroke="var(--warna-utama)" stroke-width="2"/>
+            <circle cx="17" cy="20" r="2.5" fill="var(--warna-utama-gelap)"/>
+            <circle cx="31" cy="20" r="2.5" fill="var(--warna-utama-gelap)"/>
+            <path d="M16 28C18 32 30 32 32 28" stroke="var(--warna-utama-gelap)" stroke-width="2.5" stroke-linecap="round"/>
           </svg>
           <p class="teks-instruksi" style="margin: 0;">
             ${escapeHtml(instruksi)}

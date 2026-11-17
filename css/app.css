@@ -4,8 +4,6 @@
    Mode terang saja · Satu kolom (maks 480 px) · Tombol >= 48 px · Teks Arab >= 24 px
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&display=swap');
-
 /* --------------------------------------------------------------------------
    1. TOKEN DESAIN (VARIABEL CSS)
    Palet B (Buku Catatan Biru Teduh & Karamel Hangat) sebagai bawaan (:root)
@@ -642,6 +640,14 @@ h1, h2, h3, p {
   box-shadow: var(--bayangan-mengambang);
 }
 
+.input-penggeser--belum-disentuh::-webkit-slider-thumb {
+  opacity: 0;
+}
+
+.input-penggeser--belum-disentuh::-moz-range-thumb {
+  opacity: 0;
+}
+
 /* --------------------------------------------------------------------------
    10. BILAH TAB DENGAN CENTANG (SESI 1: TONTON, KATA KUNCI, TIRU, REKAM)
    -------------------------------------------------------------------------- */
@@ -723,9 +729,15 @@ h1, h2, h3, p {
 
 .kartu-unit__kepala {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-between;
   gap: var(--jarak-2);
+}
+
+.kartu-unit__kepala > :first-child {
+  flex: 1 1 140px;
+  min-width: 0;
 }
 
 .kartu-unit__nomor {
@@ -1437,6 +1449,7 @@ h1, h2, h3, p {
 }
 
 .tautan-aksi-tombol {
+  min-height: var(--tinggi-sentuh-min);
   background: transparent;
   border: none;
   font-family: var(--font-ui);

@@ -181,6 +181,17 @@ export async function renderS02() {
     const teksPintasanKartu = ambilTeks('S-02', 'pintasan_kartu_kemajuan') || 'Kartu Kemajuan';
     const teksPintasanKirim = ambilTeks('S-02', 'pintasan_status_pengiriman') || 'Status pengiriman';
     const teksKeluar = ambilTeks('S-02', 'tombol_keluar') || 'Keluar';
+    const teksMulai = ambilTeks('S-02', 'tombol_mulai') || 'Mulai';
+    const teksUlangi = ambilTeks('S-02', 'tombol_ulangi') || 'Ulangi';
+    const teksLihatKembali = ambilTeks('S-02', 'tombol_lihat_kembali') || 'Lihat kembali';
+    const teksTombolMk = ambilTeks('S-02', 'tombol_misi_keluarga') || 'Misi Keluarga';
+    const teksTombolCp = ambilTeks('S-02', 'tombol_catatan_pakai') || 'Catatan Pakai';
+    const teksLabelPekan = ambilTeks('S-02', 'label_pekan_ini') || 'Misi Keluarga & Catatan Pakai';
+    const teksLabelTerkunci = ambilTeks('S-02', 'label_terkunci') || 'Terkunci';
+    const teksPeringatanKeluar = ambilTeks('S-02', 'peringatan_keluar_antrean', { jumlah: jmlMenunggu }) ||
+      `Masih ada ${jmlMenunggu} kiriman yang menunggu dikirim di HP ini. Bila kamu keluar atau berganti HP sekarang, antrean yang belum terkirim dapat tertinggal.`;
+    const teksBukaStatusKirim = ambilTeks('S-02', 'tombol_buka_status_kirim') || 'Buka Status Pengiriman';
+    const teksTetapKeluar = ambilTeks('S-02', 'tombol_tetap_keluar') || 'Tetap keluar';
 
     const langkahLanjut = tentukanLangkahLanjut(st, kemajuanT0);
     const unitSelesai = Array.isArray(st.unit_selesai) ? st.unit_selesai.map(Number) : [];
@@ -211,7 +222,7 @@ export async function renderS02() {
             </div>
             <p class="teks-arab" lang="ar" dir="rtl" style="margin: 0;">${unit.judul_arab}</p>
             <button type="button" class="tombol tombol--sekunder tombol-buka-unit-s02" data-unit="${unit.id}">
-              Ulangi
+              ${escapeHtml(teksUlangi)}
             </button>
           </li>
         `;
@@ -229,7 +240,7 @@ export async function renderS02() {
             </div>
             <p class="teks-arab" lang="ar" dir="rtl" style="margin: 0;">${unit.judul_arab}</p>
             <button type="button" class="tombol tombol--utama tombol-buka-unit-s02" data-unit="${unit.id}">
-              Mulai
+              ${escapeHtml(teksMulai)}
             </button>
           </li>
         `;
@@ -244,7 +255,7 @@ export async function renderS02() {
             </div>
             <span class="penanda-status penanda-status--menunggu">
               <span class="penanda-status__ikon" aria-hidden="true">&#128274;</span>
-              <span>Terkunci</span>
+              <span>${escapeHtml(teksLabelTerkunci)}</span>
             </span>
           </div>
           <p class="teks-arab" lang="ar" dir="rtl" style="margin: 0;">${unit.judul_arab}</p>
@@ -277,14 +288,14 @@ export async function renderS02() {
         <section class="kartu" aria-labelledby="judul-pekan-s02">
           <div class="kartu-unit__kepala">
             <h2 id="judul-pekan-s02" class="subjudul-layar" style="margin: 0;">${escapeHtml(teksKartuPekan)}</h2>
-            <span class="kartu-arab__label">Misi Keluarga &amp; Catatan Pakai</span>
+            <span class="kartu-arab__label">${escapeHtml(teksLabelPekan)}</span>
           </div>
           <div class="baris-tombol">
             <button type="button" id="tombol-mk-s02" class="tombol tombol--sekunder">
-              Misi Keluarga
+              ${escapeHtml(teksTombolMk)}
             </button>
             <button type="button" id="tombol-cp-s02" class="tombol tombol--sekunder">
-              Catatan Pakai
+              ${escapeHtml(teksTombolCp)}
             </button>
           </div>
         </section>
@@ -309,7 +320,7 @@ export async function renderS02() {
         </div>
         ${Number(st.after_terbuka || 0) === 1 ? `
           <button type="button" id="tombol-after-s02" class="tombol tombol--utama">
-            ${escapeHtml(st.after_selesai ? 'Lihat kembali' : 'Mulai')}
+            ${escapeHtml(st.after_selesai ? teksLihatKembali : teksMulai)}
           </button>
         ` : `
           <p class="teks-keterangan" style="margin: 0;">
@@ -337,14 +348,14 @@ export async function renderS02() {
         ${sedangKonfirmasiKeluar ? `
           <div id="peringatan-keluar-s02" class="pesan-hangat pesan-hangat--aksen" role="status" aria-live="polite">
             <p class="pesan-hangat__isi">
-              Masih ada <strong>${jmlMenunggu} kiriman</strong> yang menunggu dikirim di HP ini. Bila kamu keluar atau berganti HP sekarang, antrean yang belum terkirim dapat tertinggal.
+              ${escapeHtml(teksPeringatanKeluar)}
             </p>
             <div class="baris-tombol" style="margin-top: var(--jarak-2);">
               <button type="button" id="tombol-cek-kirim-keluar-s02" class="tombol tombol--utama">
-                Buka Status Pengiriman
+                ${escapeHtml(teksBukaStatusKirim)}
               </button>
               <button type="button" id="tombol-tetap-keluar-s02" class="tombol tombol--sekunder">
-                Tetap keluar
+                ${escapeHtml(teksTetapKeluar)}
               </button>
             </div>
           </div>

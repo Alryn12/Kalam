@@ -78,7 +78,7 @@ export async function renderS90() {
     }
     itemTampil.push({
       id: 'item-t0',
-      judul: 'Suara Hari Pertama',
+      judul: ambilTeks('S-90', 'judul_t0') || 'Suara Hari Pertama',
       keterangan: hasilS17T0 && Number(hasilS17T0.dilewati) === 1 ? 'Dilewati (tercatat)' : 'Tahap awal',
       status: statusT0,
       percobaan: antreanT0.reduce((m, a) => Math.max(m, Number(a.percobaan_kirim || 0)), 0)
@@ -99,7 +99,7 @@ export async function renderS90() {
       }
       itemTampil.push({
         id: 'item-af',
-        judul: 'Suara Hari Ini',
+        judul: ambilTeks('S-90', 'judul_af') || 'Suara Hari Ini',
         keterangan: 'Tahap melihat perjalananmu',
         status: statusAF,
         percobaan: antreanAF.reduce((m, a) => Math.max(m, Number(a.percobaan_kirim || 0)), 0)
@@ -125,7 +125,7 @@ export async function renderS90() {
         }
         itemTampil.push({
           id: `item-p3-u${u}`,
-          judul: `Putaran 3 · Unit ${u}`,
+          judul: ambilTeks('S-90', 'judul_p3', { u }) || `Putaran 3 · Unit ${u}`,
           keterangan: slotServer.length > 0 ? `${slotServer.length} rekaman kartu` : 'Rekaman kartu Sesi 3',
           status: statusP3,
           percobaan: antreanP3U.reduce((m, a) => Math.max(m, Number(a.percobaan_kirim || 0)), 0)
@@ -147,7 +147,7 @@ export async function renderS90() {
     }
     itemTampil.push({
       id: 'item-angka',
-      judul: 'Angka sesi dan jawaban',
+      judul: ambilTeks('S-90', 'judul_angka') || 'Angka sesi dan jawaban',
       keterangan: angkaMenunggu.length > 0
         ? `${angkaMenunggu.length} catatan menunggu koneksi`
         : 'Kuesioner dan catatan belajar',
@@ -183,23 +183,32 @@ export async function renderS90() {
       </li>
     `).join('');
 
+    const judulAntreanLokal = ambilTeks('S-90', 'judul_antrean_lokal', { jumlah: belumTerkirim.length }) ||
+      `Antrean di HP ini (${belumTerkirim.length})`;
+    const teksJanganKeluar = ambilTeks('S-90', 'peringatan_jangan_keluar') ||
+      'Jangan keluar akun atau berganti HP sebelum semua item bertanda Terkirim ✓.';
+
     const rincianMenungguHtml = belumTerkirim.length > 0 ? `
       <section class="kartu" aria-labelledby="judul-antrean-menunggu">
-        <h2 id="judul-antrean-menunggu" class="subjudul-layar">Antrean di HP ini (${belumTerkirim.length})</h2>
+        <h2 id="judul-antrean-menunggu" class="subjudul-layar">${escapeHtml(judulAntreanLokal)}</h2>
         <ul class="daftar-unit">
-          ${belumTerkirim.map((a) => `
+          ${belumTerkirim.map((a) => {
+            const nCoba = Number(a.percobaan_kirim || 0);
+            const lblCoba = ambilTeks('S-90', 'label_percobaan_kirim', { n: nCoba }) || `Percobaan kirim: ${nCoba} kali`;
+            return `
             <li class="kartu-unit" style="padding: var(--jarak-2) var(--jarak-3);">
               <div class="kartu-unit__kepala">
                 <div>
                   <strong style="font-size: 0.95rem;">${escapeHtml(a.label || a.aksi)}</strong>
                   <p class="teks-keterangan" style="margin: 2px 0 0 0;">
-                    Percobaan kirim: ${Number(a.percobaan_kirim || 0)} kali
+                    ${escapeHtml(lblCoba)}
                   </p>
                 </div>
                 ${lencanaStatusHtml(a.status)}
               </div>
             </li>
-          `).join('')}
+          `;
+          }).join('')}
         </ul>
       </section>
     ` : '';
@@ -215,7 +224,7 @@ export async function renderS90() {
           <div id="kotak-pesan-menunggu-s90" class="pesan-hangat" role="status" aria-live="polite">
             <p class="pesan-hangat__isi">${escapeHtml(pesanMenunggu)}</p>
             <p class="teks-keterangan" style="margin: var(--jarak-1) 0 0 0;">
-              Jangan keluar akun atau berganti HP sebelum semua item bertanda <strong>Terkirim &#10003;</strong>.
+              ${escapeHtml(teksJanganKeluar)}
             </p>
           </div>
         ` : ''}

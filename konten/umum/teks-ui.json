@@ -27,7 +27,17 @@
     "pintasan_perjalananku": "Perjalananku",
     "pintasan_kartu_kemajuan": "Kartu Kemajuan",
     "pintasan_status_pengiriman": "Status pengiriman",
-    "tombol_keluar": "Keluar"
+    "tombol_keluar": "Keluar",
+    "tombol_mulai": "Mulai",
+    "tombol_ulangi": "Ulangi",
+    "tombol_lihat_kembali": "Lihat kembali",
+    "tombol_misi_keluarga": "Misi Keluarga",
+    "tombol_catatan_pakai": "Catatan Pakai",
+    "label_pekan_ini": "Misi Keluarga & Catatan Pakai",
+    "label_terkunci": "Terkunci",
+    "peringatan_keluar_antrean": "Masih ada {jumlah} kiriman yang menunggu dikirim di HP ini. Bila kamu keluar atau berganti HP sekarang, antrean yang belum terkirim dapat tertinggal.",
+    "tombol_buka_status_kirim": "Buka Status Pengiriman",
+    "tombol_tetap_keluar": "Tetap keluar"
   },
   "S-03": {
     "judul": "{nama_unit}",
@@ -45,7 +55,13 @@
     "ulangi_sesi1": "Ulangi Sesi 1 (Tonton · Kata Kunci · Tiru · Rekam)",
     "ulangi_sesi2": "Ulangi Sesi 2 · Pemanasan",
     "buka_level": "Buka Level {n}",
-    "pilih_bagian": "Pilih sesi atau level"
+    "pilih_bagian": "Pilih sesi atau level",
+    "tautan_beranda": "← Beranda",
+    "tombol_kembali_beranda": "Kembali ke Beranda",
+    "label_terkunci": "Terkunci",
+    "label_selesai": "Selesai",
+    "label_siap_dimulai": "Siap dimulai",
+    "label_akhir_unit": "Akhir Unit"
   },
   "S-10": {
     "judul": "Sebelum mulai",
@@ -73,7 +89,18 @@
     "izin_ditolak": "Mikrofon belum diizinkan. Buka pengaturan peramban lalu izinkan mikrofon, atau minta bantuan gurumu.",
     "tombol_bantuan": "Minta bantuan gurumu",
     "internet_bermasalah": "Internet belum terhubung. Cek sinyalmu lalu coba lagi.",
-    "tombol": "Lanjut"
+    "tombol": "Lanjut",
+    "status_periksa_internet": "Memeriksa internet…",
+    "tombol_coba_lagi": "Coba lagi",
+    "panduan_izin_1": "1. Ketuk ikon gembok atau pengaturan di sebelah alamat situs pada perambanmu.",
+    "panduan_izin_2": "2. Pilih Mikrofon lalu ubah ke Izinkan.",
+    "panduan_izin_3": "3. Jika masih belum bisa, tunjukkan layar ini ke gurumu untuk memakai HP lain.",
+    "mikrofon_diizinkan": "✓ Mikrofon diizinkan",
+    "status_merekam_3d": "Merekam (3 detik)…",
+    "petunjuk_merekam": "Ucapkan namamu sekarang…",
+    "status_siap_dengar": "✓ Rekaman siap didengarkan",
+    "pesan_ulang_rekam": "Tidak apa-apa. Dekatkan mikrofon lalu tekan Rekam 3 detik sekali lagi ({n} dari 2 ulang).",
+    "pesan_perlu_bantuan_guru": "Sepertinya mikrofon HP ini butuh bantuan gurumu. Tunjukkan layar ini ke gurumu ya."
   },
   "S-12": {
     "judul": "Ketenangan tempat",
@@ -149,14 +176,6 @@
     "judul": "Kamu sudah berani memulai",
     "pesan": "Kamu sudah merekam suara pertamamu. Nanti kamu akan mendengarnya lagi bersama suara barumu.",
     "pesan_lewati": "Terima kasih sudah mencoba. Kamu bisa mulai dari sini. Unit 1 sekarang terbuka.",
-    "pengantar_frasa": "Empat kalimat penyelamat. Ketuk untuk mendengar. Kapan pun bingung, kamu boleh memakainya.",
-    "frasa_1_putra": "أَعِدْ مِنْ فَضْلِكَ",
-    "frasa_1_putri": "أَعِيدِي مِنْ فَضْلِكِ",
-    "frasa_2_putra": "بِبُطْءٍ مِنْ فَضْلِكَ",
-    "frasa_2_putri": "بِبُطْءٍ مِنْ فَضْلِكِ",
-    "frasa_3": "لَا أَفْهَمُ",
-    "frasa_4": "مَا مَعْنَى …؟",
-    "keterangan_frasa": "Minta diulang · Minta pelan-pelan · Aku belum paham · Menanyakan arti",
     "tombol": "Mulai Unit 1"
   },
   "S-20": {
@@ -384,7 +403,6 @@
     "pesan": "Satu blok sudah kamu jalani. Terima kasih sudah berani mencoba.",
     "judul_aku_bisa": "Pernyataan Aku Bisa blok ini",
     "pernyataan": "Aku bisa {pernyataan_blok}",
-    "dua_tanda": "Latihan ✓ · Bersama guru ✓",
     "keterangan": "Blok berikutnya sudah terbuka.",
     "keterangan_sesi_3": "Sesi 3 sudah terbuka.",
     "keterangan_pengayaan": "Blok pengayaan ini sudah kamu selesaikan.",
@@ -468,8 +486,6 @@
   "S-60": {
     "judul": "Aku Bisa",
     "penyebut": "{x} dari 29",
-    "dua_tanda": "Latihan ✓ · Bersama guru ✓",
-    "keterangan_setengah": "Tinggal satu langkah lagi",
     "tautan": "Latih lagi",
     "pesan_latihan_terakhir": "Latihan terakhirmu belum terdeteksi. Coba lagi kapan saja.",
     "judul_bonus": "Bonus pengayaan"
@@ -531,7 +547,14 @@
     "tombol": "Kirim ulang sekarang",
     "pesan_menunggu": "Rekamanmu aman di HP-mu dan akan terkirim saat internet tersedia.",
     "pesan_berulang": "Belum terkirim juga? Hubungi gurumu.",
-    "tombol_kembali": "Kembali ke Beranda"
+    "tombol_kembali": "Kembali ke Beranda",
+    "judul_t0": "Suara Hari Pertama",
+    "judul_af": "Suara Hari Ini",
+    "judul_p3": "Putaran 3 · Unit {u}",
+    "judul_angka": "Angka sesi dan jawaban",
+    "judul_antrean_lokal": "Antrean di HP ini ({jumlah})",
+    "label_percobaan_kirim": "Percobaan kirim: {n} kali",
+    "peringatan_jangan_keluar": "Jangan keluar akun atau berganti HP sebelum semua item bertanda Terkirim ✓."
   },
   "S-91": {
     "judul": "Pesan sistem",
@@ -540,8 +563,12 @@
     "judul_belum_terbuka": "Bagian ini belum terbuka",
     "penjelasan_belum_terbuka": "Selesaikan bagian sebelumnya atau tanyakan ke gurumu.",
     "judul_audio": "Audio belum termuat",
+    "penjelasan_audio": "Berkas belum dapat dimuat sekarang. Periksa sinyalmu lalu ketuk Coba lagi.",
     "judul_konten": "Materi belum termuat",
     "penjelasan_konten": "Berkas materi belum dapat dimuat sekarang. Periksa sinyalmu lalu ketuk Coba lagi.",
+    "judul_mikrofon": "Mikrofon belum siap",
+    "judul_perlu_internet": "Perlu internet",
+    "penjelasan_perlu_internet": "Sambungkan HP-mu ke internet terlebih dahulu, lalu ketuk Coba lagi.",
     "tombol": "Coba lagi · Kembali",
     "tombol_coba_lagi": "Coba lagi",
     "tombol_kembali": "Kembali"
